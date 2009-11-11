@@ -3,3 +3,4 @@ tmp/**/*
 doc/api
 doc/app
 public/system
+db/*.sqlite3
