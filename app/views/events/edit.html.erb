@@ -1,0 +1,51 @@
+<% if @item.inCal %>
+   <h1>Returning <%= h @item.description %> from calibration</h1>
+<% else %>
+  <h1>Editing event</h1>
+<% end %>
+
+<% form_for([ @item, @event ], :html => { :multipart => true }) do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field :item_id %>
+
+  <p>
+    <% if @item.inCal %>
+      Enter final calibration date:<br />
+    <% end %>
+    <%= f.label :cal_date %><br />
+    <%= f.date_select :cal_date %>
+  </p>
+  <p>
+    Calibrator:
+    <%=  select_tag("event[calibrator_id]", options_from_collection_for_select(@calibrators, :id, :a_name)) %>
+    <%= f.label :cost %>
+    <%= f.text_field :cost %>
+    <%= f.label :po %>
+    <%= f.text_field :po %>
+  </p>
+  
+  <p>
+    Link to current certs(if available):<br/>
+    <% if @event.certs.url =~ /missing.png/ %>
+      Missing Picture<br/>
+    <% else %>
+      <%= link_to image_tag( @event.certs.url(:thumb), :border => 0), @event.certs.url, :target => '_blank' %><br/>
+    <% end %>
+    <%= f.label 'Select certs file' %><br />
+    <%=  f.file_field :certs %>
+  </p>
+  <p>
+    <%= f.label :certs_updated_at %><br />
+    <%= f.date_select :certs_updated_at %>
+  </p>
+  <p>
+    <% if @item.inCal %>
+      <%= f.submit "Return from cal" %>
+    <% else %>
+      <%= f.submit 'Update' %>
+    <% end %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', item_event_path(@item.id, @event.id) %> |
+<%= link_to 'Back', item_events_path(@item.id) %>

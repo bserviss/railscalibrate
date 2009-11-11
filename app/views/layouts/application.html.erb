@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Calibrate</title>
+  <%= stylesheet_link_tag 'style' %>
+</head>
+<body>
+  <div id="navbar">
+    <ul>
+      <li>Calibration
+        <ul>
+          <li><%=link_to 'Summary Page', items_path%></li>
+          <li><%= link_to "Due Cal(#{get_rough_due_cal_count})", items_path( :anchor => "DueCal")%></li>
+          <li><%= link_to "In Cal(#{get_in_cal_count})", items_path( :anchor => "InCal")%></li>
+          <li><%= link_to "Inactive(#{get_inactive_count})", items_path( :anchor => "Inactive")%></li>
+          <li><%= link_to "Due in thirty days", items_path(:anchor => "Thirty") %></li>
+          <li><%= link_to "Add an item", new_item_path %></li>
+        </ul>
+      </li>
+    </ul>
+    <ul>
+      <li>Vendors
+        <ul>
+          <li><%= link_to "List Vendors", calibrators_path %></li>
+          <li><%= link_to "New Vendor", new_calibrator_path %></li>
+
+        </ul>
+      </li>
+    </ul>
+
+  </div>
+<div id="content">
+  <p style="color: green"><%= flash[:notice] %></p>
+  <%= yield %>
+</div>
+</body>
+</html>

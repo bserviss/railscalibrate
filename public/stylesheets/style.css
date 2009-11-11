@@ -1,0 +1,143 @@
+
+
+body {
+    background-color: #666;
+    margin: 10px 25px;
+    font-family: Arial,Helvetica,sans-serif;
+}
+
+#content {
+    float: right;
+    background-color: #fff;
+    border: 10px solid #ccc;
+    padding: 10px 10px 20px 10px;
+    width: 80%
+}
+
+#thirty {
+    background-color: fuchsia;
+}
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+.tabset_tabs	{ margin:0; padding:0; list-style-type:none; position:relative; z-index:2; white-space:nowrap }
+.tabset_tabs li	{ margin:0; padding:0; display:inline }
+.tabset_tabs a	{ color:#339 ! important; background-color:#def ! important; border:1px solid #99c; text-decoration:none; padding:0 0.6em; border-left-width:0; border-bottom:none }
+.tabset_tabs a:hover	{ color:#00c ! important; background-color:#eff ! important }
+.tabset_tabs a.active	{ color:black ! important; background-color:white ! important; border-color:black; border-left-width:1px; cursor:default; border-bottom:white; padding-top:1px; padding-bottom:1px }
+
+.tabset_tabs li.firstchild a	{ border-left-width:1px }
+
+.tabset_content	{ border:1px solid black; background-color:white; position:relative; z-index:1; padding:0.5em 1em; display:none }
+.tabset_label	{ display:none }
+
+.tabset_content_active	{ display:block }
+
+@media aural{
+	.tabset_content,
+	.tabset_label	{ display:block }
+}
+
+#navbar {
+    left:           15px;         /* put it in wide left margin            */
+    position:       fixed;        /* prevent it from scrolling with page   */
+
+    float: left;
+    background-color: #c8c8c8;
+    width: 170px;
+    border: 1px #797979 solid;
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+}
+
+#navbar ul li {
+    list-style-type: none;
+}
+
+#navbar ul li a:link, #navbar ul li a:visited {
+
+color: #797979;
+
+text-decoration: none;
+
+}
+
+#navbar ul {
+
+padding-left: 3px;
+
+margin-left: 0;
+
+}
+#navbar ul li ul {
+
+margin-left: 12px;
+
+}
+#navbar ul li ul ul li ul li a:link, #navbar ul li ul ul li ul li a:visited {
+
+color: #ff0000;
+
+font-size: 80%;
+
+}
+#navbar ul li.current a:link, #navbar ul li.current a:visited, #navbar ul li a:hover {
+
+background-image: url(arrow.gif);
+
+background-repeat: no-repeat;
+
+background-position: left center;
+padding-left: 15px;
+}
+
+

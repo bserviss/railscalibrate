@@ -1,0 +1,67 @@
+<h1>New item</h1>
+
+<% form_for @item, :html => { :multipart => true } do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :mfgr %><br />
+    <%= f.text_field :mfgr %>
+  </p>
+  <p>
+    <%= f.label :pn %><br />
+    <%= f.text_field :pn %>
+  </p>
+  <p>
+    <%= f.label :org_sn %><br />
+    <%= f.text_field :org_sn %>
+  </p>
+  <p>
+    <%= f.label :mfgr_sn %><br />
+    <%= f.text_field :mfgr_sn %>
+  </p>
+  <p>
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </p>
+  <p>
+    <%= f.label :cal_cycle_days %><br />
+    <%= f.text_field :cal_cycle_days, :value => 365%>
+  </p>
+  <p>
+	<%= f.label :last_calibrated_on %><br />
+    <%= f.datetime_select :last_calibrated_on %>
+  </p>
+  <p>
+    <%= f.label :inactive %><br />
+    <%= f.radio_button :inactive, 0, :checked => true %>Active
+    <%= f.radio_button :inactive, 1 %>Inactive
+  </p>
+    <%= f.label :incal %><br />
+    <%= f.radio_button :inCal, "false", :checked => true %>Not In Cal
+    <%= f.radio_button :inCal, "true" %>In Cal
+  <p>
+    <%= f.label :picture_file_name %><br />
+    <%= f.file_field :picture %>
+  </p>
+  <p>
+    <%= f.label :picture_content_type %><br />
+    <%= f.text_field :picture_content_type %>
+  </p>
+  <p>
+    <%= f.label :picture_file_size %><br />
+    <%= f.text_field :picture_file_size %>
+  </p>
+  <p>
+    <%= f.label :picture_updated_at %><br />
+    <%= f.datetime_select :picture_updated_at %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', items_path %>

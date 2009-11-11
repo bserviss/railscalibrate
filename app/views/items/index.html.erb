@@ -1,0 +1,21 @@
+<h1>Calibration: Sumary Page</h1>
+
+<h2><a name="DueCal">Due Cal</a></h2>
+<%= render :partial => "group", :locals => { :aGroup => @due_cal } %>
+
+<h2><a name="InCal">In Cal:</a></h2>
+<%= render :partial => "group", :locals => { :aGroup => @in_cal } %>
+
+<h2><a name="Inactive">Inactive:</a></h2>
+<%= render :partial => "group", :locals => { :aGroup => @in_active } %>
+
+<h2><a name="Thirty">Thirty days:</a></h2>
+<%= render :partial => "group", :locals => { :aGroup => @thirty } %>
+
+<h2><a name="Sixty">Sixty days:</a></h2>
+
+<h2><a name="Over">Over ninety:</a></h2>
+
+<%= link_to 'New item', new_item_path %>
+
+<%= link_to "loader", :controller => "item", :action => "test_loader" %>

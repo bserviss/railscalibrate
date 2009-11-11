@@ -1,0 +1,39 @@
+<p>
+  <b>Cal date:</b>
+  <%=h @event.cal_date.strftime('%m/%d/%Y') %>
+</p>
+
+<p>
+  <b>Calibrators:</b>
+  <% if !@event.calibrator_id.nil? %>
+    <%=h get_calibrator_name( @event.calibrator_id ) %>
+  <% else %>
+    <%=h @event.calibrator_id %>
+  <% end %>
+</p>
+
+<p>
+  <b>Cost:</b>
+  <%=h @event.cost %>
+  <b>Po:</b>
+  <%=h @event.po %>
+</p>
+
+<p>
+  <b>Picture</b>
+  <% if @event.certs.url =~ /missing.png/ %>
+  <b>Missing Picture</b><br/>
+  <% else %>
+    <b><%= link_to image_tag( @event.certs.url(:thumb), :border => 0), @event.certs.url, :target => '_blank' %></b><br/>
+  <% end %>
+</p>
+
+<p>
+  <b>Certs updated at:</b>
+  <%=h @event.certs_updated_at.strftime('%m/%d/%Y') %>
+</p>
+
+
+<%= link_to 'Edit', edit_item_event_path(@item.id, @event.id) %> |
+<%= link_to 'Back', item_events_path(@item.id) %> |
+<%= link_to "Back to #{h(@item.description)}", item_path( @item ) %> |

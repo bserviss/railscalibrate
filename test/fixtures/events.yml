@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  item_id: 1
+  cal_date: <%= 1.year.ago.to_s(:db) %>
+  calibrator_id: 1
+  cost: 9.99
+  po: MyString
+  certs_file_name: MyString
+  certs_content_type: MyString
+  certs_file_size: 1
+  certs_updated_at: 2009-08-09 22:39:20
+
+two:
+  id: 2
+  item_id: 1
+  cal_date: <%= 375.days.ago.to_s(:db) %>
+  calibrator_id: 1
+  cost: 9.99
+  po: MyString
+  certs_file_name: MyString
+  certs_content_type: MyString
+  certs_file_size: 1
+  certs_updated_at: 2009-08-09 22:39:20

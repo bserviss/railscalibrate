@@ -1,0 +1,26 @@
+<h1>Listing dependents</h1>
+
+<table>
+  <tr>
+    <th>Items</th>
+    <th>Pn</th>
+    <th>Model</th>
+    <th>Note</th>
+  </tr>
+
+<% @dependents.each do |dependent| %>
+  <tr>
+    <td><%=h dependent.item_id %></td>
+    <td><%=h dependent.pn %></td>
+    <td><%=h dependent.model %></td>
+    <td><%=h dependent.note %></td>
+    <td><%= link_to 'Show', dependent %></td>
+    <td><%= link_to 'Edit', edit_dependent_path(dependent) %></td>
+    <td><%= link_to 'Destroy', dependent, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New dependent', new_dependent_path %>

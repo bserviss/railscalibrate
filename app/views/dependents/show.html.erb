@@ -1,0 +1,23 @@
+<p>
+  <b>Items:</b>
+  <%=h @dependent.item_id %>
+</p>
+
+<p>
+  <b>Pn:</b>
+  <%=h @dependent.pn %>
+</p>
+
+<p>
+  <b>Model:</b>
+  <%=h @dependent.model %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%=h @dependent.note %>
+</p>
+
+
+<%= link_to 'Edit', edit_dependent_path(@dependent) %> |
+<%= link_to 'Back', dependents_path %>

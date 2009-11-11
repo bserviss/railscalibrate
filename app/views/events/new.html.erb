@@ -1,0 +1,35 @@
+<h1>New event</h1>
+
+<% form_for([ @item, @event ], :html => { :multipart => true }) do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field :item_id %>
+
+  <p>
+    <%= f.label :cal_date %><br />
+    <%= f.date_select( :cal_date, :order => [:day, :month, :year] ) %>
+  </p>
+  <p>
+    <%=  select_tag("event[calibrator_id]", options_from_collection_for_select(@calibrators, :id, :a_name)) %>
+
+    <%= f.label :calibrators_id %><br />
+  </p>
+  <p>
+    <%= f.label :cost %><br />
+    <%= f.text_field :cost %>
+  </p>
+  <p>
+    <%= f.label :po %><br />
+    <%= f.text_field :po %>
+  </p>
+  <p>
+    <%= f.label 'Select certs file' %><br />
+    <%=  f.file_field :certs %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<p><%= link_to 'Back to events', item_events_path( @item.id ) %></p>
+<p><%= link_to "Back to #{h(@item.description)}", item_path( @item ) %></p>
+<p><%= link_to 'Back to Items', items_path %></p>

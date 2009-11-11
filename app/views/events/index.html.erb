@@ -1,0 +1,36 @@
+<h1>Listing calibration events for <%="#{h(@item.description)}"%> </h1>
+
+<table>
+  <tr>
+    <th>Cal date</th>
+    <th>Calibrators</th>
+    <th>Cost</th>
+    <th>Po</th>
+    <th>Certs</th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <td><%=h event.cal_date.strftime('%m/%d/%Y') %></td>
+    <% if !event.calibrator_id.nil? %>
+      <td><%=h get_calibrator_name( event.calibrator_id ) %></td>
+    <% end %>
+    <td><%=h event.cost %></td>
+    <td><%=h event.po %></td>
+    <% if event.certs.url =~ /missing.png/ %>
+      <td>Missing Picture</td>
+    <% else %>
+      <td><%= link_to image_tag( event.certs.url(:thumb), :border => 0), event.certs.url, :target => '_blank' %></td>
+    <% end %>
+    <td><%= link_to 'Show', item_event_path(@item.id, event.id) %></td>
+    <td><%= link_to 'Edit', edit_item_event_path(@item.id, event.id) %></td>
+    <td><%= link_to 'Destroy', item_event_path(@item.id, event.id), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<p><%= link_to 'New event', new_item_event_path( @item.id ) %></p>
+<p><%= link_to "Back to #{h(@item.description)}", item_path( @item ) %></p>
+<p><%= link_to 'Back to Items', items_path %></p>

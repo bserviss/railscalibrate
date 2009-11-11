@@ -1,0 +1,63 @@
+<h1>Editing <%= "#{@item.description} SN: #{@item.org_sn}"%> </h1>
+
+<% form_for @item, :html => { :multipart => true } do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :mfgr %><br />
+    <%= f.text_field :mfgr %>
+  </p>
+  <p>
+    <%= f.label :pn %><br />
+    <%= f.text_field :pn %>
+  </p>
+  <p>
+    <%= f.label :org_sn %><br />
+    <%= f.text_field :org_sn %>
+  </p>
+  <p>
+    <%= f.label :mfgr_sn %><br />
+    <%= f.text_field :mfgr_sn %>
+  </p>
+  <p>
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </p>
+  <p>
+    <%= f.label :cal_cycle_days %><br />
+    <%= f.text_field :cal_cycle_days %>
+  </p>
+  <p>
+    <%= f.label :last_calibrated_on %><br />
+    <%= f.datetime_select :last_calibrated_on %>
+  </p>
+  <p>
+    <%= f.label :inactive %><br />
+    <%= f.radio_button :inactive, 0 %>Active
+    <%= f.radio_button :inactive, 1 %>Inactive
+  </p>
+  <p>
+    <%= f.label :inCal %><br />
+    <%= f.radio_button :inCal, "false" %>Not In Cal
+    <%= f.radio_button :inCal, "true" %>In Cal
+  </p>
+  <p>
+    Picture<br />
+    <% if @item.picture.url =~ /missing.png/ %>
+      No Image<br />
+    <% else %>
+      <%= link_to image_tag( @item.picture.url(:thumb), :border=> 0), @item.picture.url, :target => '_blank' %><br />
+    <% end %>
+    <%= f.file_field :picture %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @item %> |
+<%= link_to 'Back', items_path %>

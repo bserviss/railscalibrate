@@ -1,0 +1,78 @@
+<h2>Showing info for <%= "#{@item.description} SN:#{@item.org_sn}"%></h2>
+
+<p>
+  <b>Description:</b>
+  <%=h @item.description %>
+</p>
+
+<p>
+  <b>Mfgr:</b>
+  <%=h @item.mfgr %>
+</p>
+
+<p>
+  <b>Pn:</b>
+  <%=h @item.pn %>
+</p>
+
+<p>
+  <b>Org sn:</b>
+  <%=h @item.org_sn %>
+</p>
+
+<p>
+  <b>Mfgr sn:</b>
+  <%=h @item.mfgr_sn %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%=h @item.location %>
+</p>
+
+<p>
+  <b>Cal cycle days:</b>
+  <%=h @item.cal_cycle_days %>
+</p>
+
+<p>
+  <b>Last Cal on:</b>
+  <%=h @item.last_calibrated_on %>
+</p>
+
+<p>
+  <% if @item.inactive == 0 %>
+    <b>Active</b>
+  <% else %>
+    <b>Not Active</b>
+  <% end %>
+</p>
+
+<p>
+  <% if @item.inCal %>
+    <b><%=  link_to 'In Cal', item_events_path( @item ) %></b>
+  <% else  %>
+    <b>Not in cal</b>
+  <% end %>
+</p>
+
+<p>
+  <b>Item Picture</b><br />
+  <% if @item.picture.url =~ /missing.png/ %>
+  <b>No Image</b><br />
+  <% else %>
+    <b><%= link_to image_tag( @item.picture.url(:thumb), :border=> 0), @item.picture.url, :target => '_blank' %></b>
+  <% end %>
+</p>
+
+<p>
+  <b>Picture updated at:</b>
+  <%=h @item.picture_updated_at %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Calibrate', new_item_event_path( @item ) %> |
+<%= link_to 'Calibration Events', item_events_path( @item ) %> |
+<%= link_to 'Back to Item list', items_path %> |
+<%= link_to 'Destroy', @item, :confirm => 'Are you sure?', :method => :delete %>
+
