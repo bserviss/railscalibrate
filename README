@@ -1,161 +1,43 @@
-<html>
-<head>
-<meta content="text/html; charset=ISO-8859-1"
-http-equiv="content-type">
-<title>railsCalMainPage</title>
-</head>
-<body
-style="margin: 10px 25px; background-color: rgb(102, 102, 102); font-family: Arial,Helvetica,sans-serif;">
-<br>
-<div
-style="border: 10px solid rgb(204, 204, 204); padding: 10px 10px 20px; float: right; background-color: rgb(255, 255, 255); width: 80%;"
-id="content">
-<h1>RailsCalibration</h1>
-<h2>What is it?</h2>
-My first <a href="http://en.wikipedia.org/wiki/Open_source">open source</a>
-(<a href="http://en.wikipedia.org/wiki/Open_source">GNU V3</a>) <a
-href="http://rubyonrails.org/">Ruby on Rails</a> application that
-tracks business assets requiring periodic calibration.<br>
-<br>
-Feature list (incomplete) <br>
-<ul>
-<li>Single user (currently)<br>
-</li>
-<li>A summary page where you can see:</li>
-<ul>
-<li>A picture of the item (part of the lists)<br>
-</li>
-</ul>
-<ul>
-<li>A list of items due to be calibrated today</li>
-</ul>
-<ul>
-<li>Show what's due in the next thirty days</li>
-<li>Display a list of items out for calibration</li>
-<li>List inactive items</li>
-</ul>
-<li>Calibrators page (bad name?)</li>
-<ul>
-<li>Show your vendors</li>
-<ul>
-<li>See what items you've sent them for the past year</li>
-</ul>
-</ul>
-<li>Issues page</li>
-<ul>
-<li>TODO: Keep a list of problems or comments on the item</li>
-</ul>
-<li>Dependants</li>
-<ul>
-<li>TODO: List equipment or processes that a particular item being
-out for calibration would affect</li>
-</ul>
-<li>Events</li>
-<ul>
-<li>Accessed through Items</li>
-<ul>
-<li>Show current and past calibration events</li>
-<ul>
-<li>Date</li>
-<li>PO</li>
-<li>Cost</li>
-<li>Certification PDF or image<br>
-</li>
-<ul>
-<li>Stored via PaperClip<br>
-</li>
-</ul>
-</ul>
-</ul>
-</ul>
-</ul>
-<br>
-<h2>Why is it needed?</h2>
-I work as a technician in a small FAA approved repair station which has
-quite a few items that need to be calibrated on a yearly basis, but not
-nearly so many that we have invested in an "Off the Shelf" solution. <br>
-<br>
-Currently, a spreadsheet is used to track items. This works well if you
-have less than 100 items to track. It doesn't work as well above this
-number and causes us to spend an increasing amount of time physically
-verifying the dates on test equipment each month.<br>
-<br>
-Enter Ruby on Rails<br>
-<br>
-One thing I have always wanted to do was create an open source project
-as a way to give something back to the community that has taught me so
-much. <br>
-<br>
-<h2>Details</h2>
-<h3>Models</h3>
-I'm going to cheat a little and copy from the schema files<br>
-<br>
-Please drop me an email through RubyForge with any suggestions<br>
-<br>
-<span style="font-weight: bold;">Item:</span><br>
-create_table "items", :force =&gt; true do |t|<br>
-&nbsp;&nbsp;&nbsp; t.string&nbsp;&nbsp; "description"<br>
-&nbsp;&nbsp;&nbsp; t.string&nbsp;&nbsp; "mfgr"<br>
-&nbsp;&nbsp;&nbsp; t.string&nbsp;&nbsp; "pn"<br>
-&nbsp;&nbsp;&nbsp; t.string&nbsp;&nbsp; "org_sn"<br>
-&nbsp;&nbsp;&nbsp; t.string&nbsp;&nbsp; "mfgr_sn"<br>
-&nbsp;&nbsp;&nbsp; t.string&nbsp;&nbsp; "location"<br>
-&nbsp;&nbsp;&nbsp; t.integer&nbsp; "cal_cycle_days"<br>
-&nbsp;&nbsp;&nbsp; t.integer&nbsp; "inactive"<br>
-&nbsp;&nbsp;&nbsp; t.string&nbsp;&nbsp; "picture_file_name"<br>
-&nbsp;&nbsp;&nbsp; t.string&nbsp;&nbsp; "picture_content_type"<br>
-&nbsp;&nbsp;&nbsp; t.integer&nbsp; "picture_file_size"<br>
-&nbsp;&nbsp;&nbsp; t.datetime "picture_updated_at"<br>
-&nbsp;&nbsp;&nbsp; t.datetime "created_at"<br>
-&nbsp;&nbsp;&nbsp; t.datetime "updated_at"<br>
-&nbsp;&nbsp;&nbsp; t.datetime "last_calibrated_on"<br>
-&nbsp;&nbsp;&nbsp; t.boolean&nbsp; "inCal"<br>
-&nbsp; end<br>
-<br>
-The basic asset which events are linked too.<br>
-<br>
-<span style="font-weight: bold;">Event</span><br>
-<br>
-create_table "events", :force =&gt; true do |t|<br>
-&nbsp;&nbsp;&nbsp; t.integer&nbsp; "item_id"<br>
-&nbsp;&nbsp;&nbsp; t.datetime "cal_date"<br>
-&nbsp;&nbsp;&nbsp; t.integer&nbsp; "calibrator_id"<br>
-&nbsp;&nbsp;&nbsp; t.decimal&nbsp; "cost"<br>
-&nbsp;&nbsp;&nbsp; t.string&nbsp;&nbsp; "po"<br>
-&nbsp;&nbsp;&nbsp; t.string&nbsp;&nbsp; "certs_file_name"<br>
-&nbsp;&nbsp;&nbsp; t.string&nbsp;&nbsp; "certs_content_type"<br>
-&nbsp;&nbsp;&nbsp; t.integer&nbsp; "certs_file_size"<br>
-&nbsp;&nbsp;&nbsp; t.datetime "certs_updated_at"<br>
-&nbsp;&nbsp;&nbsp; t.datetime "created_at"<br>
-&nbsp;&nbsp;&nbsp; t.datetime "updated_at"<br>
-&nbsp; end<br>
-<br>
-<span style="font-weight: bold;">Calibrator</span><br>
-<br>
-create_table "calibrators", :force =&gt; true do |t|<br>
-&nbsp;&nbsp;&nbsp; t.string&nbsp;&nbsp; "a_name"<br>
-&nbsp;&nbsp;&nbsp; t.string&nbsp;&nbsp; "address_line_1"<br>
-&nbsp;&nbsp;&nbsp; t.string&nbsp;&nbsp; "address_line_2"<br>
-&nbsp;&nbsp;&nbsp; t.string&nbsp;&nbsp; "city"<br>
-&nbsp;&nbsp;&nbsp; t.string&nbsp;&nbsp; "state"<br>
-&nbsp;&nbsp;&nbsp; t.string&nbsp;&nbsp; "zip"<br>
-&nbsp;&nbsp;&nbsp; t.string&nbsp;&nbsp; "note"<br>
-&nbsp;&nbsp;&nbsp; t.datetime "created_at"<br>
-&nbsp;&nbsp;&nbsp; t.datetime "updated_at"<br>
-&nbsp;&nbsp;&nbsp; t.integer&nbsp; "event_id"<br>
-&nbsp; end<br>
-<br>
-<span style="font-weight: bold;">Dependent<br>
-<br>
-</span>&nbsp; create_table "dependents", :force =&gt; true do |t|<br>
-&nbsp;&nbsp;&nbsp; t.integer&nbsp; "item_id"<br>
-&nbsp;&nbsp;&nbsp; t.string&nbsp;&nbsp; "pn"<br>
-&nbsp;&nbsp;&nbsp; t.string&nbsp;&nbsp; "model"<br>
-&nbsp;&nbsp;&nbsp; t.string&nbsp;&nbsp; "note"<br>
-&nbsp;&nbsp;&nbsp; t.datetime "created_at"<br>
-&nbsp;&nbsp;&nbsp; t.datetime "updated_at"<br>
-&nbsp; end<br>
-<span style="font-weight: bold;"><br>
-</span></div>
-</body>
-</html>
+# RailsCalibration
+## What is it?
+
+> My first open source (GNU V3) Ruby on Rails application that tracks business assets requiring periodic calibration or re-certification.
+
+##Feature list (incomplete)
+
+* Single user (currently)
+* A summary page where you can see:
+** A picture of the item (part of the lists)
+** A list of items due to be calibrated today
+** Show what's due in the next thirty days
+** Display a list of items out for calibration
+** List inactive items
+* Calibrators page (bad name?)
+** Show your vendors
+*** See what items you've sent them for the past year
+* Issues page
+** TODO: Keep a list of problems or comments on the item
+* Dependants
+** TODO: List equipment or processes that a particular item being out for calibration would affect
+* Events
+** Accessed through Items
+*** Show current and past calibration events
+**** Date
+**** PO
+**** Cost
+**** Certification PDF or image
+***** Stored via PaperClip
+
+
+## Why is it needed?
+> I work as a technician in a small FAA approved repair station which has quite a few items that need to be calibrated on a yearly basis, but not nearly so many that we have invested in an "Off the Shelf" solution.
+
+> Currently, a spreadsheet is used to track items. This works well if you have less than 100 items to track. It doesn't work as well above this number and causes us to spend an increasing amount of time physically verifying the dates on test equipment each month.
+
+> Enter Ruby on Rails
+
+> One thing I have always wanted to do was create an open source project as a way to give something back to the community that has taught me so much.
+
+## Details
+
+TODO
