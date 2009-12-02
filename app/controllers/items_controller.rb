@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.xml
   def index
-
+    #may need a complete item list that we can search on
     @items = Item.find( :all, :order => :last_calibrated_on,
           :conditions => [ "inCal = ? and inactive = ?", false, 0 ] )
 
@@ -107,6 +107,7 @@ class ItemsController < ApplicationController
     puts "in destroy"
     @item = Item.find(params[:id])
     @item.destroy
+#test code to load some data into the model
 #	for i in ( 1..500)
 #		item = Item.new
 #		item.description = 'test-' + i.to_s
@@ -125,13 +126,15 @@ class ItemsController < ApplicationController
   end
   
   def test_loader
+    #utility method to fix some errors in the database
+    #to be removed
     @item = Item.find( :all )
     for i in @item
       i.inactive = 0
       i.inCal = false
       i.save
     end
-    flash[:notice]= 'items inacative and incal set to defaults'
+    flash[:notice]= 'items inactive and incal set to defaults'
 #    for i in ( 1..10 )
 #      item = Item.new
 #      item.description = 'test-' + i.to_s

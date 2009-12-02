@@ -2,13 +2,13 @@
 
 one:
   id: 1
-  description: MyString
+  description: Due_cal
   mfgr: MyString
   pn: MyString
   org_sn: MyString
   mfgr_sn: MyString
   location: MyString
-  cal_cycle_days: 1
+  cal_cycle_days: 365
   inactive: 0
   inCal: true
   last_calibrated_on: <%= 1.year.ago.to_s(:db) %>
@@ -19,16 +19,50 @@ one:
 
 two:
   id: 2
-  description: MyString
+  description: Over
   mfgr: MyString
   pn: MyString
   org_sn: MyString
   mfgr_sn: MyString
   location: MyString
-  cal_cycle_days: 1
+  cal_cycle_days: 365
   inactive: 1
   inCal: false
   last_calibrated_on: <%= 370.days.ago.to_s(:db) %>
+  picture_file_name: MyString
+  picture_content_type: MyString
+  picture_file_size: 1
+  picture_updated_at: 2009-08-09 22:35:37
+
+three:
+  id: 3
+  description: thirty_days
+  mfgr: MyString
+  pn: MyString
+  org_sn: 1234
+  mfgr_sn: 1234
+  location: MyString
+  cal_cycle_days: 365
+  inactive: 1
+  inCal: false
+  last_calibrated_on: <%= 335.days.ago.to_s(:db) %>
+  picture_file_name: MyString
+  picture_content_type: MyString
+  picture_file_size: 1
+  picture_updated_at: 2009-08-09 22:35:37
+
+four:
+  id: 4
+  description: sixty_days
+  mfgr: MyString
+  pn: MyString
+  org_sn: 1234
+  mfgr_sn: 1234
+  location: MyString
+  cal_cycle_days: 365
+  inactive: 1
+  inCal: false
+  last_calibrated_on: <%= 305.days.ago.to_s(:db) %>
   picture_file_name: MyString
   picture_content_type: MyString
   picture_file_size: 1

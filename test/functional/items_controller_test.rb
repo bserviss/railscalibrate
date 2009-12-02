@@ -4,12 +4,22 @@ class ItemsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:items)
+    assert_not_nil assigns( :items )
+    #need to test that items = 4, and the others are 1
+    #assert_equal 4, @response.template.assigns['items'].size
+    assert_not_nil assigns( :in_cal )
+    #update yaml to include one in_cal
+    assert_not_nil assigns( :in_active )
+    assert_not_nil assigns( :due_cal )
+    assert_not_nil assigns( :thirty )
+    assert_not_nil assigns( :sixty )
+    assert_not_nil assigns( :over )
   end
 
   test "should get new" do
     get :new
     assert_response :success
+    #assert_not_nil assigns?
   end
 
   test "should create item" do
@@ -17,7 +27,7 @@ class ItemsControllerTest < ActionController::TestCase
       post :create, :item => { :description => 'test',
       :org_sn => 'test_sn', :pn => 'id10t', :cal_cycle_days => 365,
       :picture => fixture_file_upload('/files/cat.jpg', 'image/jpg')
-      }
+      } #nice cat picture!
     end
     assert_redirected_to item_path(assigns(:item))
   end

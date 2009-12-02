@@ -1,3 +1,5 @@
+clean=Remove any temporary products.
+clobber=Remove any generated file.
 db\:abort_if_pending_migrations=Raises an error if there are pending migrations
 db\:charset=Retrieves the charset for the current environment's database
 db\:collation=Retrieves the collation for the current environment's database
@@ -39,6 +41,7 @@ doc\:clobber_plugins=Remove plugin documentation
 doc\:clobber_rails=Remove rdoc products
 doc\:guides=Generate Rails guides
 doc\:plugins=Generate documentation for all installed plugins
+doc\:plugins\:rails_rcov=Generate documentation for the rails_rcov plugin
 doc\:rails=Build the RDOC HTML Files
 doc\:reapp=Force a rebuild of the RDOC files
 doc\:rerails=Force a rebuild of the RDOC files
@@ -73,13 +76,40 @@ secret=Generate a crytographically secure secret key. This is typically used to 
 stats=Report code statistics (KLOCs, etc) from the application
 test=Run all unit, functional and integration tests
 test\:benchmark=Run tests for {:benchmark=>"db:test:prepare"} / Benchmark the performance tests
+test\:benchmark\:clobber=
+test\:benchmark\:clobber_rcov=Remove Rcov reports for benchmark tests
+test\:benchmark\:rcov=Run all benchmark tests with Rcov to measure coverage
 test\:functionals=Run tests for {:functionals=>"db:test:prepare"} / Run the functional tests in test/functional
+test\:functionals\:clobber=
+test\:functionals\:clobber_rcov=Remove Rcov reports for functional tests
+test\:functionals\:rcov=Run all functional tests with Rcov to measure coverage
 test\:integration=Run tests for {:integration=>"db:test:prepare"} / Run the integration tests in test/integration
+test\:integration\:clobber=
+test\:integration\:clobber_rcov=Remove Rcov reports for integration tests
+test\:integration\:rcov=Run all integration tests with Rcov to measure coverage
 test\:plugins=Run tests for {:plugins=>:environment} / Run the plugin tests in vendor/plugins/*/**/test (or specify with PLUGIN=name)
+test\:plugins\:clobber=
+test\:plugins\:clobber_rcov=Remove Rcov reports for plugin tests
+test\:plugins\:rcov=Run all plugin tests with Rcov to measure coverage
 test\:profile=Run tests for {:profile=>"db:test:prepare"} / Profile the performance tests
+test\:profile\:clobber=
+test\:profile\:clobber_rcov=Remove Rcov reports for profile tests
+test\:profile\:rcov=Run all profile tests with Rcov to measure coverage
 test\:recent=Run tests for {:recent=>"db:test:prepare"} / Test recent changes
+test\:recent\:clobber=
+test\:recent\:clobber_rcov=Remove Rcov reports for recent tests
+test\:recent\:rcov=Run all recent tests with Rcov to measure coverage
+test\:test\:clobber=
+test\:test\:clobber_rcov=Remove Rcov reports for test tests
+test\:test\:rcov=Run all test tests with Rcov to measure coverage
 test\:uncommitted=Run tests for {:uncommitted=>"db:test:prepare"} / Test changes since last checkin (only Subversion and Git)
+test\:uncommitted\:clobber=
+test\:uncommitted\:clobber_rcov=Remove Rcov reports for uncommitted tests
+test\:uncommitted\:rcov=Run all uncommitted tests with Rcov to measure coverage
 test\:units=Run tests for {:units=>"db:test:prepare"} / Run the unit tests in test/unit
+test\:units\:clobber=
+test\:units\:clobber_rcov=Remove Rcov reports for unit tests
+test\:units\:rcov=Run all unit tests with Rcov to measure coverage
 time\:zones\:all=Displays names of all time zones recognized by the Rails TimeZone class, grouped by offset. Results can be filtered with optional OFFSET parameter, e.g., OFFSET=-6
 time\:zones\:local=Displays names of time zones recognized by the Rails TimeZone class with the same offset as the system local time
 time\:zones\:us=Displays names of US time zones recognized by the Rails TimeZone class, grouped by offset. Results can be filtered with optional OFFSET parameter, e.g., OFFSET=-6
