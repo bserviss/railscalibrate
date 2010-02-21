@@ -108,16 +108,16 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.destroy
 #test code to load some data into the model
-#	for i in ( 1..500)
-#		item = Item.new
-#		item.description = 'test-' + i.to_s
-#		item.mfgr = 'test'
-#		some_days = rand(500)
-#		aDate = Date.today
-#		aDate -= some_days
-#		item.last_calibrated_on = aDate
-#		item.save
-#	end
+	for i in ( 1..500)
+		item = Item.new
+		item.description = 'test-' + i.to_s
+		item.mfgr = 'test'
+		some_days = rand(500)
+		aDate = Date.today
+		aDate -= some_days
+		item.last_calibrated_on = aDate
+		item.save
+	end
 
     respond_to do |format|
       format.html { redirect_to(items_url) }
@@ -128,27 +128,31 @@ class ItemsController < ApplicationController
   def test_loader
     #utility method to fix some errors in the database
     #to be removed
-    @item = Item.find( :all )
-    for i in @item
-      i.inactive = 0
-      i.inCal = false
-      i.save
-    end
-    flash[:notice]= 'items inactive and incal set to defaults'
-#    for i in ( 1..10 )
-#      item = Item.new
-#      item.description = 'test-' + i.to_s
-#      item.mfgr = 'test'
-#      some_days = rand(180)
-#      if rand(10) > 5
-#        some_days = some_days * -1
-#      end
-#      aDate = Date.today
-#      aDate += some_days
-#      item.last_calibrated_on = aDate
-#      item.save
+#    @item = Item.find( :all )
+#    for i in @item
+#      i.inactive = 0
+#      i.inCal = false
+#      i.save
 #    end
-#    flash[:notice] = 'Test data added.'
+#    flash[:notice]= 'items inactive and incal set to defaults'
+	for i in ( 1..500)
+		item = Item.new
+		item.description = 'test-' + i.to_s
+		item.mfgr = 'test'
+    item.pn = '1234'
+    item.org_sn = '123'
+    item.cal_cycle_days = '356'
+    #validates_presence_of :description
+    #validates_presence_of :pn
+    #validates_presence_of :org_sn
+    #validates_presence_of :cal_cycle_days
+
+		some_days = rand(500)
+		aDate = Date.today
+		aDate -= some_days
+		item.last_calibrated_on = aDate
+		item.save
+	end
     redirect_to( items_url )
   
   end

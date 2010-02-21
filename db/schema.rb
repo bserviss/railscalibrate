@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091013045121) do
+ActiveRecord::Schema.define(:version => 20090810024756) do
 
   create_table "calibrators", :force => true do |t|
     t.string   "a_name"
@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(:version => 20091013045121) do
     t.string   "state"
     t.string   "zip"
     t.string   "note"
+    t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "event_id"
   end
 
   create_table "dependents", :force => true do |t|
@@ -54,16 +54,16 @@ ActiveRecord::Schema.define(:version => 20091013045121) do
     t.string   "org_sn"
     t.string   "mfgr_sn"
     t.string   "location"
-    t.integer  "cal_cycle_days"
-    t.integer  "inactive"
+    t.integer  "cal_cycle_days",       :default => 365
+    t.date     "last_calibrated_on"
+    t.boolean  "inCal",                :default => false
+    t.integer  "inactive",             :default => 0
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "last_calibrated_on"
-    t.boolean  "inCal"
   end
 
 end
