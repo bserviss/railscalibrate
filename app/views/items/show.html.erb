@@ -1,62 +1,6 @@
 <h2>Showing info for <%= "#{@item.description} SN:#{@item.org_sn}"%></h2>
 
 <p>
-  <b>Description:</b>
-  <%=h @item.description %>
-</p>
-
-<p>
-  <b>Mfgr:</b>
-  <%=h @item.mfgr %>
-</p>
-
-<p>
-  <b>Pn:</b>
-  <%=h @item.pn %>
-</p>
-
-<p>
-  <b>Org sn:</b>
-  <%=h @item.org_sn %>
-</p>
-
-<p>
-  <b>Mfgr sn:</b>
-  <%=h @item.mfgr_sn %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%=h @item.location %>
-</p>
-
-<p>
-  <b>Cal cycle days:</b>
-  <%=h @item.cal_cycle_days %>
-</p>
-
-<p>
-  <b>Last Cal on:</b>
-  <%=h @item.last_calibrated_on %>
-</p>
-
-<p>
-  <% if @item.inactive == 0 %>
-    <b>Active</b>
-  <% else %>
-    <b>Not Active</b>
-  <% end %>
-</p>
-
-<p>
-  <% if @item.inCal %>
-    <b><%=  link_to 'In Cal', item_events_path( @item ) %></b>
-  <% else  %>
-    <b>Not in cal</b>
-  <% end %>
-</p>
-
-<p>
   <b>Item Picture</b><br />
   <% if @item.picture.url =~ /missing.png/ %>
   <b>No Image</b><br />
@@ -69,6 +13,46 @@
   <b>Picture updated at:</b>
   <%=h @item.picture_updated_at %>
 </p>
+
+<table border="1">
+  <tr>
+    <td><b>Description</b></td>
+    <td><%=h @item.description %></td>
+    <td><b>Location:</b></td>
+    <td><%=h @item.location %></td>
+  </tr>
+  <tr>
+    <td><b>Mfgr:</b></td>
+    <td><%=h @item.mfgr %></td>
+    <td><b>Pn:</b></td>
+    <td><%=h @item.org_sn %></td>
+    <td><b>Org sn:</b></td>
+    <td><%=h @item.org_sn %></td>
+    <td><b>Mfgr sn:</b></td>
+    <td><%=h @item.mfgr_sn %></td>
+  </tr>
+  <tr>
+    <td><b>Cal cycle days:</b></td>
+    <td><%=h @item.cal_cycle_days %><td>
+    <td><b>Last Cal on:</b></td>
+    <td><%=h @item.last_calibrated_on %></td>
+  </tr>
+  <tr>
+    <td>
+      <% if @item.inactive == 0 %>
+        <b>Active </b>
+      <% else %>
+        <b>Not Active </b>
+      <% end %>
+      and
+      <% if @item.inCal %>
+        <b><%=  link_to 'In Cal', item_events_path( @item ) %></b>
+      <% else  %>
+        <b> Not in cal</b>
+      <% end %>
+    </td>
+  </tr>
+  </table>
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Calibrate', new_item_event_path( @item ) %> |
