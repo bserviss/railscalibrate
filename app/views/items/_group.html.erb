@@ -34,7 +34,6 @@
 
 <% if show_hide == 1 then %>
   <i>
-    <%= "#{aToken}" %>
       <%= link_to_remote 'hide',
         :update => aToken,
         :url => {:action => "define", :token => aToken },
