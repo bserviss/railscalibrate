@@ -1,21 +1,45 @@
 <h1>Calibration: Sumary Page</h1>
 
 <h2><a name="DueCal">Due Cal</a></h2>
-<%= render :partial => "group", :locals => { :aGroup => @due_cal } %>
+<%= render :partial => "group", :locals => { :aGroup => @due_cal, :show_hide => 0 } %>
+<div id="DueCal">
+</div>
 
 <h2><a name="InCal">In Cal:</a></h2>
-<%= render :partial => "group", :locals => { :aGroup => @in_cal } %>
+<%= render :partial => "group", :locals => { :aGroup => @in_cal, :show_hide => 0 } %>
+<div id="InCal">
+</div>
 
 <h2><a name="Inactive">Inactive:</a></h2>
-<%= render :partial => "group", :locals => { :aGroup => @in_active } %>
+<%= link_to_remote "Inactive",
+  :update => "IA",
+  :url => { :action => "remote", :token => "IA"},
+  :complete => visual_effect( :blind_down, "IA", :duration => 0.25, :fps => 75 )
+%>
+<div id="IA">
+</div>
 
 <h2><a name="Thirty">Thirty days:</a></h2>
-<%= render :partial => "group", :locals => { :aGroup => @thirty } %>
+<%= link_to_remote "Show Units Due In Thirty Days",
+  :update => "30",
+  :url => { :action => "remote", :token => "30"},
+  :complete => visual_effect( :blind_down, "30", :duration => 0.25, :fps => 75 )
+%>
+<div id="30">
+</div>
 
 <h2><a name="Sixty">Sixty days:</a></h2>
+<%= link_to_remote "Show Units Due In Sixty Days",
+  :update => "sixty_r",
+  :url => { :action => "remote", :token => "sixty_r"},
+  :complete => visual_effect( :blind_down, "sixty_r", :duration => 0.25, :fps => 75 )
+%>
+<div id="sixty_r">
+</div>
 
 <h2><a name="Over">Over ninety:</a></h2>
-<%= render :partial => "group", :locals => { :aGroup => @over } %>
+<div id="Over">
+</div>
 
 <%= link_to 'New item', new_item_path %>
 

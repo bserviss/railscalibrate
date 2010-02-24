@@ -31,4 +31,16 @@
 <% end %>
 </table>
 
+
+<% if show_hide == 1 then %>
+  <i>
+    <%= "#{aToken}" %>
+      <%= link_to_remote 'hide',
+        :update => aToken,
+        :url => {:action => "define", :token => aToken },
+        :complete => visual_effect( :blind_up, aToken, :duration => 0.2 )
+      %>
+  </i>
+<% end %>
+
 <br />
