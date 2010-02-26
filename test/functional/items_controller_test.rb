@@ -4,16 +4,9 @@ class ItemsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns( :items )
-    #need to test that items = 4, and the others are 1
-    #assert_equal 4, @response.template.assigns['items'].size
     assert_not_nil assigns( :in_cal )
     #update yaml to include one in_cal
-    assert_not_nil assigns( :in_active )
     assert_not_nil assigns( :due_cal )
-    assert_not_nil assigns( :thirty )
-    assert_not_nil assigns( :sixty )
-    assert_not_nil assigns( :over )
   end
 
   test "should get new" do
@@ -58,7 +51,6 @@ class ItemsControllerTest < ActionController::TestCase
       :picture => fixture_file_upload('/files/cat.jpg', 'image/jpeg')},
       :html => {:multipart => true }
 
-
     assert_redirected_to item_path(assigns(:item))
   end
 
@@ -69,4 +61,41 @@ class ItemsControllerTest < ActionController::TestCase
 
     assert_redirected_to items_path
   end
+
+  test "should display inactive items" do
+    get :remote, :token => 'IA'
+    assert_response :success
+    assert_not_nil assigns( :in_active )
+    assert_template :partial => '_group'
+  end
+
+  test "should display 30 day items" do
+    get :remote, :token => '30'
+    assert_response :success
+    assert_not_nil assigns( :thirty )
+    assert_template :partial => '_group'
+
+  end
+
+  test "should display 60 day items" do
+    get :remote, :token => 'sixty_r'
+    assert_response :success
+    assert_not_nil assigns( :sixty )
+    assert_template :partial => '_group'
+  end
+
+  test "should display over 60 day items" do
+    get :remote, :token => 'over_r'
+    assert_response :success
+    assert_not_nil assigns( :over )
+    assert_template :partial => '_group'
+  end
+
+  test "should display all items" do
+    get :remote, :token => 'all_r'
+    assert_response :success
+    assert_not_nil assigns( :all_items )
+    assert_template :partial => '_group'
+  end
+
 end

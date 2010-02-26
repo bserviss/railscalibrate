@@ -2,57 +2,10 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.xml
   def index
-    #may need a complete item list that we can search on
-    #@items = Item.find( :all, :order => :last_calibrated_on,
-    #      :conditions => [ "inCal = ? and inactive = ?", false, 0 ] )
-
     @in_cal = Item.find( :all, :conditions => ["inCal = ? and inactive = ?", true, 0],
         :order => :last_calibrated_on ) || []
-
-    @in_active = Item.find( :all, :conditions => ["inactive = ?", 1],
-        :order => :last_calibrated_on ) || []
-
-    @due_cal = Item.find_by_sql( 'select * from "items" where ' +
-          "(julianday('now') - julianday(items.last_calibrated_on)) >= items.cal_cycle_days " +
-          "order by last_calibrated_on"
-        )
-    #last cal between 335 and 364///
-#    @thirty = Item.find_by_sql( 'select * from "items" where ' +
-#          "(julianday('now') - julianday(items.last_calibrated_on)) > items.cal_cycle_days " +
-#          "and " +
-#          "(julianday('now') - julianday(last_calibrated_on)) < ( cal_cycle_days + 30 ) " +
-#          "order by last_calibrated_on"
-#        )
-#    last cal between 334 and 304
-#    @sixty = Item.find_by_sql( 'select * from "items" where ' +
-#          "(julianday('now') - julianday(items.last_calibrated_on)) > ( items.cal_cycle_days + 31) " +
-#          "and " +
-#          "(julianday('now') - julianday(last_calibrated_on)) < ( cal_cycle_days + 61 ) " +
-#          "order by last_calibrated_on"
-#        )
-#    @over = Item.find_by_sql( 'select * from "items" where ' +
-#          "(julianday('now') - julianday(items.last_calibrated_on)) < ( items.cal_cycle_days + 61) "  +
-#          "order by last_calibrated_on"
-#        )
-#
-    #have to iterate over the items because cal cycle days
-    #may be different per item
-#    @items.each do |i|
-#      i.cal_cycle_days = 365 if i.cal_cycle_days.nil?
-#      diff = ( (Date.today - i.last_calibrated_on.to_date).to_i - i.cal_cycle_days )
-#      if diff >= 0 then
-#        @due_cal << i
-#      end
-#      case diff
-#      when ( -30 .. -1 )
-#        @thirty << i
-#      when ( -60 .. -31 )
-#        @sixty << i
-#      else
-#        @over << i
-#      end
-#    end
-
+    @due_cal = []
+    @due_cal = Item.due_cal
 
     respond_to do |format|
       format.html # index.html.erb
@@ -150,12 +103,7 @@ class ItemsController < ApplicationController
 		item.mfgr = 'test'
     item.pn = '1234'
     item.org_sn = '123'
-    item.cal_cycle_days = '356'
-    #validates_presence_of :description
-    #validates_presence_of :pn
-    #validates_presence_of :org_sn
-    #validates_presence_of :cal_cycle_days
-
+    item.cal_cycle_days = '365'
 		some_days = rand(500)
 		aDate = Date.today
 		aDate -= some_days
@@ -172,6 +120,7 @@ class ItemsController < ApplicationController
         :order => :last_calibrated_on ) || []
       render :partial => "group", :locals => { :aGroup => @in_active, :show_hide => 1, :aToken => 'IA' }
     end
+    
     if params[:token] == '30'
       @thirty = Item.find_by_sql( 'select * from "items" where ' +
           "(julianday('now') - julianday(items.last_calibrated_on)) > items.cal_cycle_days " +
@@ -202,9 +151,8 @@ class ItemsController < ApplicationController
     end
 
     if params[:token] == 'all_r'
-      @items = Item.find( :all, :order => :description,
-          :conditions => [ "inCal = ? and inactive = ?", false, 0 ] )
-      render :partial => "group", :locals => { :aGroup => @items, :show_hide => 1, :aToken => 'all_r' }
+      @all_items = Item.find( :all, :order => :description )
+      render :partial => "group", :locals => { :aGroup => @all_items, :show_hide => 1, :aToken => 'all_r' }
     end
 
   end
