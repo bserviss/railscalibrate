@@ -2,13 +2,9 @@
 
 <h2><a name="DueCal">Due Cal</a></h2>
 <%= render :partial => "group", :locals => { :aGroup => @due_cal, :show_hide => 0 } %>
-<div id="DueCal">
-</div>
 
 <h2><a name="InCal">In Cal:</a></h2>
-<%= render :partial => "group", :locals => { :aGroup => @in_cal, :show_hide => 0 } %>
-<div id="InCal">
-</div>
+<%= render :partial => "group", :locals => { :aGroup => @in_cal, :show_hide => 0 }, :layouts => 'layouts/application' %>
 
 <h2><a name="Inactive">Inactive:</a></h2>
 <%= link_to_remote "Inactive",

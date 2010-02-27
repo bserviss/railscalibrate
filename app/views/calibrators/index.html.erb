@@ -13,7 +13,7 @@
 
 <% @calibrators.each do |calibrator| %>
   <tr>
-    <td><%=h calibrator.a_name %></td>
+    <td><%=link_to h(calibrator.a_name), calibrator %></td>
     <td><%=h calibrator.address_line_1 %></td>
     <td><%=h calibrator.address_line_2 %></td>
     <td><%=h calibrator.city %></td>

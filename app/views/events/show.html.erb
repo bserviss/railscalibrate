@@ -1,36 +1,49 @@
-<p>
-  <b>Cal date:</b>
-  <%=h @event.cal_date.strftime('%m/%d/%Y') %>
-</p>
 
-<p>
-  <b>Calibrators:</b>
-  <% if !@event.calibrator_id.nil? %>
-    <%=h get_calibrator_name( @event.calibrator_id ) %>
-  <% else %>
-    <%=h @event.calibrator_id %>
-  <% end %>
-</p>
+<table>
+  <tr>
+    <th>Cal Date</th>
+    <th>Calibrator</th>
+    <th>PO</th>
+    <th>Cost</th>
+    <th>Picture</th>
+    <th>Certs Updated At</th>
+  </tr>
+  <tr>
+    <td><%=h @event.cal_date.strftime('%m/%d/%Y') %></td>
+    <td>
+      <% if !@event.calibrator_id.nil? %>
+        <%=h get_calibrator_name( @event.calibrator_id ) %>
+      <% else %>
+        <%=h @event.calibrator_id %>
+      <% end %>
+    </td>
+    <td><%=h @event.po %></td>
+    <td><%=h @event.cost %></td>
+    <td>
+      <% if @event.certs.url =~ /missing.png/ %>
+        <b>Missing Picture</b><br/>
+      <% else %>
+        <b><%= link_to image_tag( @event.certs.url(:thumb), :border => 0), @event.certs.url, :target => '_blank' %></b><br/>
+      <% end %>
+    </td>
+    <td>
+      <% if not @event.certs_updated_at.nil? %>
+        <%=h @event.certs_updated_at.strftime('%m/%d/%Y') %>
+      <% else %>
+        <b>no update date</b>
+      <% end %>
+    </td>
+  </tr>
+</table>
 
-<p>
-  <b>Cost:</b>
-  <%=h @event.cost %>
-  <b>Po:</b>
-  <%=h @event.po %>
-</p>
-
-<p>
-  <b>Picture</b>
-  <% if @event.certs.url =~ /missing.png/ %>
-  <b>Missing Picture</b><br/>
-  <% else %>
-    <b><%= link_to image_tag( @event.certs.url(:thumb), :border => 0), @event.certs.url, :target => '_blank' %></b><br/>
-  <% end %>
-</p>
 
 <p>
   <b>Certs updated at:</b>
-  <%=h @event.certs_updated_at.strftime('%m/%d/%Y') %>
+  <% if not @event.certs_updated_at.nil? %>
+    <%=h @event.certs_updated_at.strftime('%m/%d/%Y') %>
+  <% else %>
+    <b>no update date</b>
+  <% end %>
 </p>
 
 

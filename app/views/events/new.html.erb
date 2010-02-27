@@ -4,27 +4,35 @@
   <%= f.error_messages %>
   <%= f.hidden_field :item_id %>
 
-  <p>
-    <%= f.label :cal_date %><br />
-    <%= f.date_select( :cal_date, :order => [:day, :month, :year] ) %>
-  </p>
-  <p>
-    <%=  select_tag("event[calibrator_id]", options_from_collection_for_select(@calibrators, :id, :a_name)) %>
+  <table>
+    <tr>
+      <td><%= link_to "Calibrator:", new_calibrator_path %></td>
+      <td>
+        <%=  select_tag("event[calibrator_id]", options_from_collection_for_select(@calibrators, :id, :a_name)) %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= f.label :cal_date %></td>
+      <td><%= f.date_select :cal_date, :order => [:day, :month, :year] %></td>
+    </tr>
+    <tr>
+      <td> <%= f.label :cost %></td>
+      <td><%= f.text_field :cost %></td>
+      <td><%= f.label :po %></td>
+      <td><%= f.text_field :po %></td>
+    </tr>
+    <tr>
+      <td><%= f.label 'Select certs file' %></td>
+      <td><%= f.file_field :certs %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :certs_updated_at %></td>
+      <td><%= f.date_select :certs_updated_at, :order => [:day, :month, :year] %></td>
+    </tr>
 
-    <%= f.label :calibrators_id %><br />
-  </p>
-  <p>
-    <%= f.label :cost %><br />
-    <%= f.text_field :cost %>
-  </p>
-  <p>
-    <%= f.label :po %><br />
-    <%= f.text_field :po %>
-  </p>
-  <p>
-    <%= f.label 'Select certs file' %><br />
-    <%=  f.file_field :certs %>
-  </p>
+  </table>
+<br/>
+
   <p>
     <%= f.submit 'Create' %>
   </p>

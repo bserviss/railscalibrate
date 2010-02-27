@@ -1,40 +1,31 @@
 <h2>Showing Vendor information</h2>
 
-<p>
-  <b>Name:</b>
-  <%=h @calibrator.a_name %>
-</p>
-
-<p>
-  <b>Address line 1:</b>
-  <%=h @calibrator.address_line_1 %>
-</p>
-
-<p>
-  <b>Address line 2:</b>
-  <%=h @calibrator.address_line_2 %>
-</p>
-
-<p>
-  <b>City:</b>
-  <%=h @calibrator.city %>
-</p>
-
-<p>
-  <b>State:</b>
-  <%=h @calibrator.state %>
-</p>
-
-<p>
-  <b>Zip:</b>
-  <%=h @calibrator.zip %>
-</p>
-
-<p>
-  <b>Note:</b>
-  <%=h @calibrator.note %>
-</p>
-
+<table>
+  <tr>
+    <td><b>Name:</b></td>
+    <td><%=h @calibrator.a_name %></td>
+  </tr>
+  <tr>
+    <td><b>Address line 1:</b></td>
+    <td><%=h @calibrator.address_line_1 %></td>
+  </tr>
+  <tr>
+    <td><b>Address line 2:</b></td>
+    <td><%=h @calibrator.address_line_2 %></td>
+  </tr>
+  <tr>
+    <td><b>City:</b></td>
+    <td><%=h @calibrator.city %></td>
+    <td><b>State:</b></td>
+    <td><%=h @calibrator.state %></td>
+    <td><b>Zip:</b></td>
+    <td><%=h @calibrator.zip %></td>
+  </tr>
+  <tr>
+    <td><b>Note:</b></td>
+    <td><%=h @calibrator.note %></td>
+  </tr>
+</table>
 
 <%= link_to 'Edit', edit_calibrator_path(@calibrator) %> |
 <%= link_to 'Back', calibrators_path %>
@@ -53,7 +44,7 @@
 
   <% @events.each do |e| %>
   <tr>
-    <td><%= get_item_description_from_id( e.item_id ) %>
+    <td><%= link_to get_item_description_from_id( e.item_id ), item_path( e.item_id ) %>
     <td><%= get_item_org_sn_from_id( e.item_id ) %>
     <td><%= e.cal_date.strftime('%m/%d/%Y')%></td>
     <td><%=e.cost%></td>
