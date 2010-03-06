@@ -157,4 +157,13 @@ class ItemsController < ApplicationController
 
   end
 
+  def printable_due_cal
+    @due_cal = Item.due_cal
+    respond_to do |format|
+      format.html { render 'printable_due_cal', :layout => false }   # printable_due_cal.html.erb
+      format.xml  { render :xml => @due_cal }
+    end
+
+  end
+
 end

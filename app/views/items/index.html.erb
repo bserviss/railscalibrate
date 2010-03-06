@@ -1,10 +1,11 @@
 <h1>Calibration: Sumary Page</h1>
 
-<h2><a name="DueCal">Due Cal</a></h2>
-<%= render :partial => "group", :locals => { :aGroup => @due_cal, :show_hide => 0 } %>
+<h2><a name="DueCal">Due Cal</a></h2><%= link_to " Printable Page", :action => 'printable_due_cal', 
+  :popup => ['Due Cal', 'height=300,width=600'] %>
+<%= render :partial => "group", :locals => { :aGroup => @due_cal, :show_hide => 0, :aToken => 'due_cal' } %>
 
 <h2><a name="InCal">In Cal:</a></h2>
-<%= render :partial => "group", :locals => { :aGroup => @in_cal, :show_hide => 0 }, :layouts => 'layouts/application' %>
+<%= render :partial => "group", :locals => { :aGroup => @in_cal, :show_hide => 0, :aToken => 'inCal' }, :layouts => 'layouts/application' %>
 
 <h2><a name="Inactive">Inactive:</a></h2>
 <%= link_to_remote "Inactive",

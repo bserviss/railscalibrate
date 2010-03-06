@@ -3,8 +3,9 @@
     <th>Description</th>
     <th>Org sn</th>
     <th>Location</th>
-	<th>Last Cal</th>
-    <th>Picture thumb</th>
+    <th>Last Cal</th>
+    <th>Due Cal</th>
+    <th>Picture</th>
   </tr>
 <% aGroup.each do |item| %>
   <tr>
@@ -12,21 +13,24 @@
     <td><%=h item.org_sn %></td>
     <td><%=h item.location %></td>
     <td><%= "#{ h item.last_calibrated_on.strftime('%m/%d/%Y')}" %></td>
+    <td><%= "#{ h item.last_calibrated_on + item.cal_cycle_days.days}" %></td>
     <% if item.picture.url =~ /missing.png/ %>
       <td>No Image</td>
     <% else %>
       <td><%= link_to image_tag( item.picture.url(:thumb), :border=> 0), item.picture.url, :target => '_blank' %></td>
     <% end %>
-    <td>
-        <%= link_to 'Show', item %>
-        <%= link_to 'Edit', edit_item_path(item) %>
-        <% if item.inCal %>
-          <%= link_to 'Return from Cal', :controller => "event", :action => "return_from_cal", :id => item.id %>
-        <% elsif item.inactive == 0 %>
-          <%= link_to 'Calibrate', new_item_event_path( item ) %>
-        <% end %>
-        <%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %>
-    </td>
+    <% if aToken != 'print' %>
+      <td>
+          <%= link_to 'Show', item %>
+          <%= link_to 'Edit', edit_item_path(item) %>
+          <% if item.inCal %>
+            <%= link_to 'Return from Cal', :controller => "event", :action => "return_from_cal", :id => item.id %>
+          <% elsif item.inactive == 0 %>
+            <%= link_to 'Calibrate', new_item_event_path( item ) %>
+          <% end %>
+          <%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %>
+      </td>
+    <% end %>
   </tr>
 <% end %>
 </table>

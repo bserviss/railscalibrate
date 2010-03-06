@@ -1,0 +1,8 @@
+<h2>Due Calibration Report</h2>
+<%= "Printed on #{Date.today}" %>
+<br/>
+&nbsp
+<%= render :partial => "group", :locals => { :aGroup => @due_cal, :show_hide => 0, :aToken => 'print' }, :layout => false %>
+
+
+
