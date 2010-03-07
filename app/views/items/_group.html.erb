@@ -28,7 +28,7 @@
           <% elsif item.inactive == 0 %>
             <%= link_to 'Calibrate', new_item_event_path( item ) %>
           <% end %>
-          <%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %>
+          <%= link_to 'Delete', item, :confirm => 'Are you sure?', :method => :delete %>
       </td>
     <% end %>
   </tr>

@@ -27,8 +27,8 @@ class Item < ActiveRecord::Base
 
   def self.thirty_days
       find( :all,
-        :conditions => ["(julianday(now) - julianday(last_calibrated_on)) - ( cal_cycle_days )  < ? and " +
-          "(julianday('now') - julianday(last_calibrated_on)) - ( cal_cycle_days - 30 ) >= ?" +
+        :conditions => ["(julianday('now') - julianday(last_calibrated_on)) - ( cal_cycle_days )  < ? and " +
+          "(julianday('now') - julianday(last_calibrated_on)) - ( cal_cycle_days - 30 ) >= ? and " +
           "inCal = ? and inactive = ?", 0, 0, false, 0],
         :order => :last_calibrated_on )
   end

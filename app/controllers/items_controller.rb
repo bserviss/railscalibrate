@@ -122,12 +122,14 @@ class ItemsController < ApplicationController
     end
     
     if params[:token] == '30'
-      @thirty = Item.find_by_sql( 'select * from "items" where ' +
-          "(julianday('now') - julianday(items.last_calibrated_on)) > items.cal_cycle_days " +
-          "and " +
-          "(julianday('now') - julianday(last_calibrated_on)) < cal_cycle_days + 31 " +
-          "order by last_calibrated_on"
-        )
+      @thirty = Item.thirty_days
+#      @thirty = Item.find_by_sql( 'select * from "items" where ' +
+#          "(julianday('now') - julianday(items.last_calibrated_on)) > items.cal_cycle_days " +
+#          "and " +
+#          "(julianday('now') - julianday(last_calibrated_on)) < cal_cycle_days + 31 " +
+#          "and inactive = 0 and inCal = 'f' " +
+#          "order by last_calibrated_on"
+#        )
       render :partial => "group", :locals => { :aGroup => @thirty, :show_hide => 1, :aToken => '30' }
     end
 
