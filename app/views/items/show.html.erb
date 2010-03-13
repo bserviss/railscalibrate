@@ -52,11 +52,21 @@
       <% end %>
     </td>
   </tr>
+  <tr>
+    <td><b>Issues</b></td>
+  </tr>
+     <% @issues.each do |issue| %>
+  <tr>
+      <td><%= h issue.description %></td>
+      <td><%= h issue.created_at.strftime('%m/%d/%Y')%></td>
+  </tr>
+     <% end %>
   </table>
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Calibrate', new_item_event_path( @item ) %> |
 <%= link_to 'Calibration Events', item_events_path( @item ) %> |
+<%= link_to 'Issues', item_issues_path( @item ) %> |
 <%= link_to 'Back to Item list', items_path %> |
 <%= link_to 'Destroy', @item, :confirm => 'Are you sure?', :method => :delete %>
 

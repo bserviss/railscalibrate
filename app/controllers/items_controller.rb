@@ -17,6 +17,7 @@ class ItemsController < ApplicationController
   # GET /items/1.xml
   def show
     @item = Item.find(params[:id])
+    @issues = @item.issues.find( :all, :order => 'created_at DESC')
 
     respond_to do |format|
       format.html # show.html.erb

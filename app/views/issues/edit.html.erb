@@ -1,0 +1,21 @@
+<h1>Editing issue for <%= "#{h(@item.description)}"%> </h1>
+
+<% form_for([ @item, @issue ]) do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field :item_id %>
+
+<table>
+  <tr>
+    <td><%=f.label :description%></td>
+    <td><%=f.text_field :description %></td>
+  </tr>
+</table>
+<p>
+  <%= f.submit 'Update' %>
+</p>
+<% end %>
+
+<p><%= link_to 'Show Issue', item_issue_path( @item.id ) %></p>
+<p><%= link_to "New Issue", new_item_issue_path( @item.id ) %></p>
+<p><%= link_to "Back to #{h(@item.description)}", item_path( @item ) %></p>
+<p><%= link_to 'Back to Summary Page', items_path %></p>

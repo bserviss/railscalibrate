@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090810024756) do
+ActiveRecord::Schema.define(:version => 20100313131807) do
 
   create_table "calibrators", :force => true do |t|
     t.string   "a_name"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(:version => 20090810024756) do
     t.string   "certs_content_type"
     t.integer  "certs_file_size"
     t.datetime "certs_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "issues", :force => true do |t|
+    t.integer  "item_id"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

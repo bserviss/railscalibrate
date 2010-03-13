@@ -1,0 +1,20 @@
+<h2>Showing Issue for <%= "#{@item.description} SN:#{@item.org_sn}"%></h2>
+
+<table>
+  <tr>
+    <td><b>Description:</b></td>
+  </tr>
+  <tr>
+    <td><%= h @issue.description %></td>
+  </tr>
+  <tr>
+    <td><b>Created At:</b></td>
+    <td><%= h @issue.created_at.strftime('%m/%d/%Y') %></td>
+  </tr>
+</table>
+
+<p><%= link_to 'Edit', edit_item_issue_path( @item.id )  %>
+<p><%= link_to 'New Issue', new_item_issue_path( @item.id ) %></p>
+<p><%= link_to "Back to #{h(@item.description)}", item_path( @item ) %></p>
+<p><%= link_to 'Back to Summary Page', items_path %></p>
+
