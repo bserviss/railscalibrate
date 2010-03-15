@@ -1,23 +1,21 @@
-<p>
-  <b>Items:</b>
-  <%=h @dependent.item_id %>
-</p>
+<h1>Show dependent for <%= "#{h(@item.description)}"%></h1>
 
-<p>
-  <b>Pn:</b>
-  <%=h @dependent.pn %>
-</p>
+<table>
+<tr>
+  <td><b>Pn:</b></td>
+  <td><%=h @dependent.pn %></td>
+</tr>
 
-<p>
-  <b>Model:</b>
-  <%=h @dependent.model %>
-</p>
+<tr>
+  <td><b>Model:</b></td>
+  <td><%=h @dependent.model %></td>
+</tr>
 
-<p>
-  <b>Note:</b>
-  <%=h @dependent.note %>
-</p>
+<tr>
+  <td><b>Note:</b></td>
+  <td><%=h @dependent.note %></td>
+</tr>
+</table>
 
-
-<%= link_to 'Edit', edit_dependent_path(@dependent) %> |
-<%= link_to 'Back', dependents_path %>
+<%= link_to 'Edit', edit_item_dependent_path(@item.id) %> |
+<%= link_to 'Back', item_dependents_path( @item.id ) %>

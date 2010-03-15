@@ -60,6 +60,14 @@
 <div id="all_r">
 </div>
 
+<h2><a name="Issues">Show all issues sorted by date:</a></h2>
+<%= link_to_remote "Show All Issues",
+  :update => "issue_r",
+  :url => { :action => "remote", :token => "issues_r"},
+  :complete => visual_effect( :blind_down, "issue_r", :duration => 0.25, :fps => 75 ) %>
+<div id="issue_r">
+</div>
+
 <br/>
 
 

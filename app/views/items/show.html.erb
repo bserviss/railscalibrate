@@ -67,6 +67,7 @@
 <%= link_to 'Calibrate', new_item_event_path( @item ) %> |
 <%= link_to 'Calibration Events', item_events_path( @item ) %> |
 <%= link_to 'Issues', item_issues_path( @item ) %> |
+<%= link_to 'Dependents', item_dependents_path( @item.id ) %> |
 <%= link_to 'Back to Item list', items_path %> |
 <%= link_to 'Destroy', @item, :confirm => 'Are you sure?', :method => :delete %>
 

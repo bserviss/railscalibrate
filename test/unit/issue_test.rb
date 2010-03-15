@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class IssueTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  test "creates an issue" do
+    my_issue = Issue.new :item_id => 1,
+      :description => 'Test'
+    assert my_issue.save
   end
 end

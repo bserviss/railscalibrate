@@ -1,9 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
+  id: 1
   item_id: 1
-  description: MyString
+  description: item1
 
 two:
+  id: 2
   item_id: 1
-  description: MyString
+  description: item2

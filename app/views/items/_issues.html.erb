@@ -1,0 +1,19 @@
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Issue</th>
+  </tr>
+<% issues.each do |issue| %>
+  <tr>
+    <td><%=link_to h(get_item_description_from_id( issue.item_id ) ) , item_path( issue.item_id ) %></td>
+    <td><%= h issue.description %></td>
+  </tr>
+<% end %>
+</table>
+  <i>
+      <%= link_to_remote 'hide',
+        :update => 'issue_r',
+        :url => {:action => "define", :token => 'issue_r' },
+        :complete => visual_effect( :blind_up, 'issue_r', :duration => 0.2 )
+      %>
+  </i>

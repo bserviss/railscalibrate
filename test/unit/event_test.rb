@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
   test "creates an event" do
     my_event = Event.new :item_id => 1,
       :cal_date => Date.today,

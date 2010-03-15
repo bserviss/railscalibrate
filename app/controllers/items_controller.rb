@@ -89,28 +89,19 @@ class ItemsController < ApplicationController
   end
   
   def test_loader
-    #utility method to fix some errors in the database
-    #to be removed
-#    @item = Item.find( :all )
-#    for i in @item
-#      i.inactive = 0
-#      i.inCal = false
-#      i.save
-#    end
-#    flash[:notice]= 'items inactive and incal set to defaults'
-	for i in ( 1..500)
-		item = Item.new
-		item.description = 'test-' + i.to_s
-		item.mfgr = 'test'
-    item.pn = '1234'
-    item.org_sn = '123'
-    item.cal_cycle_days = '365'
-		some_days = rand(500)
-		aDate = Date.today
-		aDate -= some_days
-		item.last_calibrated_on = aDate
-		item.save
-	end
+  	for i in ( 1..500)
+	  	item = Item.new
+		  item.description = 'test-' + i.to_s
+		  item.mfgr = 'test'
+      item.pn = '1234'
+      item.org_sn = '123'
+      item.cal_cycle_days = '365'
+		  some_days = rand(500)
+		  aDate = Date.today
+		  aDate -= some_days
+		  item.last_calibrated_on = aDate
+		  item.save
+	  end
     redirect_to( items_url )
   
   end
@@ -124,13 +115,6 @@ class ItemsController < ApplicationController
     
     if params[:token] == '30'
       @thirty = Item.thirty_days
-#      @thirty = Item.find_by_sql( 'select * from "items" where ' +
-#          "(julianday('now') - julianday(items.last_calibrated_on)) > items.cal_cycle_days " +
-#          "and " +
-#          "(julianday('now') - julianday(last_calibrated_on)) < cal_cycle_days + 31 " +
-#          "and inactive = 0 and inCal = 'f' " +
-#          "order by last_calibrated_on"
-#        )
       render :partial => "group", :locals => { :aGroup => @thirty, :show_hide => 1, :aToken => '30' }
     end
 
@@ -156,6 +140,11 @@ class ItemsController < ApplicationController
     if params[:token] == 'all_r'
       @all_items = Item.find( :all, :order => :description )
       render :partial => "group", :locals => { :aGroup => @all_items, :show_hide => 1, :aToken => 'all_r' }
+    end
+
+    if params[:token] == 'issues_r'
+      @issues = Issue.find( :all, :order => 'created_at DESC')
+      render :partial => "issues", :locals => {:issues => @issues }
     end
 
   end

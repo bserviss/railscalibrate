@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
 
   #map.resources :items
   
-  map.resources :items, :has_many => [ :events, :issues ]
+  map.resources :items, :has_many => [ :events, :issues, :dependents ]
 
   map.connect "item/:action", :controller => 'items', :action => /[a-z_]+/i
   map.connect "event/:action/:item_id", :controller => 'events', :action => /[a-z_]+/i

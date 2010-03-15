@@ -1,28 +1,27 @@
-<h1>Editing dependent</h1>
+<h1>Editing dependentfor <%= "#{h(@item.description)}"%></h1>
 
-<% form_for(@dependent) do |f| %>
+<% form_for([ @item,@dependent]) do |f| %>
   <%= f.error_messages %>
+  <%= f.hidden_field :item_id %>
 
-  <p>
-    <%= f.label :item_id %><br />
-    <%= f.text_field :item_id %>
-  </p>
-  <p>
-    <%= f.label :pn %><br />
-    <%= f.text_field :pn %>
-  </p>
-  <p>
-    <%= f.label :model %><br />
-    <%= f.text_field :model %>
-  </p>
-  <p>
-    <%= f.label :note %><br />
-    <%= f.text_field :note %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
+<table>
+  <tr>
+    <td><%= f.label :pn %></td>
+    <td><%= f.text_field :pn %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :model %></td>
+    <td><%= f.text_field :model %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :note %></td>
+    <td><%= f.text_field :note %></td>
+  </tr>
+  <tr>
+    <td><%= f.submit 'Update' %></td>
+  </tr>
 <% end %>
+</table>
 
-<%= link_to 'Show', @dependent %> |
-<%= link_to 'Back', dependents_path %>
+<%= link_to 'Show', item_dependent_path( @item.id ) %> |
+<%= link_to 'Back', item_dependents_path( @item.id ) %>
