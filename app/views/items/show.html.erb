@@ -53,7 +53,7 @@
     </td>
   </tr>
   <tr>
-    <td><b>Issues</b></td>
+    <td><b><%= link_to 'Issues', item_issues_path( @item ) %></b></td>
   </tr>
      <% @issues.each do |issue| %>
   <tr>
@@ -61,6 +61,21 @@
       <td><%= h issue.created_at.strftime('%m/%d/%Y')%></td>
   </tr>
      <% end %>
+  <tr>
+    <td><b><%= link_to 'Dependents', item_dependents_path( @item.id ) %></b>
+  </tr>
+  <tr>
+    <td>Part Number</td>
+    <td>Model</td>
+    <td>Note</td>
+  </tr>
+  <% @dependents.each do |dependent| %>
+  <tr>
+    <td><%= h dependent.pn %></td>
+    <td><%= h dependent.model  %></td>
+    <td><%= h dependent.note %> </td>
+  </tr>
+  <% end %>
   </table>
 
 <%= link_to 'Edit', edit_item_path(@item) %> |

@@ -1,0 +1,23 @@
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Dependent Part Number</th>
+    <th>Model Number</th>
+    <th>Note</th>
+  </tr>
+<% dependents.each do |dependent| %>
+  <tr>
+    <td><%=link_to h(get_item_description_from_id( dependent.item_id ) ) , item_path( dependent.item_id ) %></td>
+    <td><%= h dependent.pn %></td>
+    <td><%= h dependent.model %></td>
+    <td><%= h dependent.note %> </td>
+  </tr>
+<% end %>
+</table>
+  <i>
+      <%= link_to_remote 'hide',
+        :update => 'dependent_r',
+        :url => {:action => "define", :token => 'dependent_r' },
+        :complete => visual_effect( :blind_up, 'dependent_r', :duration => 0.2 )
+      %>
+  </i>

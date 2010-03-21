@@ -1,12 +1,14 @@
 <h1>Calibration: Sumary Page</h1>
 
 <h2><a name="DueCal">Due Cal</a></h2>
-<%= link_to " Printable Page", :action => 'printable_due_cal', 
+<%= link_to " Print Due Cal Report", :action => 'printable_due_cal',
   :popup => ['Due Cal', 'height=300,width=600'] %>
 <br />
 <%= render :partial => "group", :locals => { :aGroup => @due_cal, :show_hide => 0, :aToken => 'due_cal' } %>
 
 <h2><a name="InCal">In Cal:</a></h2>
+<%= link_to " Print In Cal Report", :action => 'printable_in_cal',
+  :popup => ['Due Cal', 'height=300,width=600'] %>
 &nbsp
 <%= render :partial => "group", :locals => { :aGroup => @in_cal, :show_hide => 0, :aToken => 'inCal' }, :layouts => 'layouts/application' %>
 
@@ -66,6 +68,14 @@
   :url => { :action => "remote", :token => "issues_r"},
   :complete => visual_effect( :blind_down, "issue_r", :duration => 0.25, :fps => 75 ) %>
 <div id="issue_r">
+</div>
+
+<h2><a name="Dependents">Show all dependent parts:</a></h2>
+<%= link_to_remote "Show All Dependents",
+  :update => "dependent_r",
+  :url => { :action => "remote", :token => "dependents_r"},
+  :complete => visual_effect( :blind_down, "dependent_r", :duration => 0.25, :fps => 75 ) %>
+<div id="dependent_r">
 </div>
 
 <br/>

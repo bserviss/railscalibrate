@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @issues = @item.issues.find( :all, :order => 'created_at DESC')
-
+    @dependents = @item.dependents.find( :all, :order => 'created_at DESC')
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @item }
@@ -147,6 +147,11 @@ class ItemsController < ApplicationController
       render :partial => "issues", :locals => {:issues => @issues }
     end
 
+    if params[:token] == 'dependents_r'
+      @dependents = Dependent.find( :all, :order => 'item_id')
+      render :partial => 'dependents', :locals => {:dependents => @dependents}
+    end
+
   end
 
   def printable_due_cal
@@ -155,7 +160,13 @@ class ItemsController < ApplicationController
       format.html { render 'printable_due_cal', :layout => false }   # printable_due_cal.html.erb
       format.xml  { render :xml => @due_cal }
     end
-
   end
 
+  def printable_in_cal
+    @in_cal = Item.in_cal
+    respond_to do |format|
+      format.html { render 'printable_in_cal', :layout => false }   # printable_in_cal.html.erb
+      format.xml  { render :xml => @in_cal }
+    end
+  end
 end
