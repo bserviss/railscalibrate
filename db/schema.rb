@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100313131807) do
+ActiveRecord::Schema.define(:version => 20100405032810) do
 
   create_table "calibrators", :force => true do |t|
     t.string   "a_name"
@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(:version => 20100313131807) do
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "contact_email"
+    t.string   "contact_name"
+    t.string   "website"
   end
 
   create_table "dependents", :force => true do |t|
