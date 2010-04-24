@@ -23,7 +23,7 @@
       <td>
           <%= link_to 'Show', item %>
           <%= link_to 'Edit', edit_item_path(item) %>
-          <% if item.inCal %>
+          <% if item.inCal %><%= link_to 'Return from Cal', :controller => "event", :action => "return_from_cal", :id => item.id %>
             <%= link_to 'Return from Cal', :controller => "event", :action => "return_from_cal", :id => item.id %>
           <% elsif item.inactive == 0 %>
             <%= link_to 'Calibrate', new_item_event_path( item ) %>

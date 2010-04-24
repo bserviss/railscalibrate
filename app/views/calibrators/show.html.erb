@@ -6,6 +6,18 @@
     <td><%=h @calibrator.a_name %></td>
   </tr>
   <tr>
+    <td><b>Website:</b></td>
+    <td><%=h @calibrator.website %></td>
+  </tr>
+  <tr>
+    <td><b>Contact Name:</b></td>
+    <td><%=h @calibrator.contact_name %></td>
+  </tr>
+  <tr>
+    <td><b>Contact Email:</b></td>
+    <td><%=h @calibrator.contact_email %></td>
+  </tr>
+  <tr>
     <td><b>Address line 1:</b></td>
     <td><%=h @calibrator.address_line_1 %></td>
   </tr>
@@ -29,6 +41,35 @@
 
 <%= link_to 'Edit', edit_calibrator_path(@calibrator) %> |
 <%= link_to 'Back', calibrators_path %>
+
+<h2>Items currently in cal at this vendor:</h2>
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Org SN</th>
+    <th>Cal Date</th>
+    <th>Cost</th>
+    <th>PO</th>
+    <th>Certs</th>
+    <th></th>
+  </tr>
+
+  <% @in_cal.each do |e| %>
+  <tr>
+    <td><%= link_to get_item_description_from_id( e.item_id ), item_path( e.item_id ) %>
+    <td><%= get_item_org_sn_from_id( e.item_id ) %>
+    <td><%= e.cal_date.strftime('%m/%d/%Y')%></td>
+    <td><%=e.cost%></td>
+    <td><%=e.po%></td>
+    <% if e.certs.url =~ /missing.png/ %>
+      <td>Missing Picture</td>
+    <% else %>
+      <td><%= link_to image_tag( e.certs.url(:thumb), :border => 0), e.certs.url, :target => '_blank' %></td>
+    <% end %>
+   <td><%=link_to 'Show Events', item_event_path(  e.item_id, e.id)%></td>
+  </tr>
+  <% end %>
+</table>
 
 <h2>Calibration events for past year:</h2>
 <table>

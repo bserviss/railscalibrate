@@ -36,7 +36,6 @@
   </tr>
 </table>
 
-
 <p>
   <b>Certs updated at:</b>
   <% if not @event.certs_updated_at.nil? %>
@@ -46,7 +45,9 @@
   <% end %>
 </p>
 
-
+<% if @item.inCal %>
+  <%= link_to 'Return from Cal', :controller => "event", :action => "return_from_cal", :id => @item.id %>
+<% end %>
 <%= link_to 'Edit', edit_item_event_path(@item.id, @event.id) %> |
 <%= link_to 'Back', item_events_path(@item.id) %> |
 <%= link_to "Back to #{h(@item.description)}", item_path( @item ) %> |

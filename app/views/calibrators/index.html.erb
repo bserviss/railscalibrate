@@ -3,6 +3,9 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Website</th>
+    <th>Contact Name</th>
+    <th>Contact Email</th>
     <th>Address line 1</th>
     <th>Address line 2</th>
     <th>City</th>
@@ -14,6 +17,9 @@
 <% @calibrators.each do |calibrator| %>
   <tr>
     <td><%=link_to h(calibrator.a_name), calibrator %></td>
+    <td><%=h calibrator.website %></td>
+    <td><%=h calibrator.contact_name %></td>
+    <td><%=h calibrator.contact_email %></td>
     <td><%=h calibrator.address_line_1 %></td>
     <td><%=h calibrator.address_line_2 %></td>
     <td><%=h calibrator.city %></td>

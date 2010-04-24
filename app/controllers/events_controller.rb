@@ -45,6 +45,7 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = @item.events.find( params[:id] )
+    @event.cal_date = Date.today
     @calibrators = Calibrator.find( :all )
     #@event = Event.find( :first, :conditions => ["items_id = ?", params[:id] ] )
   end
