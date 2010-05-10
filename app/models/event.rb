@@ -1,7 +1,6 @@
 class Event < ActiveRecord::Base
-  belongs_to :item
+  belongs_to :item 
   belongs_to :calibrators  # calibrators has many events
-  #has_many :calibrators
   
   has_attached_file :certs,
                     :styles => { :medium => "300x300>",

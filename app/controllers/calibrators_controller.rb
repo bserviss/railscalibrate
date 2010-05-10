@@ -20,6 +20,8 @@ class CalibratorsController < ApplicationController
 
     @in_cal = []
     @events = []
+    #quicker to do two queries - inCal and not inCal
+    #not a lot of records being passed here - 
     @events_over_year.each do | e |
       the_item = Item.find( e.item_id )
       if the_item.inCal == true
