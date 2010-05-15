@@ -1,19 +1,18 @@
 <h1>Calibration: Sumary Page</h1>
 
 <h2><a name="DueCal">Due Cal</a></h2>
-<%= link_to " Print Due Cal Report", :action => 'printable_due_cal',
+<%= link_to "Print Due Cal Report", :action => 'printable_due_cal',
   :popup => ['Due Cal', 'height=300,width=600'] %>
 <br />
 <%= render :partial => "group", :locals => { :aGroup => @due_cal, :show_hide => 0, :aToken => 'due_cal' } %>
 
 <h2><a name="InCal">In Cal:</a></h2>
-<%= link_to " Print In Cal Report", :action => 'printable_in_cal',
+<%= link_to "Print In Cal Report", :action => 'printable_in_cal',
   :popup => ['Due Cal', 'height=300,width=600'] %>
-&nbsp
 <%= render :partial => "group", :locals => { :aGroup => @in_cal, :show_hide => 0, :aToken => 'inCal' }, :layouts => 'layouts/application' %>
 
 <h2><a name="Inactive">Inactive:</a></h2>
-&nbsp
+
 <%= link_to_remote "Inactive",
   :update => "IA",
   :url => { :action => "remote", :token => "IA"},
@@ -23,7 +22,9 @@
 </div>
 
 <h2><a name="Thirty">Thirty days:</a></h2>
-&nbsp
+<%= link_to "Print Report Containing Items Due Cal Within 30 Days", :action => 'printable_thirty_days',
+  :popup => ['Due in Thirt Days', 'height=300,width=600'] %>
+<br />
 <%= link_to_remote "Show Units Due In Thirty Days",
   :update => "30",
   :url => { :action => "remote", :token => "30"},
@@ -33,7 +34,6 @@
 </div>
 
 <h2><a name="Sixty">Sixty days:</a></h2>
-&nbsp
 <%= link_to_remote "Show Units Due In Sixty Days",
   :update => "sixty_r",
   :url => { :action => "remote", :token => "sixty_r"},
@@ -43,7 +43,6 @@
 </div>
 
 <h2><a name="Over">Over ninety:</a></h2>
-&nbsp
 <%= link_to_remote "Show Units Due Over Sixty Days",
   :update => "over_r",
   :url => { :action => "remote", :token => "over_r"},
@@ -53,7 +52,6 @@
 </div>
 
 <h2><a name="All">All Records sorted by Description:</a></h2>
-&nbsp
 <%= link_to_remote "Show All Units",
   :update => "all_r",
   :url => { :action => "remote", :token => "all_r"},

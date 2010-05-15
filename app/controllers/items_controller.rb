@@ -169,4 +169,12 @@ class ItemsController < ApplicationController
       format.xml  { render :xml => @in_cal }
     end
   end
+
+  def printable_thirty_days
+    @thirty_days = Item.thirty_days
+    respond_to do |format|
+      format.html { render 'printable_thirty_days', :layout => false }   # printable_thirty_days.html.erb
+      format.xml  { render :xml => @in_cal }
+    end
+  end
 end

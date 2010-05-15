@@ -1,0 +1,5 @@
+<h2>Due in Thirty Days Report</h2>
+<%= "Printed on #{Date.today}" %>
+<br/>
+&nbsp
+<%= render :partial => "group", :locals => { :aGroup => @thirty_days, :show_hide => 0, :aToken => 'print' }, :layout => false %>
