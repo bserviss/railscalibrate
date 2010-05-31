@@ -10,8 +10,6 @@ class EventsController < ApplicationController
   
   def index
     @events = @item.events.find( :all, :order => "cal_date DESC" )
-    #@events = Event.find( :all, :conditions => ["items_id = ?", params[:item_id] ] )
-	#@item_id = params[:item_id]
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @events }
@@ -22,9 +20,6 @@ class EventsController < ApplicationController
   # GET /events/1.xml
   def show
 	@event = @item.events.find( params[:id] )
-	#@event = Event.find( :first, :conditions => ["items_id = ?", params[:id] ] )
-    #@event = Event.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @event }
@@ -56,6 +51,7 @@ class EventsController < ApplicationController
       event = @item.events.find( :first, :order => "cal_date DESC" )
       redirect_to( edit_item_event_path( @item.id, event.id ))
     end
+    #else?
   
   end
 

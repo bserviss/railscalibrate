@@ -12,7 +12,7 @@ class ItemsControllerTest < ActionController::TestCase
   test "should get new" do
     get :new
     assert_response :success
-    #assert_not_nil assigns?
+    assert_not_nil assigns( :item )
   end
 
   test "should create item" do
@@ -38,11 +38,15 @@ class ItemsControllerTest < ActionController::TestCase
   test "should show item" do
     get :show, :id => items(:one).to_param
     assert_response :success
+    assert_not_nil assigns( :item )
+    assert_not_nil assigns( :issues )
+    assert_not_nil assigns( :dependents )
   end
 
   test "should get edit" do
     get :edit, :id => items(:one).to_param
     assert_response :success
+    assert_not_nil assigns( :item )
   end
 
   test "should update item" do
@@ -96,6 +100,24 @@ class ItemsControllerTest < ActionController::TestCase
     assert_response :success
     assert_not_nil assigns( :all_items )
     assert_template :partial => '_group'
+  end
+
+  test "should display printable due_cal" do
+    get :printable_due_cal
+    assert_response :success
+    assert_not_nil assigns( :due_cal )
+  end
+
+  test "should display printable in_cal" do
+    get :printable_in_cal
+    assert_response :success
+    assert_not_nil assigns( :in_cal )
+  end
+
+  test "should display printable_thirty_days" do
+    get :printable_thirty_days
+    assert_response :success
+    assert_not_nil assigns( :thirty_days )
   end
 
 end

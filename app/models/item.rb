@@ -22,8 +22,6 @@ class Item < ActiveRecord::Base
         :conditions => ["(julianday('now') - julianday(items.last_calibrated_on)) >= items.cal_cycle_days and " +
           "inCal = ? and inactive = ?", false, 0 ],
         :order => :last_calibrated_on ) || []
-      #puts my_item
-    # my_item
   end
 
   def self.in_cal

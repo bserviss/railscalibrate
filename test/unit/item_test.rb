@@ -1,9 +1,8 @@
 require 'test_helper'
 
 class ItemTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
 
-  test "create item" do
+  test "should create item" do
     my_item = Item.new :description => 'test',
       :org_sn => '1234',
       :pn => 'test',
@@ -29,6 +28,12 @@ class ItemTest < ActiveSupport::TestCase
     my_item = Item.new :description => 'test',
       :pn => 'test',
       :cal_cycle_days => 365
+    assert !my_item.save
+  end
+
+  test "should not create item without cal_cycle_days" do
+    my_item = Item.new :description => 'test',
+      :pn => 'test'
     assert !my_item.save
   end
 

@@ -87,7 +87,9 @@ class ItemsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
+  #testing method to load 500 items into the database
+  #no pictures are loaded - might be a good addition
   def test_loader
   	for i in ( 1..500)
 	  	item = Item.new
@@ -97,9 +99,9 @@ class ItemsController < ApplicationController
       item.org_sn = '123'
       item.cal_cycle_days = '365'
 		  some_days = rand(500)
-		  aDate = Date.today
-		  aDate -= some_days
-		  item.last_calibrated_on = aDate
+		  a_date = Date.today
+		  a_date -= some_days
+		  item.last_calibrated_on = a_date
 		  item.save
 	  end
     redirect_to( items_url )
@@ -174,7 +176,7 @@ class ItemsController < ApplicationController
     @thirty_days = Item.thirty_days
     respond_to do |format|
       format.html { render 'printable_thirty_days', :layout => false }   # printable_thirty_days.html.erb
-      format.xml  { render :xml => @in_cal }
+      format.xml  { render :xml => @thirty_days }
     end
   end
 end

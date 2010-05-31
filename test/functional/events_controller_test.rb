@@ -10,10 +10,11 @@ class EventsControllerTest < ActionController::TestCase
   test "should get new" do
     get :new, :item_id => 1
     assert_response :success
+    assert_not_nil assigns( :event )
+    assert_not_nil assigns( :calibrators )
   end
 
   test "should create event" do
-    #@calibrators = Calibrator.find( :all )
     assert_difference('Event.count') do
       post :create,  :event => { :item_id => items( :one ),
         :cal_date =>events( :one ).cal_date,
@@ -22,7 +23,9 @@ class EventsControllerTest < ActionController::TestCase
       }
     end
     assert_redirected_to item_events_path( :item_id => items(:one) )
-      #assigns(:event))
+    assert_not_nil assigns( :event )
+    assert_not_nil assigns( :calibrators )
+    assert_not_nil assigns( :item )
   end
 
   test "should not create event with wrong file type" do
@@ -35,18 +38,19 @@ class EventsControllerTest < ActionController::TestCase
       }
     end
     assert_response :success
-      #assigns(:event))
   end
 
   test "should show event" do
     get :show, :id => events(:one).to_param, :item_id => events( :one ).item_id
-      #:event => { :item_id => events( :one ).item_id }
     assert_response :success
+    assert_not_nil assigns( :event )
   end
 
   test "should get edit" do
     get :edit,   :item_id => items( :one ).id, :id => events(:one).id, :event => {  }
     assert_response :success
+    assert_not_nil assigns( :event )
+    assert_not_nil assigns( :calibrators )
   end
 
   test "should update event" do
@@ -57,6 +61,9 @@ class EventsControllerTest < ActionController::TestCase
         :certs => fixture_file_upload('/files/cat.jpg', 'image/jpg')
       }
     assert_redirected_to item_events_path(assigns(:event))
+    assert_not_nil assigns( :event )
+    assert_not_nil assigns( :calibrators )
+    assert_not_nil assigns( :item )
   end
 
   test "should not update event with wrong file type" do
@@ -78,4 +85,10 @@ class EventsControllerTest < ActionController::TestCase
 
     #assert_redirected_to events_path
   end
+
+  test "should display return from cal" do
+    get :return_from_cal, :item_id => items( :one ).id, :id => events(:one).id, :event => {  }
+    assert_redirected_to edit_item_event_path( :item_id => items(:one), :id => events(:one).id )
+  end
+
 end
