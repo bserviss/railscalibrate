@@ -108,6 +108,17 @@ class ItemsController < ApplicationController
   
   end
 
+  def search_remote
+    if params[:description]
+      search_term = params[:description][:description]
+      search_term = '%' + search_term + '%'
+      @search_results = Item.find(:all, :conditions => ["description LIKE ?", search_term])
+      render :partial => "search_remote", :locals => {:aGroup => @search_results, :show_hide => 1, :aToken=> 'search_remote'}
+    else
+      render :nothing =>true
+    end
+  end
+
   def remote
     if params[:token] == 'IA'
       @in_active = Item.find( :all, :conditions => ["inactive = ?", 1],
@@ -144,12 +155,12 @@ class ItemsController < ApplicationController
       render :partial => "group", :locals => { :aGroup => @all_items, :show_hide => 1, :aToken => 'all_r' }
     end
 
-    if params[:token] == 'issues_r'
+    if params[:token] == 'issue_r'
       @issues = Issue.find( :all, :order => 'created_at DESC')
       render :partial => "issues", :locals => {:issues => @issues }
     end
 
-    if params[:token] == 'dependents_r'
+    if params[:token] == 'dependent_r'
       @dependents = Dependent.find( :all, :order => 'item_id')
       render :partial => 'dependents', :locals => {:dependents => @dependents}
     end

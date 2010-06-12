@@ -1,0 +1,33 @@
+<h2>
+  Search Results
+</h2>
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Org sn</th>
+    <th>Location</th>
+    <th>Last Cal</th>
+    <th>Due Cal</th>
+    <th>Picture</th>
+  </tr>
+<% aGroup.each do |item| %>
+  <tr>
+    <td><%=link_to h(item.description), item %></td>
+    <td><%=h item.org_sn %></td>
+    <td><%=h item.location %></td>
+    <td><%= "#{ h item.last_calibrated_on.strftime('%m/%d/%Y')}" %></td>
+    <td><%= "#{ h item.last_calibrated_on + item.cal_cycle_days.days}" %></td>
+    <% if item.picture.url =~ /missing.png/ %>
+      <td>No Image</td>
+    <% else %>
+      <td><%= link_to image_tag( item.picture.url(:thumb), :border=> 0), item.picture.url, :target => '_blank' %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to_remote 'hide',
+  :update => 'search_remote',
+  :url => {:action => "search_remote", :token => 'search_remote' },
+  :complete => visual_effect( :blind_up, 'search_remote', :duration => 0.2 )
+%>

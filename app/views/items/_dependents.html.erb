@@ -17,7 +17,7 @@
   <i>
       <%= link_to_remote 'hide',
         :update => 'dependent_r',
-        :url => {:action => "define", :token => 'dependent_r' },
+        :url => {:action => "remote", :token => 'dependent_r' },
         :complete => visual_effect( :blind_up, 'dependent_r', :duration => 0.2 )
       %>
   </i>

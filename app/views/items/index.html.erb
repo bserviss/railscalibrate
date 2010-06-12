@@ -1,5 +1,20 @@
 <h1>Calibration: Sumary Page</h1>
 
+<div id="search_form">
+  <% form_remote_tag :update=> "search_remote",:url => { :action => "search_remote" } do %>
+    <%= 'Search for Description:' %>
+    <%= text_field "description", "description" %>
+    <%= submit_tag 'find' %>
+  <% end %>
+</div>
+<%= observe_field 'description', :frequency => 1,
+                                 :update => "search_remote",
+                                 :url => { :action => "search_remote" },
+                                 :with => "query" %>
+
+<div id="search_remote">
+</div>
+
 <h2><a name="DueCal">Due Cal</a></h2>
 <%= link_to "Print Due Cal Report", :action => 'printable_due_cal',
   :popup => ['Due Cal', 'height=300,width=600'] %>
@@ -63,7 +78,7 @@
 <h2><a name="Issues">Show all issues sorted by date:</a></h2>
 <%= link_to_remote "Show All Issues",
   :update => "issue_r",
-  :url => { :action => "remote", :token => "issues_r"},
+  :url => { :action => "remote", :token => "issue_r"},
   :complete => visual_effect( :blind_down, "issue_r", :duration => 0.25, :fps => 75 ) %>
 <div id="issue_r">
 </div>
@@ -71,7 +86,7 @@
 <h2><a name="Dependents">Show all dependent parts:</a></h2>
 <%= link_to_remote "Show All Dependents",
   :update => "dependent_r",
-  :url => { :action => "remote", :token => "dependents_r"},
+  :url => { :action => "remote", :token => "dependent_r"},
   :complete => visual_effect( :blind_down, "dependent_r", :duration => 0.25, :fps => 75 ) %>
 <div id="dependent_r">
 </div>
