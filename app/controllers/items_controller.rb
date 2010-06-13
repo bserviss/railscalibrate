@@ -109,11 +109,17 @@ class ItemsController < ApplicationController
   end
 
   def search_remote
-    if params[:description]
-      search_term = params[:description][:description]
-      search_term = '%' + search_term + '%'
-      @search_results = Item.find(:all, :conditions => ["description LIKE ?", search_term])
-      render :partial => "search_remote", :locals => {:aGroup => @search_results, :show_hide => 1, :aToken=> 'search_remote'}
+    if params[:description] or params[:sn]
+      search_term = params[:description]
+      if search_term.length < 2
+        search_term = params[:sn]
+        search_term = '%' + search_term + '%'
+        @search_results = Item.find(:all, :conditions => ["org_sn LIKE ?", search_term])
+      else
+        search_term = '%' + search_term + '%'
+        @search_results = Item.find(:all, :conditions => ["description LIKE ?", search_term])
+      end
+      render :partial => "search_remote", :locals => {:aGroup => @search_results}
     else
       render :nothing =>true
     end

@@ -1,18 +1,20 @@
 <h1>Calibration: Sumary Page</h1>
 
 <div id="search_form">
-  <% form_remote_tag :update=> "search_remote",:url => { :action => "search_remote" } do %>
-    <%= 'Search for Description:' %>
-    <%= text_field "description", "description" %>
+  <% form_remote_tag :update=> "search_remote_div",:url => { :action => "search_remote", :token => 'search_remote' } do %>
+    Search for
+    <br />
+    Description:
+    <%= text_field_tag "description" %>
+    <br />
+    Serial Number:
+    <%= text_field_tag "sn" %>
+    <br />
     <%= submit_tag 'find' %>
   <% end %>
 </div>
-<%= observe_field 'description', :frequency => 1,
-                                 :update => "search_remote",
-                                 :url => { :action => "search_remote" },
-                                 :with => "query" %>
 
-<div id="search_remote">
+<div id="search_remote_div">
 </div>
 
 <h2><a name="DueCal">Due Cal</a></h2>
