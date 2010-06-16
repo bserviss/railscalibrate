@@ -126,51 +126,22 @@ class ItemsController < ApplicationController
   end
 
   def remote
-    if params[:token] == 'IA'
-      @in_active = Item.find( :all, :conditions => ["inactive = ?", 1],
-        :order => :last_calibrated_on ) || []
-      render :partial => "group", :locals => { :aGroup => @in_active, :show_hide => 1, :aToken => 'IA' }
+    @display_group = case params[:token]
+      when 'IA' then Item.inactive
+      when '30' then Item.thirty_days
+      when 'sixty_r' then Item.sixty_days
+      when 'over_r' then Item.ninety_days
+      when 'all_r' then Item.find( :all, :order => :description )
+      when 'issue_r' then @issues = Issue.find( :all, :order => 'created_at DESC')
+        render :partial => "issues", :locals => {:issues => @issues } #kludgey
+        return
+      when 'dependent_r' then @dependents = Dependent.find( :all, :order => 'item_id')
+        render :partial => 'dependents', :locals => {:dependents => @dependents}#kludgey
+        return
+    else
+      []
     end
-    
-    if params[:token] == '30'
-      @thirty = Item.thirty_days
-      render :partial => "group", :locals => { :aGroup => @thirty, :show_hide => 1, :aToken => '30' }
-    end
-
-    if params[:token] == 'sixty_r'
-      @sixty = Item.find_by_sql( 'select * from "items" where ' +
-          "(julianday('now') - julianday(items.last_calibrated_on)) > ( items.cal_cycle_days + 31) " +
-          "and " +
-          "(julianday('now') - julianday(last_calibrated_on)) < ( cal_cycle_days + 61 ) " +
-          "order by last_calibrated_on"
-        )
-      render :partial => "group", :locals => { :aGroup => @sixty, :show_hide => 1, :aToken => 'sixty_r' }
-    end
-
-    if params[:token] == 'over_r'
-      @over = Item.find_by_sql( 'select * from "items" where ' +
-          "(julianday('now') - julianday(items.last_calibrated_on)) < ( items.cal_cycle_days + 61) "  +
-          "order by last_calibrated_on"
-        )
-
-      render :partial => "group", :locals => { :aGroup => @over, :show_hide => 1, :aToken => 'over_r' }
-    end
-
-    if params[:token] == 'all_r'
-      @all_items = Item.find( :all, :order => :description )
-      render :partial => "group", :locals => { :aGroup => @all_items, :show_hide => 1, :aToken => 'all_r' }
-    end
-
-    if params[:token] == 'issue_r'
-      @issues = Issue.find( :all, :order => 'created_at DESC')
-      render :partial => "issues", :locals => {:issues => @issues }
-    end
-
-    if params[:token] == 'dependent_r'
-      @dependents = Dependent.find( :all, :order => 'item_id')
-      render :partial => 'dependents', :locals => {:dependents => @dependents}
-    end
-
+    render :partial => "group", :locals => { :aGroup => @display_group, :show_hide => 1, :aToken => params[:token] }
   end
 
   def printable_due_cal

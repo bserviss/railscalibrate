@@ -24,6 +24,10 @@ class Item < ActiveRecord::Base
         :order => :last_calibrated_on ) || []
   end
 
+  def self.inactive
+    find( :all, :conditions => ["inactive = ?", 1], :order => :last_calibrated_on )
+  end
+
   def self.in_cal
     find( :all, :conditions => ["inCal = ? and inactive = ?", true, 0],
         :order => :last_calibrated_on )
@@ -39,16 +43,16 @@ class Item < ActiveRecord::Base
 
   def self.sixty_days
     find( :all,
-          :conditions => ["(julianday(now) - julianday(last_calibrated_on)) - ( cal_cycle_days - 31)  < ? and " +
-            "(julianday('now') - julianday(last_calibrated_on)) - ( cal_cycle_days - 60 ) >= ?" +
+          :conditions => ["(julianday('now') - julianday(last_calibrated_on)) - ( cal_cycle_days - 31)  < ? and " +
+            "(julianday('now') - julianday(last_calibrated_on)) - ( cal_cycle_days - 60 ) >= ? and " +
             "inCal = ? and inactive = ?", 0, 0, false, 0],
           :order => :last_calibrated_on )
   end
 
   def self.ninety_days
     find( :all,
-        :conditions => ["(julianday(now) - julianday(last_calibrated_on)) - ( cal_cycle_days - 61 )  < ? and " +
-          "(julianday('now') - julianday(last_calibrated_on)) - ( cal_cycle_days - 90 ) >= ?" +
+        :conditions => ["(julianday('now') - julianday(last_calibrated_on)) - ( cal_cycle_days - 61 )  < ? and " +
+          "(julianday('now') - julianday(last_calibrated_on)) - ( cal_cycle_days - 90 ) >= ? and " +
           "inCal = ? and inactive = ?", 0, 0, false, 0],
         :order => :last_calibrated_on )
   end
