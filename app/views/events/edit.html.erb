@@ -50,11 +50,10 @@
   </table>
     <p>
     <% if @item.inCal %>
-      <%= f.submit "Return from cal" %>
-    <% else %>
-      <%= f.submit 'Update' %>
+      <%= f.submit "Return from cal" %> or
     <% end %>
-  </p>
+    <%= f.submit 'Update' %>
+    </p>
 <% end %>
 
 <%= link_to 'Show', item_event_path(@item.id, @event.id) %> |

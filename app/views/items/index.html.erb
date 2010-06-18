@@ -80,7 +80,7 @@
 <h2><a name="Issues">Show all issues sorted by date:</a></h2>
 <%= link_to_remote "Show All Issues",
   :update => "issue_r",
-  :url => { :action => "remote", :token => "issue_r"},
+  :url => { :action => "issue_remote" },
   :complete => visual_effect( :blind_down, "issue_r", :duration => 0.25, :fps => 75 ) %>
 <div id="issue_r">
 </div>
@@ -88,7 +88,7 @@
 <h2><a name="Dependents">Show all dependent parts:</a></h2>
 <%= link_to_remote "Show All Dependents",
   :update => "dependent_r",
-  :url => { :action => "remote", :token => "dependent_r"},
+  :url => { :action => "dependent_remote" },
   :complete => visual_effect( :blind_down, "dependent_r", :duration => 0.25, :fps => 75 ) %>
 <div id="dependent_r">
 </div>

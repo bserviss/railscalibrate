@@ -2,11 +2,17 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   
-   before_filter :get_event, :except => [ :update, :create]
+   before_filter :get_event, :except => [ :update, :create ]
+   before_filter :get_event_c_u, :only => [ :update, :create ]
 
   def get_event
     @item = Item.find(params[:item_id])
-  end  
+  end
+
+  def get_event_c_u
+    @calibrators = Calibrator.find( :all )
+    @item = Item.find( params[:event][:item_id] )
+  end
   
   def index
     @events = @item.events.find( :all, :order => "cal_date DESC" )
@@ -42,7 +48,6 @@ class EventsController < ApplicationController
     @event = @item.events.find( params[:id] )
     @event.cal_date = Date.today
     @calibrators = Calibrator.find( :all )
-    #@event = Event.find( :first, :conditions => ["items_id = ?", params[:id] ] )
   end
 
   def return_from_cal
@@ -51,15 +56,11 @@ class EventsController < ApplicationController
       event = @item.events.find( :first, :order => "cal_date DESC" )
       redirect_to( edit_item_event_path( @item.id, event.id ))
     end
-    #else?
-  
   end
 
   # POST /events
   # POST /events.xml
   def create
-    @calibrators = Calibrator.find( :all )
-    @item = Item.find( params[:event][:item_id] )
     @event = @item.events.create( params[:event] )
     #set inCal to true, change to an option on the form?
     @item.inCal = true
@@ -79,8 +80,6 @@ class EventsController < ApplicationController
   # PUT /events/1
   # PUT /events/1.xml
   def update
-    @calibrators = Calibrator.find( :all )
-    @item = Item.find( params[:event][:item_id] )
     @event = @item.events.find(params[:id])
     
     respond_to do |format|

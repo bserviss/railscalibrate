@@ -62,7 +62,7 @@
     <td><%=e.cost%></td>
     <td><%=e.po%></td>
     <% if e.certs.url =~ /missing.png/ %>
-      <td>Missing Picture</td>
+      <td>Missing Certs</td>
     <% else %>
       <td><%= link_to image_tag( e.certs.url(:thumb), :border => 0), e.certs.url, :target => '_blank' %></td>
     <% end %>
@@ -91,7 +91,7 @@
     <td><%=e.cost%></td>
     <td><%=e.po%></td>
     <% if e.certs.url =~ /missing.png/ %>
-      <td>Missing Picture</td>
+      <td>Missing Certs</td>
     <% else %>
       <td><%= link_to image_tag( e.certs.url(:thumb), :border => 0), e.certs.url, :target => '_blank' %></td>
     <% end %>

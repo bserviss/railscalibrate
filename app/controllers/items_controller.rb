@@ -125,6 +125,16 @@ class ItemsController < ApplicationController
     end
   end
 
+  def issue_remote
+    @issues = Issue.find( :all, :order => 'created_at DESC' )
+    render :partial => 'issues', :locals => { :issues => @issues }
+  end
+
+  def dependent_remote
+    @dependents = Dependent.find( :all, :order => 'item_id')
+    render :partial => 'dependents', :locals => {:dependents => @dependents}
+  end
+
   def remote
     @display_group = case params[:token]
       when 'IA' then Item.inactive
@@ -132,12 +142,6 @@ class ItemsController < ApplicationController
       when 'sixty_r' then Item.sixty_days
       when 'over_r' then Item.ninety_days
       when 'all_r' then Item.find( :all, :order => :description )
-      when 'issue_r' then @issues = Issue.find( :all, :order => 'created_at DESC')
-        render :partial => "issues", :locals => {:issues => @issues } #kludgey
-        return
-      when 'dependent_r' then @dependents = Dependent.find( :all, :order => 'item_id')
-        render :partial => 'dependents', :locals => {:dependents => @dependents}#kludgey
-        return
     else
       []
     end
