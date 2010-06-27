@@ -69,14 +69,14 @@ class ItemsControllerTest < ActionController::TestCase
   test "should display inactive items" do
     get :remote, :token => 'IA'
     assert_response :success
-    assert_not_nil assigns( :in_active )
+    assert_not_nil assigns( :display_group )
     assert_template :partial => '_group'
   end
 
   test "should display 30 day items" do
     get :remote, :token => '30'
     assert_response :success
-    assert_not_nil assigns( :thirty )
+    assert_not_nil assigns( :display_group )
     assert_template :partial => '_group'
 
   end
@@ -84,21 +84,21 @@ class ItemsControllerTest < ActionController::TestCase
   test "should display 60 day items" do
     get :remote, :token => 'sixty_r'
     assert_response :success
-    assert_not_nil assigns( :sixty )
+    assert_not_nil assigns( :display_group )
     assert_template :partial => '_group'
   end
 
   test "should display over 60 day items" do
     get :remote, :token => 'over_r'
     assert_response :success
-    assert_not_nil assigns( :over )
+    assert_not_nil assigns( :display_group )
     assert_template :partial => '_group'
   end
 
   test "should display all items" do
     get :remote, :token => 'all_r'
     assert_response :success
-    assert_not_nil assigns( :all_items )
+    assert_not_nil assigns( :display_group )
     assert_template :partial => '_group'
   end
 
@@ -118,6 +118,34 @@ class ItemsControllerTest < ActionController::TestCase
     get :printable_thirty_days
     assert_response :success
     assert_not_nil assigns( :thirty_days )
+  end
+
+  test "should show remote_search with description" do
+    get :search_remote, :description => 'Due_cal'
+    assert_response :success
+    assert_not_nil assigns( :search_results )
+    assert_template :partial => '_search_remote'
+  end
+
+  test "should show remote_search with sn" do
+    get :search_remote, :sn => 'MyString',:description => ''
+    assert_response :success
+    assert_not_nil assigns( :search_results )
+    assert_template :partial => '_search_remote'
+  end
+
+  test "should show issue_remote" do
+    get :issue_remote
+    assert_response :success
+    assert_not_nil assigns( :issues )
+    assert_template :partial => '_issues'
+  end
+
+  test "should show dependent_remote" do
+    get :dependent_remote
+    assert_response :success
+    assert_not_nil assigns( :dependents )
+    assert_template :partial => '_dependents'
   end
 
 end

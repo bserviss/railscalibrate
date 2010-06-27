@@ -38,6 +38,9 @@
   </p>
 <% end %>
 
+<h2>Previous events</h2>
+<%= render :partial => "events", :locals => { :events => @previous_events } %>
+
 <p><%= link_to 'Back to events', item_events_path( @item.id ) %></p>
 <p><%= link_to "Back to #{h(@item.description)}", item_path( @item ) %></p>
 <p><%= link_to 'Back to Items', items_path %></p>

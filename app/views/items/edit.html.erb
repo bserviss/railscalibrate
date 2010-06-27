@@ -37,6 +37,10 @@
     <td><%= f.date_select :last_calibrated_on, :order => [:day, :month, :year] %></td>
   </tr>
   <tr>
+    <td>Due Cal</td>
+    <td><%= "#{ h @item.last_calibrated_on + @item.cal_cycle_days.days}" %>  </td>
+  </tr>
+  <tr>
     <td><%= f.radio_button :inactive, 0, :checked => true %>Active</td>
     <td><%= f.radio_button :inactive, 1 %>Inactive</td>
   </tr>

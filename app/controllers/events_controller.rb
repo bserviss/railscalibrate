@@ -36,6 +36,7 @@ class EventsController < ApplicationController
   # GET /events/new.xml
   def new
     @event = @item.events.new
+    @previous_events = @item.events.find( :all, :order => 'created_at DESC', :limit => 10)
     @calibrators = Calibrator.find( :all )
     respond_to do |format|
       format.html # new.html.erb
