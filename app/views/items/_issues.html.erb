@@ -2,11 +2,13 @@
   <tr>
     <th>Item</th>
     <th>Issue</th>
+    <th>Created At</th>
   </tr>
 <% issues.each do |issue| %>
   <tr>
     <td><%=link_to h(get_item_description_from_id( issue.item_id ) ) , item_path( issue.item_id ) %></td>
     <td><%= h issue.description %></td>
+    <td><%= h issue.created_at.strftime('%m/%d/%Y') %></td>
   </tr>
 <% end %>
 </table>
