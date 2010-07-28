@@ -15,7 +15,7 @@
     <td><%= "#{ h item.last_calibrated_on.strftime('%m/%d/%Y')}" %></td>
     <td><%= "#{ h item.last_calibrated_on + item.cal_cycle_days.days}" %></td>
     <% if item.picture.url =~ /missing.png/ %>
-      <td>No Image</td>
+      <td><%= link_to 'No Image', edit_item_path(item) %></td>
     <% else %>
       <td><%= link_to image_tag( item.picture.url(:thumb), :border=> 0), item.picture.url, :target => '_blank' %></td>
     <% end %>

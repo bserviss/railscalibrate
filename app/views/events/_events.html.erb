@@ -19,7 +19,7 @@
     <td><%=h event.cost %></td>
     <td><%=h event.po %></td>
     <% if event.certs.url =~ /missing.png/ %>
-      <td>Missing Picture</td>
+      <td><%= link_to 'Missing Picture', edit_item_event_path(@item.id, event.id) %></td>
     <% else %>
       <td><%= link_to image_tag( event.certs.url(:thumb), :border => 0), event.certs.url, :target => '_blank' %></td>
     <% end %>

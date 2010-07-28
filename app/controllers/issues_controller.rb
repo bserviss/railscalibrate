@@ -11,7 +11,7 @@ class IssuesController < ApplicationController
   end
 
   def index
-    @issues = @item.issues.find( :all, :order => "created_at DESC" )
+    @issues = @item.issues.all( :order => "created_at DESC" )
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @events }

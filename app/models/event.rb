@@ -10,5 +10,6 @@ class Event < ActiveRecord::Base
 
   validates_presence_of :cal_date
   validates_presence_of :calibrator_id
-  
+
+  named_scope :previous_10_events, :order => 'created_at DESC', :limit => 10
 end

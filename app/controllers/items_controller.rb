@@ -2,11 +2,8 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.xml
   def index
-    @in_cal = Item.find( :all, :conditions => ["inCal = ? and inactive = ?", true, 0],
-        :order => :last_calibrated_on ) || []
-    @due_cal = []
+    @in_cal = Item.in_cal
     @due_cal = Item.due_cal
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @items }
@@ -17,8 +14,8 @@ class ItemsController < ApplicationController
   # GET /items/1.xml
   def show
     @item = Item.find(params[:id])
-    @issues = @item.issues.find( :all, :order => 'created_at DESC')
-    @dependents = @item.dependents.find( :all, :order => 'created_at DESC')
+    @issues = @item.issues.all(:order => 'created_at DESC')
+    @dependents = @item.dependents.all( :order => 'created_at DESC')
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @item }
@@ -114,10 +111,10 @@ class ItemsController < ApplicationController
       if search_term.length < 2
         search_term = params[:sn]
         search_term = '%' + search_term + '%'
-        @search_results = Item.find(:all, :conditions => ["org_sn LIKE ?", search_term])
+        @search_results = Item.all( :conditions => ["org_sn LIKE ?", search_term])
       else
         search_term = '%' + search_term + '%'
-        @search_results = Item.find(:all, :conditions => ["description LIKE ?", search_term])
+        @search_results = Item.all( :conditions => ["description LIKE ?", search_term])
       end
       render :partial => "search_remote", :locals => {:aGroup => @search_results}
     else
@@ -126,12 +123,12 @@ class ItemsController < ApplicationController
   end
 
   def issue_remote
-    @issues = Issue.find( :all, :order => 'created_at DESC' )
+    @issues = Issue.all( :order => 'created_at DESC' )
     render :partial => 'issues', :locals => { :issues => @issues }
   end
 
   def dependent_remote
-    @dependents = Dependent.find( :all, :order => 'item_id')
+    @dependents = Dependent.all( :order => 'item_id')
     render :partial => 'dependents', :locals => {:dependents => @dependents}
   end
 
@@ -141,7 +138,7 @@ class ItemsController < ApplicationController
       when '30' then Item.thirty_days
       when 'sixty_r' then Item.sixty_days
       when 'over_r' then Item.ninety_days
-      when 'all_r' then Item.find( :all, :order => :description )
+      when 'all_r' then Item.all( :order => :description )
     else
       []
     end

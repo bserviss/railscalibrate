@@ -10,12 +10,12 @@ class EventsController < ApplicationController
   end
 
   def get_event_c_u
-    @calibrators = Calibrator.find( :all )
+    @calibrators = Calibrator.all_by_name
     @item = Item.find( params[:event][:item_id] )
   end
   
   def index
-    @events = @item.events.find( :all, :order => "cal_date DESC" )
+    @events = @item.events.all( :order => "cal_date DESC" )
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @events }
@@ -36,8 +36,8 @@ class EventsController < ApplicationController
   # GET /events/new.xml
   def new
     @event = @item.events.new
-    @previous_events = @item.events.find( :all, :order => 'created_at DESC', :limit => 10)
-    @calibrators = Calibrator.find( :all )
+    @previous_events = @item.events.previous_10_events
+    @calibrators = Calibrator.all_by_name
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @event }
@@ -48,13 +48,13 @@ class EventsController < ApplicationController
   def edit
     @event = @item.events.find( params[:id] )
     @event.cal_date = Date.today
-    @calibrators = Calibrator.find( :all )
+    @calibrators = Calibrator.all_by_name
   end
 
   def return_from_cal
     if @item.inCal
       #if item inCal then redirect to edit of most current cal event
-      event = @item.events.find( :first, :order => "cal_date DESC" )
+      event = @item.events.first( :order => "cal_date DESC" )
       redirect_to( edit_item_event_path( @item.id, event.id ))
     end
   end
@@ -64,6 +64,7 @@ class EventsController < ApplicationController
   def create
     @event = @item.events.create( params[:event] )
     #set inCal to true, change to an option on the form?
+    @previous_events = @item.events.previous_10_events
     @item.inCal = true
     @item.save
     respond_to do |format|

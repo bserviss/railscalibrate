@@ -2,7 +2,7 @@ class CalibratorsController < ApplicationController
   # GET /calibrators
   # GET /calibrators.xml
   def index
-    @calibrators = Calibrator.all
+    @calibrators = Calibrator.all_by_name
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class CalibratorsController < ApplicationController
   def show
     @calibrator = Calibrator.find(params[:id])
 
-    @events_over_year = Event.find(:all, :conditions => ["calibrator_id = ? and cal_date > ?", @calibrator.id, 1.year.ago],
+    @events_over_year = Event.all( :conditions => ["calibrator_id = ? and cal_date > ?", @calibrator.id, 1.year.ago],
           :order => "cal_date DESC"  )
 
     @in_cal = []
