@@ -2,10 +2,10 @@
 
 <div id="search_form">
   <% form_remote_tag :update=> "search_remote_div",:url => { :action => "search_remote", :token => 'search_remote' } do %>
-    Search for
+  <p>Search by Description or SN</p>
     <br />
     Description:
-    <%= text_field_tag "description" %>
+    <%= text_field_tag "Description" %>
     <br />
     Serial Number:
     <%= text_field_tag "sn" %>
@@ -21,13 +21,19 @@
 <%= link_to "Print Due Cal Report", :action => 'printable_due_cal',
   :popup => ['Due Cal', 'height=300,width=600'] %>
 <br />
-<%= render :partial => "group", :locals => { :aGroup => @due_cal, :show_hide => 0, :aToken => 'due_cal' } %>
+
+<div style="height:300px;width:74%;overflow:auto">
+  <%= render :partial => "group", :locals => { :aGroup => @due_cal, :show_hide => 0, :aToken => 'due_cal' } %>
+</div>
 
 <h2><a name="InCal">In Cal:</a></h2>
+
 <%= link_to "Print In Cal Report", :action => 'printable_in_cal',
   :popup => ['Due Cal', 'height=300,width=600'] %>
-<%= render :partial => "group", :locals => { :aGroup => @in_cal, :show_hide => 0, :aToken => 'inCal' }, :layouts => 'layouts/application' %>
 
+<div style="height:300px;width:76%;overflow:auto">
+  <%= render :partial => "group", :locals => { :aGroup => @in_cal, :show_hide => 0, :aToken => 'inCal' }, :layouts => 'layouts/application' %>
+</div>
 <h2><a name="Inactive">Inactive:</a></h2>
 
 <%= link_to_remote "Inactive",
