@@ -108,7 +108,7 @@ class ItemsController < ApplicationController
   def search_remote
     if params[:description] or params[:sn]
       search_term = params[:description]
-      if search_term.length < 2
+      if search_term.length < 1
         search_term = params[:sn]
         search_term = '%' + search_term + '%'
         @search_results = Item.all( :conditions => ["org_sn LIKE ?", search_term])
