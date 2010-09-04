@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.xml
   def index
+    @item = Item.first
     @in_cal = Item.in_cal
     @due_cal = Item.due_cal
     respond_to do |format|
@@ -106,6 +107,7 @@ class ItemsController < ApplicationController
   end
 
   def search_remote
+    @item = Item.first
     if params[:description] or params[:sn]
       search_term = params[:description]
       if search_term.length < 1
@@ -116,9 +118,10 @@ class ItemsController < ApplicationController
         search_term = '%' + search_term + '%'
         @search_results = Item.all( :conditions => ["description LIKE ?", search_term])
       end
-      render :partial => "search_remote", :locals => {:aGroup => @search_results}
-    else
-      render :nothing =>true
+	  
+    #  render :partial => "search_remote", :locals => {:aGroup => @search_results}
+    #else
+    #  render :nothing =>true
     end
   end
 

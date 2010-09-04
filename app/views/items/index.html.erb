@@ -1,36 +1,11 @@
 <h1>Calibration: Sumary Page</h1>
 
-<div id="search_form">
-  <% form_tag :update=> "search_remote_div",:url => { :action => "search_remote", :token => 'search_remote', :remote => true } do %>
-  <table>
-    <tr>
-      <td colspan="2">Search by Description or SN</td>
-    </tr>
-    <tr>
-      <td>Description:</td>
-      <td><%= text_field_tag "description",'', :size => 5 %></td>
-    </tr>
-    <tr>
-      <td>Serial Number:</td>
-      <td><%= text_field_tag "sn", '',:size => 5 %></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><%= submit_tag 'find' %></td>
-    </tr>
-  <% end %>
-  </table>
-</div>
-
-<div id="search_remote_div">
-</div>
-
 <h2><a name="DueCal">Due Cal</a></h2>
 <%= link_to "Print Due Cal Report", :action => 'printable_due_cal',
   :popup => ['Due Cal', 'height=300,width=600'] %>
 <br />
 
-<div style="height:300px;width:74%;overflow:auto">
+<div style="height:300px;width:76%;overflow:auto">
   <%= render :partial => "group", :locals => { :aGroup => @due_cal, :show_hide => 0, :aToken => 'due_cal' } %>
 </div>
 

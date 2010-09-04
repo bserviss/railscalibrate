@@ -1,7 +1,15 @@
 <h1>Editing issue for <%= "#{h(@item.description)}"%> </h1>
 
-<% form_for([ @item, @issue ]) do |f| %>
-  <%= f.error_messages %>
+<% if @issue.errors.any? %>
+<h2 style="color: red"><%= pluralize(@issue.errors.count, "error") %> prohibited this event from being saved:</h2>
+<ul>
+<% @issue.errors.full_messages.each do |msg| %>
+  <li style="color: red"><%= msg %></li>
+<% end %>
+</ul>
+<% end %>
+
+<%= form_for([ @item, @issue ]) do |f| %>
   <%= f.hidden_field :item_id %>
 
 <table>

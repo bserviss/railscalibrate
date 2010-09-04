@@ -34,10 +34,21 @@
         <ul>
           <li><%= link_to "List Vendors", calibrators_path %></li>
           <li><%= link_to "New Vendor", new_calibrator_path %></li>
-
         </ul>
       </li>
     </ul>
+	<ul>
+	  <li>Search
+	    <ul><%= form_for @item, :url => { :controller => "items", :action => "search_remote", :token => 'search_remote', :remote => true } do %>
+		  <li>Description:</li>
+		  <li><%= text_field_tag "description",'', :size => 5 %></li>
+		  <li>Serial Number:</li>
+		  <li><%= text_field_tag "sn", '',:size => 5 %></li>
+		  <li><%= submit_tag 'find' %></li>
+		  <% end %>
+		</ul>
+      </li>
+	</ul>
 
   </div>
 <div id="content">

@@ -1,18 +1,20 @@
-ActionController::Routing::Routes.draw do |map|
-  map.resources :dependents
+Calibration::Application.routes.draw do
+  resources :dependents
 
-  map.resources :calibrators
+  resources :calibrators
 
-  map.resources :events
+  resources :events
 
-  map.resources :issues
+  resources :issues
 
-  #map.resources :items
+  resources :items do
+    resources :events, :issues, :dependents
+  end
+
+  match "item/:action", :controller => 'items', :action => /[a-z_]+/i
+  match "event/:action/:item_id", :controller => 'events', :action => /[a-z_]+/i
   
-  map.resources :items, :has_many => [ :events, :issues, :dependents ]
-
-  map.connect "item/:action", :controller => 'items', :action => /[a-z_]+/i
-  map.connect "event/:action/:item_id", :controller => 'events', :action => /[a-z_]+/i
+  root :to => "items#index"
   
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -53,6 +55,7 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing the them or commenting them out if you're using named routes and resources.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  match ':controller(/:action(/:id(.:format)))'
+  #map.connect ':controller/:action/:id'
+  #map.connect ':controller/:action/:id.:format'
 end

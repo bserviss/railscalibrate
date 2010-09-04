@@ -1,7 +1,15 @@
 <h1>New calibrator</h1>
 
-<% form_for(@calibrator) do |f| %>
-  <%= f.error_messages %>
+<% if @calibrator.errors.any? %>
+<h2 style="color: red"><%= pluralize(@calibrator.errors.count, "error") %> prohibited this vendor from being saved:</h2>
+<ul>
+<% @calibrator.errors.full_messages.each do |msg| %>
+  <li style="color: red"><%= msg %></li>
+<% end %>
+</ul>
+<% end %>
+
+<%= form_for(@calibrator) do |f| %>
 
   <p>
     <%= f.label :a_name %><br />

@@ -4,8 +4,16 @@
   <h1>Editing event</h1>
 <% end %>
 
-<% form_for([ @item, @event ], :html => { :multipart => true }) do |f| %>
-  <%= f.error_messages %>
+<% if @event.errors.any? %>
+<h2 style="color: red"><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+<ul>
+<% @event.errors.full_messages.each do |msg| %>
+  <li style="color: red"><%= msg %></li>
+<% end %>
+</ul>
+<% end %>
+
+<%= form_for([ @item, @event ], :html => { :multipart => true }) do |f| %>
   <%= f.hidden_field :item_id %>
 
   <table>

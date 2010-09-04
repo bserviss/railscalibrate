@@ -1,7 +1,15 @@
 <h1>New dependent for <%= "#{h(@item.description)}"%></h1>
 
-<% form_for([ @item, @dependent]) do |f| %>
-  <%= f.error_messages %>
+<% if @dependent.errors.any? %>
+<h2 style="color: red"><%= pluralize(@dependent.errors.count, "error") %> prohibited this vendor from being saved:</h2>
+<ul>
+<% @dependent.errors.full_messages.each do |msg| %>
+  <li style="color: red"><%= msg %></li>
+<% end %>
+</ul>
+<% end %>
+
+<%= form_for([ @item, @dependent]) do |f| %>
   <%= f.hidden_field :item_id %>
 
 <table>

@@ -124,14 +124,14 @@ class ItemsControllerTest < ActionController::TestCase
     get :search_remote, :description => 'Due_cal'
     assert_response :success
     assert_not_nil assigns( :search_results )
-    assert_template :partial => '_search_remote'
+    assert_template 'search_remote'
   end
 
   test "should show remote_search with sn" do
     get :search_remote, :sn => 'MyString',:description => ''
     assert_response :success
     assert_not_nil assigns( :search_results )
-    assert_template :partial => '_search_remote'
+    assert_template 'search_remote'
   end
 
   test "should show issue_remote" do

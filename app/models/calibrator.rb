@@ -3,5 +3,5 @@ class Calibrator < ActiveRecord::Base
   has_many :events
   validates_presence_of :a_name
 
-  named_scope :all_by_name, :order => :a_name
+  scope :all_by_name, :order => :a_name
 end

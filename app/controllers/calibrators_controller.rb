@@ -1,4 +1,11 @@
 class CalibratorsController < ApplicationController
+
+  before_filter :get_item
+  
+  def get_item
+    @item = Item.first
+  end
+  
   # GET /calibrators
   # GET /calibrators.xml
   def index
