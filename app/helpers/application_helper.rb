@@ -1,5 +1,5 @@
-# Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  #added helpers back after rails 3 upgrade
   def get_calibrator_name( calibrator_id )
     Calibrator.find( calibrator_id).a_name
   end
@@ -10,11 +10,11 @@ module ApplicationHelper
   end
 
   def get_in_cal_count
-    Item.find( :all, :conditions => [ "inCal = ?", true ] ).count
+    Item.all( :conditions => [ "inCal = ?", true ] ).count
   end
 
   def get_inactive_count
-    Item.find( :all, :conditions => ["inactive = ?", 1]).count
+    Item.all( :conditions => ["inactive = ?", 1]).count
   end
 
   def get_item_description_from_id( an_id )
@@ -24,4 +24,5 @@ module ApplicationHelper
   def get_item_org_sn_from_id( an_id )
     Item.find(an_id).org_sn
   end
+
 end

@@ -1,7 +1,15 @@
 <h1>Editing <%= "#{@item.description} SN: #{@item.org_sn}"%> </h1>
 
+<% if @item.errors.any? %>
+<h2 style="color: red"><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+<ul>
+<% @item.errors.full_messages.each do |msg| %>
+  <li style="color: red"><%= msg %></li>
+<% end %>
+</ul>
+<% end %>
+
 <% form_for @item, :html => { :multipart => true } do |f| %>
-  <%= f.error_messages %>
 
 <table>
   <tr>

@@ -17,8 +17,8 @@ class Item < ActiveRecord::Base
 
   #change to an arbritary range of days
   #change to scope in rails 3
-  named_scope :inactive, :conditions => ["inactive = ?", 1], :order => :last_calibrated_on
-  named_scope :in_cal, :conditions => ["inCal = ? and inactive = ?", true, 0],
+  scope :inactive, :conditions => ["inactive = ?", 1], :order => :last_calibrated_on
+  scope :in_cal, :conditions => ["inCal = ? and inactive = ?", true, 0],
         :order => :last_calibrated_on
 
   def self.due_cal

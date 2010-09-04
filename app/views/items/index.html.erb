@@ -1,7 +1,7 @@
 <h1>Calibration: Sumary Page</h1>
 
 <div id="search_form">
-  <% form_remote_tag :update=> "search_remote_div",:url => { :action => "search_remote", :token => 'search_remote' } do %>
+  <% form_tag :update=> "search_remote_div",:url => { :action => "search_remote", :token => 'search_remote', :remote => true } do %>
   <table>
     <tr>
       <td colspan="2">Search by Description or SN</td>
@@ -44,66 +44,61 @@
 </div>
 <h2><a name="Inactive">Inactive:</a></h2>
 
-<%= link_to_remote "Inactive",
-  :update => "IA",
-  :url => { :action => "remote", :token => "IA"},
-  :complete => visual_effect( :blind_down, "IA", :duration => 0.25, :fps => 75 )
-%>
-<div id="IA">
+<div style="height:<%= 50 + (get_inactive_count * 20)%>px;width:76%;overflow:auto">
+  <%= render :partial => "group", :locals => { :aGroup => Item.inactive, :show_hide => 0, :aToken => 'IA' }, :layouts => 'layouts/application' %>
 </div>
 
 <h2><a name="Thirty">Thirty days:</a></h2>
 <%= link_to "Print Report Containing Items Due Cal Within 30 Days", :action => 'printable_thirty_days',
   :popup => ['Due in Thirt Days', 'height=300,width=600'] %>
 <br />
-<%= link_to_remote "Show Units Due In Thirty Days",
-  :update => "30",
-  :url => { :action => "remote", :token => "30"},
-  :complete => visual_effect( :blind_down, "30", :duration => 0.25, :fps => 75 )
-%>
-<div id="30">
+
+<div style="height:300px;width:76%;overflow:auto">
+  <%= render :partial => "group", :locals => { :aGroup => Item.thirty_days, :show_hide => 0, :aToken => '30' }, :layouts => 'layouts/application' %>
 </div>
 
 <h2><a name="Sixty">Sixty days:</a></h2>
-<%= link_to_remote "Show Units Due In Sixty Days",
-  :update => "sixty_r",
-  :url => { :action => "remote", :token => "sixty_r"},
-  :complete => visual_effect( :blind_down, "sixty_r", :duration => 0.25, :fps => 75 )
-%>
-<div id="sixty_r">
+<div style="height:300px;width:76%;overflow:auto">
+  <%= render :partial => "group", :locals => { :aGroup => Item.sixty_days, :show_hide => 0, :aToken => '60' }, :layouts => 'layouts/application' %>
 </div>
 
 <h2><a name="Over">Over ninety:</a></h2>
-<%= link_to_remote "Show Units Due Over Ninety Days",
+<%= link_to "Show Units Due Over Ninety Days",
   :update => "over_r",
   :url => { :action => "remote", :token => "over_r"},
-  :complete => visual_effect( :blind_down, "over_r", :duration => 0.25, :fps => 75 )
+  :complete => visual_effect( :blind_down, "over_r", :duration => 0.25, :fps => 75 ),
+  :remote => true
 %>
 <div id="over_r">
 </div>
 
 <h2><a name="All">All Records sorted by Description:</a></h2>
-<%= link_to_remote "Show All Units",
+<%= link_to "Show All Units",
   :update => "all_r",
   :url => { :action => "remote", :token => "all_r"},
-  :complete => visual_effect( :blind_down, "all_r", :duration => 0.25, :fps => 75 )
+  :complete => visual_effect( :blind_down, "all_r", :duration => 0.25, :fps => 75 ),
+  :remote => true
 %>
 <div id="all_r" >
 </div>
 
 <h2><a name="Issues">Show all issues sorted by date:</a></h2>
-<%= link_to_remote "Show All Issues",
+<%= link_to "Show All Issues",
   :update => "issue_r",
   :url => { :action => "issue_remote" },
-  :complete => visual_effect( :blind_down, "issue_r", :duration => 0.25, :fps => 75 ) %>
+  :complete => visual_effect( :blind_down, "issue_r", :duration => 0.25, :fps => 75 ),
+  :remote => true
+%>
 <div id="issue_r">
 </div>
 
 <h2><a name="Dependents">Show all dependent parts:</a></h2>
-<%= link_to_remote "Show All Dependents",
+<%= link_to "Show All Dependents",
   :update => "dependent_r",
   :url => { :action => "dependent_remote" },
-  :complete => visual_effect( :blind_down, "dependent_r", :duration => 0.25, :fps => 75 ) %>
+  :complete => visual_effect( :blind_down, "dependent_r", :duration => 0.25, :fps => 75 ),
+  :remote => true
+%>
 <div id="dependent_r">
 </div>
 
