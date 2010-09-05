@@ -1,4 +1,9 @@
 class ItemsController < ApplicationController
+  before_filter :get_item
+
+  def get_item
+    @item = Item.first
+  end
   # GET /items
   # GET /items.xml
   def index
@@ -118,21 +123,30 @@ class ItemsController < ApplicationController
         search_term = '%' + search_term + '%'
         @search_results = Item.all( :conditions => ["description LIKE ?", search_term])
       end
-	  
-    #  render :partial => "search_remote", :locals => {:aGroup => @search_results}
-    #else
-    #  render :nothing =>true
     end
+    respond_to do |format|
+      format.html # search_remote.html.erb
+      format.xml  { render :xml => @search_results }
+    end
+
   end
 
   def issue_remote
     @issues = Issue.all( :order => 'created_at DESC' )
-    render :partial => 'issues', :locals => { :issues => @issues }
+    render 'issues', :locals => { :issues => @issues }
   end
 
   def dependent_remote
     @dependents = Dependent.all( :order => 'item_id')
-    render :partial => 'dependents', :locals => {:dependents => @dependents}
+    render 'dependents', :locals => {:dependents => @dependents}
+  end
+
+  def show_all_items
+    @display_group = Item.all( :order => :description )
+  end
+
+  def show_sixty_days
+    @display_group = Item.sixty_days
   end
 
   def remote
@@ -145,7 +159,7 @@ class ItemsController < ApplicationController
     else
       []
     end
-    render :partial => "group", :locals => { :aGroup => @display_group, :show_hide => 1, :aToken => params[:token] }
+    render "group", :locals => { :aGroup => @display_group, :show_hide => 1, :aToken => params[:token] }
   end
 
   def printable_due_cal

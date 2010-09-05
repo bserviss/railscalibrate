@@ -1,4 +1,9 @@
 <h1>Calibration: Sumary Page</h1>
+<div style="float:right">
+  <p>test float right</p>
+  <p>add a list of</p>
+  <p>due cal items</p>
+</div>
 
 <h2><a name="DueCal">Due Cal</a></h2>
 <%= link_to "Print Due Cal Report", :action => 'printable_due_cal',
@@ -33,52 +38,21 @@
 </div>
 
 <h2><a name="Sixty">Sixty days:</a></h2>
-<div style="height:300px;width:76%;overflow:auto">
-  <%= render :partial => "group", :locals => { :aGroup => Item.sixty_days, :show_hide => 0, :aToken => '60' }, :layouts => 'layouts/application' %>
-</div>
+<%= link_to "Show Items Due Cal in 60 Days", :action => 'show_sixty_days' %>
 
-<h2><a name="Over">Over ninety:</a></h2>
-<%= link_to "Show Units Due Over Ninety Days",
-  :update => "over_r",
-  :url => { :action => "remote", :token => "over_r"},
-  :complete => visual_effect( :blind_down, "over_r", :duration => 0.25, :fps => 75 ),
-  :remote => true
-%>
-<div id="over_r">
-</div>
-
-<h2><a name="All">All Records sorted by Description:</a></h2>
-<%= link_to "Show All Units",
-  :update => "all_r",
-  :url => { :action => "remote", :token => "all_r"},
-  :complete => visual_effect( :blind_down, "all_r", :duration => 0.25, :fps => 75 ),
-  :remote => true
-%>
-<div id="all_r" >
-</div>
+<h2><a name="All">All Items sorted by Description:</a></h2>
+<%= link_to "Show All Items", :action => "show_all_items" %>
 
 <h2><a name="Issues">Show all issues sorted by date:</a></h2>
-<%= link_to "Show All Issues",
-  :update => "issue_r",
-  :url => { :action => "issue_remote" },
-  :complete => visual_effect( :blind_down, "issue_r", :duration => 0.25, :fps => 75 ),
-  :remote => true
-%>
-<div id="issue_r">
-</div>
+<%= link_to "Show All Issues", :action => "issue_remote"%>
 
 <h2><a name="Dependents">Show all dependent parts:</a></h2>
-<%= link_to "Show All Dependents",
-  :update => "dependent_r",
-  :url => { :action => "dependent_remote" },
-  :complete => visual_effect( :blind_down, "dependent_r", :duration => 0.25, :fps => 75 ),
-  :remote => true
-%>
-<div id="dependent_r">
+<%= link_to "Show All Dependents", :action => "dependent_remote"%>
+
+<div style="float:right">
+  test float right
 </div>
-
 <br/>
-
 
 <%= link_to 'New item', new_item_path %>
 
