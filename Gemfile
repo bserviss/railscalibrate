@@ -6,8 +6,7 @@ gem 'rails', '3.0.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
-source "http://gems.github.com"
-gem 'thoughtbot-paperclip', :require => 'paperclip'
+gem 'paperclip', :require => 'paperclip'
 
 # Use unicorn as the web server
 # gem 'unicorn'

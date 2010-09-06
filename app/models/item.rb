@@ -1,9 +1,13 @@
 class Item < ActiveRecord::Base
+ attr_accessible :picture, :description, :mfgr, :pn
+ attr_accessible :org_sn, :mfgr_sn, :location, :cal_cycle_days, :last_calibrated_on
+ attr_accessible :inactive, :inCal
+ 
  has_attached_file :picture, 
-                   :styles => { :medium => "300x300>",
-                                :thumb => "100x100#" },
-                   :url => "/data/:id/:basename.:extension",
-                   :path => ":rails_root/public/data/:id/:basename.:extension"
+                   :styles => { :thumb => "50x50",
+                                :small => "100x100"}
+                   #:url => "/system/pictures/:id/:basename.:extension",
+                   #:path => ":rails_root/public/system/pictures/:id/:basename.:extension"
 
   validates_attachment_content_type :picture, :content_type => ['image/jpeg',
     'image/jpg', 'image/png']

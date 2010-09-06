@@ -63,7 +63,7 @@
     <td><% if @item.picture.url =~ /missing.png/ %>
         No Image<br />
       <% else %>
-        <%= link_to image_tag( @item.picture.url(:thumb), :border=> 0), @item.picture.url, :target => '_blank' %><br />
+        <%= link_to image_tag( @item.picture.url(:small), :border=> 0), @item.picture.url, :target => '_blank' %><br />
       <% end %>
     </td>
   </tr>

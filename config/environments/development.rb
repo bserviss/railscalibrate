@@ -22,5 +22,7 @@ Calibration::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  
+  #Paperclip.options[:command_path] = "C://bin//ImageMagick-6.6.3-Q16/"
 end
 
