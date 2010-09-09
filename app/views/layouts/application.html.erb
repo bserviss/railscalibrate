@@ -19,7 +19,7 @@
           <li><%= link_to "In Cal Report", :action => 'printable_in_cal',
             :popup => ['In Cal', 'height=300,width=600'] %></li>
           <li><%= link_to "Inactive(#{get_inactive_count})", items_path( :anchor => "Inactive")%></li>
-          <li><%= link_to "Due in thirty days", items_path(:anchor => "Thirty") %></li>
+          <li><%= link_to "Due in thirty days", :action => 'show_thirty_days' %></li>
           <li><%= link_to "Thirty days report", :action => 'printable_thirty_days',
             :popup => ['Due in thirty days', 'height=300,width=600'] %></li>
           <li><%= link_to "Due in 60 days", :controller => 'items', :action => 'show_sixty_days' %></li>

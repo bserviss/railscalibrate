@@ -2,15 +2,20 @@ class Item < ActiveRecord::Base
  attr_accessible :picture, :description, :mfgr, :pn
  attr_accessible :org_sn, :mfgr_sn, :location, :cal_cycle_days, :last_calibrated_on
  attr_accessible :inactive, :inCal
+ attr_accessible :per_page
+
+  @@per_page = 10
  
  has_attached_file :picture, 
                    :styles => { :thumb => "50x50",
-                                :small => "100x100"}
+                                :small => "100x100",
+                                :medium => "300x300"
+                                }
                    #:url => "/system/pictures/:id/:basename.:extension",
                    #:path => ":rails_root/public/system/pictures/:id/:basename.:extension"
 
   validates_attachment_content_type :picture, :content_type => ['image/jpeg',
-    'image/jpg', 'image/png']
+    'image/jpg', 'image/png'], :allow_nil => true
 
   has_many :events, :dependent => :destroy
   has_many :dependents, :dependent => :destroy

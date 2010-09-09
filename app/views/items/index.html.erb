@@ -1,9 +1,4 @@
 <h1>Calibration: Sumary Page</h1>
-<div style="float:right">
-  <p>test float right</p>
-  <p>add a list of</p>
-  <p>due cal items</p>
-</div>
 
 <h2><a name="DueCal">Due Cal</a></h2>
 <%= link_to "Print Due Cal Report", :action => 'printable_due_cal',
@@ -27,32 +22,6 @@
 <div style="height:<%= 50 + (get_inactive_count * 20)%>px;width:76%;overflow:auto">
   <%= render :partial => "group", :locals => { :aGroup => Item.inactive, :show_hide => 0, :aToken => 'IA' }, :layouts => 'layouts/application' %>
 </div>
-
-<h2><a name="Thirty">Thirty days:</a></h2>
-<%= link_to "Print Report Containing Items Due Cal Within 30 Days", :action => 'printable_thirty_days',
-  :popup => ['Due in Thirt Days', 'height=300,width=600'] %>
-<br />
-
-<div style="height:300px;width:76%;overflow:auto">
-  <%= render :partial => "group", :locals => { :aGroup => Item.thirty_days, :show_hide => 0, :aToken => '30' }, :layouts => 'layouts/application' %>
-</div>
-
-<h2><a name="Sixty">Sixty days:</a></h2>
-<%= link_to "Show Items Due Cal in 60 Days", :action => 'show_sixty_days' %>
-
-<h2><a name="All">All Items sorted by Description:</a></h2>
-<%= link_to "Show All Items", :action => "show_all_items" %>
-
-<h2><a name="Issues">Show all issues sorted by date:</a></h2>
-<%= link_to "Show All Issues", :action => "issue_remote"%>
-
-<h2><a name="Dependents">Show all dependent parts:</a></h2>
-<%= link_to "Show All Dependents", :action => "dependent_remote"%>
-
-<div style="float:right">
-  test float right
-</div>
-<br/>
 
 <%= link_to 'New item', new_item_path %>
 

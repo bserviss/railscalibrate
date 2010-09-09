@@ -67,39 +67,28 @@ class ItemsControllerTest < ActionController::TestCase
   end
 
   test "should display inactive items" do
-    get :remote, :token => 'IA'
+    get :show_inactive
     assert_response :success
     assert_not_nil assigns( :display_group )
-    assert_template :partial => '_group'
   end
 
   test "should display 30 day items" do
-    get :remote, :token => '30'
+    get :show_thirty_days
     assert_response :success
     assert_not_nil assigns( :display_group )
-    assert_template :partial => '_group'
-
   end
 
   test "should display 60 day items" do
-    get :remote, :token => 'sixty_r'
+    get :show_sixty_days
     assert_response :success
     assert_not_nil assigns( :display_group )
-    assert_template :partial => '_group'
   end
 
-  test "should display over 60 day items" do
-    get :remote, :token => 'over_r'
-    assert_response :success
-    assert_not_nil assigns( :display_group )
-    assert_template :partial => '_group'
-  end
 
   test "should display all items" do
-    get :remote, :token => 'all_r'
+    get :show_all_items
     assert_response :success
     assert_not_nil assigns( :display_group )
-    assert_template :partial => '_group'
   end
 
   test "should display printable due_cal" do
@@ -124,28 +113,24 @@ class ItemsControllerTest < ActionController::TestCase
     get :search_remote, :description => 'Due_cal'
     assert_response :success
     assert_not_nil assigns( :search_results )
-    assert_template 'search_remote'
   end
 
   test "should show remote_search with sn" do
     get :search_remote, :sn => 'MyString',:description => ''
     assert_response :success
     assert_not_nil assigns( :search_results )
-    assert_template 'search_remote'
   end
 
   test "should show issue_remote" do
     get :issue_remote
     assert_response :success
     assert_not_nil assigns( :issues )
-    assert_template :partial => '_issues'
   end
 
   test "should show dependent_remote" do
     get :dependent_remote
     assert_response :success
     assert_not_nil assigns( :dependents )
-    assert_template :partial => '_dependents'
   end
 
 end

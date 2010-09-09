@@ -10,6 +10,8 @@ class ItemsController < ApplicationController
     @item = Item.first
     @in_cal = Item.in_cal
     @due_cal = Item.due_cal
+    @test_due_cal = Item.due_cal.paginate :page => params[:page], :per_page => params[:per_page]
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @items }
@@ -141,12 +143,20 @@ class ItemsController < ApplicationController
     render 'dependents', :locals => {:dependents => @dependents}
   end
 
+  def show_thirty_days
+    @display_group = Item.thirty_days
+  end
+
   def show_all_items
     @display_group = Item.all( :order => :description )
   end
 
   def show_sixty_days
     @display_group = Item.sixty_days
+  end
+
+  def show_inactive
+    @display_group = Item.inactive
   end
 
   def remote
