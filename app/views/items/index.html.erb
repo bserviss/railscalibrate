@@ -1,27 +1,12 @@
 <h1>Calibration: Sumary Page</h1>
 
 <h2><a name="DueCal">Due Cal</a></h2>
-<%= link_to "Print Due Cal Report", :action => 'printable_due_cal',
-  :popup => ['Due Cal', 'height=300,width=600'] %>
-<br />
 
-<div style="height:300px;width:76%;overflow:auto">
-  <%= render :partial => "group", :locals => { :aGroup => @due_cal, :show_hide => 0, :aToken => 'due_cal' } %>
-</div>
+<%= will_paginate @due_cal_items %>
 
-<h2><a name="InCal">In Cal:</a></h2>
+<%= render :partial => 'due_cal_items', :collection => @due_cal_items %>
 
-<%= link_to "Print In Cal Report", :action => 'printable_in_cal',
-  :popup => ['Due Cal', 'height=300,width=600'] %>
-
-<div style="height:300px;width:76%;overflow:auto">
-  <%= render :partial => "group", :locals => { :aGroup => @in_cal, :show_hide => 0, :aToken => 'inCal' }, :layouts => 'layouts/application' %>
-</div>
-<h2><a name="Inactive">Inactive:</a></h2>
-
-<div style="height:<%= 50 + (get_inactive_count * 20)%>px;width:76%;overflow:auto">
-  <%= render :partial => "group", :locals => { :aGroup => Item.inactive, :show_hide => 0, :aToken => 'IA' }, :layouts => 'layouts/application' %>
-</div>
+<%= will_paginate @due_cal_items %>
 
 <%= link_to 'New item', new_item_path %>
 

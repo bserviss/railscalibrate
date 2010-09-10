@@ -84,6 +84,12 @@ class ItemsControllerTest < ActionController::TestCase
     assert_not_nil assigns( :display_group )
   end
 
+  test "should show items in cal" do
+    get :show_in_cal
+    assert_response :success
+    asser_not_nil assigns( :display_group)
+  end
+
 
   test "should display all items" do
     get :show_all_items

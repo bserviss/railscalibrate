@@ -8,9 +8,7 @@ class ItemsController < ApplicationController
   # GET /items.xml
   def index
     @item = Item.first
-    @in_cal = Item.in_cal
-    @due_cal = Item.due_cal
-    @test_due_cal = Item.due_cal.paginate :page => params[:page], :per_page => params[:per_page]
+    @due_cal_items = Item.due_cal.paginate :page => params[:page], :per_page => params[:per_page]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -159,17 +157,8 @@ class ItemsController < ApplicationController
     @display_group = Item.inactive
   end
 
-  def remote
-    @display_group = case params[:token]
-      when 'IA' then Item.inactive
-      when '30' then Item.thirty_days
-      when 'sixty_r' then Item.sixty_days
-      when 'over_r' then Item.ninety_days
-      when 'all_r' then Item.all( :order => :description )
-    else
-      []
-    end
-    render "group", :locals => { :aGroup => @display_group, :show_hide => 1, :aToken => params[:token] }
+  def show_in_cal
+    @display_group = Item.in_cal
   end
 
   def printable_due_cal

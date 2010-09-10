@@ -27,7 +27,6 @@ class Item < ActiveRecord::Base
   validates_presence_of :cal_cycle_days
 
   #change to an arbritary range of days
-  #change to scope in rails 3
   scope :inactive, :conditions => ["inactive = ?", 1], :order => :last_calibrated_on
   scope :in_cal, :conditions => ["inCal = ? and inactive = ?", true, 0],
         :order => :last_calibrated_on
