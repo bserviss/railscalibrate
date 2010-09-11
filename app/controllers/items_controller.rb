@@ -142,7 +142,7 @@ class ItemsController < ApplicationController
   end
 
   def show_thirty_days
-    @display_group = Item.thirty_days
+    @display_group = Item.due_in( 30 )
   end
 
   def show_all_items
@@ -150,7 +150,7 @@ class ItemsController < ApplicationController
   end
 
   def show_sixty_days
-    @display_group = Item.sixty_days
+    @display_group = Item.due_in( 60 )
   end
 
   def show_inactive
@@ -178,7 +178,7 @@ class ItemsController < ApplicationController
   end
 
   def printable_thirty_days
-    @thirty_days = Item.thirty_days
+    @thirty_days = Item.due_in( 30 )
     respond_to do |format|
       format.html { render 'printable_thirty_days', :layout => false }   # printable_thirty_days.html.erb
       format.xml  { render :xml => @thirty_days }
