@@ -43,9 +43,9 @@ three:
   mfgr_sn: 1234
   location: MyString
   cal_cycle_days: 365
-  inactive: 1
+  inactive: 0
   inCal: false
-  last_calibrated_on: <%= 335.days.ago.to_s(:db) %>
+  last_calibrated_on: <%= 320.days.ago.to_s(:db) %>
   picture_file_name: MyString
   picture_content_type: MyString
   picture_file_size: 1
@@ -62,7 +62,7 @@ four:
   cal_cycle_days: 365
   inactive: 1
   inCal: false
-  last_calibrated_on: <%= 305.days.ago.to_s(:db) %>
+  last_calibrated_on: <%= 300.days.ago.to_date.to_s(:db) %>
   picture_file_name: MyString
   picture_content_type: MyString
   picture_file_size: 1

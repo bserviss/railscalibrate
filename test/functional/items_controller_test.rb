@@ -4,9 +4,9 @@ class ItemsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns( :in_cal )
+    assert_not_nil assigns( :due_cal_items )
     #update yaml to include one in_cal
-    assert_not_nil assigns( :due_cal )
+    #assert_not_nil assigns( :due_cal )
   end
 
   test "should get new" do
@@ -70,24 +70,30 @@ class ItemsControllerTest < ActionController::TestCase
     get :show_inactive
     assert_response :success
     assert_not_nil assigns( :display_group )
+    assert_equal 2, @controller.instance_variable_get('@display_group').size , "Should be 2 items inactive"
+
   end
 
   test "should display 30 day items" do
     get :show_thirty_days
     assert_response :success
     assert_not_nil assigns( :display_group )
+    display_group = @controller.instance_variable_get('@display_group')
+    assert_equal  1, display_group.size , "Should be one item due in thirty days"
   end
 
   test "should display 60 day items" do
     get :show_sixty_days
     assert_response :success
     assert_not_nil assigns( :display_group )
+    #assert_equal  1, @controller.instance_variable_get('@display_group').size , "Should be one item due in 60 days"
   end
 
   test "should show items in cal" do
     get :show_in_cal
     assert_response :success
-    asser_not_nil assigns( :display_group)
+    assert_not_nil assigns( :display_group )
+    assert_equal  1, @controller.instance_variable_get('@display_group').size , "Should be one item in cal"
   end
 
 

@@ -143,6 +143,7 @@ class ItemsController < ApplicationController
 
   def show_thirty_days
     @display_group = Item.due_in( 30 )
+    @test_thirty_days = @display_group.size
   end
 
   def show_all_items

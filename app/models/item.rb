@@ -1,4 +1,7 @@
 class Item < ActiveRecord::Base
+ attr_accessible :picture, :description, :mfgr, :pn
+ attr_accessible :org_sn, :mfgr_sn, :location, :cal_cycle_days, :last_calibrated_on
+ attr_accessible :inactive, :inCal
  attr_accessible :per_page
 
   @@per_page = 10
