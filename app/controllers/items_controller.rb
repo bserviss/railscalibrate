@@ -7,8 +7,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.xml
   def index
-    @item = Item.first
-    @due_cal_items = Item.due_cal.paginate :page => params[:page], :per_page => params[:per_page]
+    @items = Item.due_cal.paginate :page => params[:page], :per_page => params[:per_page]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -160,6 +159,7 @@ class ItemsController < ApplicationController
 
   def show_in_cal
     @display_group = Item.in_cal
+    @items = Item.in_cal.paginate :page => params[:page], :per_page => params[:per_page]
   end
 
   def printable_due_cal

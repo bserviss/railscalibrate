@@ -1,12 +1,12 @@
-<h1>Calibration: Sumary Page</h1>
+<h1>Calibration: Main Page</h1>
 
 <h2><a name="DueCal">Due Cal</a></h2>
 
-<%= will_paginate @due_cal_items %>
+<%= will_paginate @items %>
 
-<%= render :partial => 'due_cal_items', :collection => @due_cal_items %>
+<%= render :partial => 'items', :collection => @items %>
 
-<%= will_paginate @due_cal_items %>
+<%= will_paginate @items %>
 
 <%= link_to 'New item', new_item_path %>
 

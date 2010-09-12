@@ -1,4 +1,4 @@
-<h2>All Dependent Parts</h2>
+<h2>Items with dependant parts</h2>
 <table>
   <tr>
     <th>Item</th>
@@ -15,10 +15,3 @@
   </tr>
 <% end %>
 </table>
-  <i>
-      <%= link_to_remote 'hide',
-        :update => 'dependent_r',
-        :url => {:action => "remote", :token => 'dependent_r' },
-        :complete => visual_effect( :blind_up, 'dependent_r', :duration => 0.2 )
-      %>
-  </i>

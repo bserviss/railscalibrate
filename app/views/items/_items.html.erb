@@ -1,0 +1,21 @@
+<div>
+<div style="float:left; width:400px">
+  <p>
+  <% if items.picture.url(:medium) =~ /missing.png/ %>
+    <%= link_to image_tag( items.picture.url,:size => '300x300', :border=> 0), items.picture.url, :target => '_blank' %>
+  <% else %>
+    <%= link_to image_tag( items.picture.url(:medium), :border=> 0), items.picture.url, :target => '_blank' %>
+  <% end %>
+  </p>
+</div>
+<div style="float:left; width:200px">
+  <ul>
+  <li><%=link_to h(items.description), item_path( items.id ) %></li>
+  <li>The Serial Number is <%=h items.org_sn %>
+  and it was due cal on <%="#{ h (items.last_calibrated_on + items.cal_cycle_days.days).strftime('%m/%d/%Y')}" %></li>
+  <li><%= link_to 'Calibrate this item?', new_item_event_path( items ) %></li>
+  </ul>
+</div>
+<div style="clear: both;"> </div>
+
+</div>

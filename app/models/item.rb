@@ -4,7 +4,7 @@ class Item < ActiveRecord::Base
  attr_accessible :inactive, :inCal
  attr_accessible :per_page
 
-  @@per_page = 10
+ @@per_page = 10
  
  has_attached_file :picture, 
                    :styles => { :thumb => "50x50",
