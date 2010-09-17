@@ -68,6 +68,18 @@
     </td>
   </tr>
   <tr>
+    <td><b>Latest Event </b></td>
+  </tr>
+  <tr>
+    <td><%=h @event.cal_date.strftime('%m/%d/%Y') %></td>
+    <td><%= link_to h(get_calibrator_name( @event.calibrator_id )), calibrator_path( @event.calibrator_id )%></td>
+    <% if @event.certs.url =~ /missing.png/ %>
+      <td><%= link_to 'Missing Cert', edit_item_event_path(@item.id, @event.id) %></td>
+    <% else %>
+      <td><%= link_to image_tag( @event.certs.url(:thumb), :border => 0), @event.certs.url, :target => '_blank' %></td>
+    <% end %>
+  </tr>
+  <tr>
     <td><b><%= link_to 'Issues', item_issues_path( @item ) %></b></td>
   </tr>
      <% @issues.each do |issue| %>

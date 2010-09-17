@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @issues = @item.issues.all(:order => 'created_at DESC')
     @dependents = @item.dependents.all( :order => 'created_at DESC')
+    @event = @item.events.first( :order => 'created_at DESC' )
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @item }
