@@ -4,7 +4,7 @@ class ItemsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns( :due_cal_items )
+    assert_not_nil assigns( :items )
     #update yaml to include one in_cal
     #assert_not_nil assigns( :due_cal )
   end
@@ -92,8 +92,8 @@ class ItemsControllerTest < ActionController::TestCase
   test "should show items in cal" do
     get :show_in_cal
     assert_response :success
-    assert_not_nil assigns( :display_group )
-    assert_equal  1, @controller.instance_variable_get('@display_group').size , "Should be one item in cal"
+    assert_not_nil assigns( :items )
+    assert_equal  1, @controller.instance_variable_get('@items').size , "Should be one item in cal"
   end
 
 
