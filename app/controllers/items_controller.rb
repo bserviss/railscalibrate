@@ -156,7 +156,7 @@ class ItemsController < ApplicationController
   end
 
   def show_inactive
-    @display_group = Item.inactive
+    @items = Item.inactive.paginate :page => params[:page], :per_page => params[:per_page]
   end
 
   def show_in_cal
@@ -184,6 +184,15 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html { render 'printable_thirty_days', :layout => false }   # printable_thirty_days.html.erb
       format.xml  { render :xml => @thirty_days }
+    end
+  end
+
+  def show_all_events
+    @events = Event.all( :order => 'item_id, cal_date')
+
+    respond_to do |format|
+      format.html #show_all_events.html.erb
+      format.xml {render :xml => @events }
     end
   end
 end

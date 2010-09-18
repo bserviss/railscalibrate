@@ -79,8 +79,8 @@ class ItemsControllerTest < ActionController::TestCase
   test "should display inactive items" do
     get :show_inactive
     assert_response :success
-    assert_not_nil assigns( :display_group )
-    assert_equal 2, @controller.instance_variable_get('@display_group').size , "Should be 2 items inactive"
+    assert_not_nil assigns( :items )
+    assert_equal 2, @controller.instance_variable_get('@items').size , "Should be 2 items inactive"
 
   end
 
@@ -153,6 +153,12 @@ class ItemsControllerTest < ActionController::TestCase
     get :dependent_remote
     assert_response :success
     assert_not_nil assigns( :dependents )
+  end
+
+  test "should display show_all_events" do
+    get :show_all_events
+    assert_response :success
+    assert_not_nil assigns( :events )
   end
 
 end

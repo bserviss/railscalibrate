@@ -25,9 +25,3 @@
   </tr>
 <% end %>
 </table>
-
-<%= link_to_remote 'hide',
-  :update => 'search_remote_div',
-  :url => {:action => "search_remote" },
-  :complete => visual_effect( :blind_up, 'search_remote', :duration => 0.2 )
-%>
