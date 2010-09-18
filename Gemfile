@@ -9,24 +9,9 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'paperclip', :require => 'paperclip'
 gem 'will_paginate', '3.0.pre2', :require => 'will_paginate'
 
-#Security
-gem 'devise', :git => 'http://github.com/BadMinus/devise.git'
-
-#Mongo
-gem 'mongo_mapper', '0.8.4', :git => 'http://github.com/jnunemaker/mongomapper.git'
-gem 'jnunemaker-validatable', '1.8.4', :git => 'http://github.com/jnunemaker/validatable.git'
-gem 'bson_ext', '1.0.7'
-gem 'bson', '1.0.7'
-#Views
-gem 'haml'
-gem 'will_paginate', '3.0.pre2'
-
-#Uncatagorized
-gem 'roxml', :git => 'git://github.com/Empact/roxml.git'
-gem 'addressable', :require => 'addressable/uri'
-gem 'json_pure', :require => 'json'
-
-
+group :test do
+	gem 'simplecov', '>= 0.3.5', :require => false
+end
 
 # Use unicorn as the web server
 # gem 'unicorn'

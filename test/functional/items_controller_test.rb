@@ -58,6 +58,16 @@ class ItemsControllerTest < ActionController::TestCase
     assert_redirected_to item_path(assigns(:item))
   end
 
+  test "should not update item with incorrect file type" do
+    #test the else in the update method
+    put :update, :id => items(:one).id, :item => {:description => 'test',
+      :org_sn => 'test_sn', :pn => 'id10t', :cal_cycle_days => 365,
+      :picture => fixture_file_upload('/files/fail.txt', 'text/plain')},
+      :html => {:multipart => true }
+    #assert_equal  false, f.is_valid?
+    assert_response :success #back to the edit view
+  end
+
   test "should destroy item" do
     assert_difference('Item.count', -1) do
       delete :destroy, :id => items(:one).to_param

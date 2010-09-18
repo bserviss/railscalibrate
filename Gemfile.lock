@@ -1,35 +1,3 @@
-GIT
-  remote: git://github.com/Empact/roxml.git
-  revision: 33034d3e632b3a14565a791af0a63c7e23ec0de4
-  specs:
-    roxml (3.1.5)
-      activesupport (>= 2.3.0)
-      nokogiri (>= 1.3.3)
-
-GIT
-  remote: http://github.com/BadMinus/devise.git
-  revision: 88ab2fe14e88dc45d5b969328a5e52e9011a1d7b
-  specs:
-    devise (1.1.rc1)
-      bcrypt-ruby (~> 2.1.2)
-      warden (~> 0.10.7)
-
-GIT
-  remote: http://github.com/jnunemaker/mongomapper.git
-  revision: 931dab779011aa7acf60c1a4c7ad19e1ba838345
-  specs:
-    mongo_mapper (0.8.4)
-      activesupport (>= 2.3.4)
-      jnunemaker-validatable (~> 1.8.4)
-      plucky (~> 0.3.5)
-
-GIT
-  remote: http://github.com/jnunemaker/validatable.git
-  revision: 8d7c3ce14133760e748a0e34b99dfe6ec4d69153
-  specs:
-    jnunemaker-validatable (1.8.4)
-      activesupport (>= 2.3.4)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -60,31 +28,20 @@ GEM
       activemodel (= 3.0.0)
       activesupport (= 3.0.0)
     activesupport (3.0.0)
-    addressable (2.2.1)
     arel (1.0.1)
       activesupport (~> 3.0.0)
-    bcrypt-ruby (2.1.2)
-    bson (1.0.7)
-    bson_ext (1.0.7)
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
-    haml (3.0.18)
     i18n (0.4.1)
-    json_pure (1.4.6)
     mail (2.2.5)
       activesupport (>= 2.3.6)
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
-    mongo (1.0.8)
-      bson (>= 1.0.5)
-    nokogiri (1.4.3.1-x86-mingw32)
     paperclip (2.3.3)
       activerecord
       activesupport
-    plucky (0.3.5)
-      mongo (~> 1.0.8)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -105,29 +62,22 @@ GEM
       rake (>= 0.8.4)
       thor (~> 0.14.0)
     rake (0.8.7)
+    simplecov (0.3.6)
+      simplecov-html (>= 0.3.7)
+    simplecov-html (0.3.8)
     sqlite3-ruby (1.3.1-x86-mingw32)
     thor (0.14.0)
     treetop (1.4.8)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
-    warden (0.10.7)
-      rack (>= 1.0.0)
     will_paginate (3.0.pre2)
 
 PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  addressable
-  bson (= 1.0.7)
-  bson_ext (= 1.0.7)
-  devise!
-  haml
-  jnunemaker-validatable (= 1.8.4)!
-  json_pure
-  mongo_mapper (= 0.8.4)!
   paperclip
   rails (= 3.0.0)
-  roxml!
+  simplecov (>= 0.3.5)
   sqlite3-ruby
   will_paginate (= 3.0.pre2)

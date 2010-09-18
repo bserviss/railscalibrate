@@ -92,8 +92,10 @@ class ItemsController < ApplicationController
 
   #testing method to load 500 items into the database
   #no pictures are loaded - might be a good addition
-  def test_loader
-  	for i in ( 1..500)
+  #to be removed or moved to a seed section
+  def test_loader( number_of_records )
+    number_of_records = 1000 if number_of_records > 1000
+  	for i in ( 1..number_of_records )
 	  	item = Item.new
 		  item.description = 'test-' + i.to_s
 		  item.mfgr = 'test'

@@ -12,7 +12,7 @@ one:
 
 two:
   id: 2
-  a_name: MyString
+  a_name: 
   address_line_1: MyString
   address_line_2: MyString
   city: MyString
