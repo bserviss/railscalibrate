@@ -159,6 +159,6 @@ class ItemsControllerTest < ActionController::TestCase
     get :show_all_events
     assert_response :success
     assert_not_nil assigns( :events )
-  end
+  end 
 
 end

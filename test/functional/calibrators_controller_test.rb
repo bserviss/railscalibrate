@@ -26,7 +26,7 @@ class CalibratorsControllerTest < ActionController::TestCase
 #      post :create, :calibrator => { :a_name => ''}
 #    end
 #    assert_redirected_to calibrator_path(assigns(:calibrator))
-#  end
+#  end 
 
   test "should show calibrator" do
     get :show, :id => calibrators(:one).to_param

@@ -44,7 +44,7 @@ class ExternalDocsControllerTest < ActionController::TestCase
     end
     assert_response :success
   end
-
+ 
   
   test "should show external_doc" do
     get :show, {:item_id => 1,:id => @external_doc.to_param}

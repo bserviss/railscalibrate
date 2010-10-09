@@ -76,7 +76,7 @@ class EventsControllerTest < ActionController::TestCase
     assert_response :success
     #assert_errors_on :certs
   end
-
+ 
 
   test "should destroy event" do
     assert_difference('Event.count', -1) do

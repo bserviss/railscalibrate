@@ -3,7 +3,7 @@ require 'test_helper'
 class DependentsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index, {:item_id => 1, :id =>1}
-    assert_response :success
+    assert_response :success 
     assert_not_nil assigns(:dependents)
   end
 

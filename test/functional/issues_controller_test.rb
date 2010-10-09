@@ -10,7 +10,7 @@ class IssuesControllerTest < ActionController::TestCase
   test "should get new" do
     get :new, :item_id => 1
     assert_response :success
-  end
+  end 
 
   test "should create issue" do
     assert_difference('Issue.count') do
