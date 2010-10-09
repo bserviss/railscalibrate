@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Docs file name:</b>
+  <%= @external_doc.docs_file_name %>
+</p>
+
+<p>
+  <b>Docs content type:</b>
+  <%= @external_doc.docs_content_type %>
+</p>
+
+<p>
+  <b>Docs file size:</b>
+  <%= @external_doc.docs_file_size %>
+</p>
+
+<p>
+  <b>Docs updated at:</b>
+  <%= @external_doc.docs_updated_at %>
+</p>
+
+<p>
+  <b>Items:</b>
+  <%= @external_doc.items_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_external_doc_path(@external_doc) %> |
+<%= link_to 'Back', external_docs_path %>

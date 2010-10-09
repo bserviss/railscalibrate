@@ -1,4 +1,6 @@
 Calibration::Application.routes.draw do
+  resources :external_docs
+
   resources :dependents
 
   resources :calibrators

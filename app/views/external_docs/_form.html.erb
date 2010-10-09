@@ -1,0 +1,37 @@
+<%= form_for(@external_doc) do |f| %>
+  <% if @external_doc.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@external_doc.errors.count, "error") %> prohibited this external_doc from being saved:</h2>
+
+      <ul>
+      <% @external_doc.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :docs_file_name %><br />
+    <%= f.text_field :docs_file_name %>
+  </div>
+  <div class="field">
+    <%= f.label :docs_content_type %><br />
+    <%= f.text_field :docs_content_type %>
+  </div>
+  <div class="field">
+    <%= f.label :docs_file_size %><br />
+    <%= f.text_field :docs_file_size %>
+  </div>
+  <div class="field">
+    <%= f.label :docs_updated_at %><br />
+    <%= f.datetime_select :docs_updated_at %>
+  </div>
+  <div class="field">
+    <%= f.label :items_id %><br />
+    <%= f.text_field :items_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

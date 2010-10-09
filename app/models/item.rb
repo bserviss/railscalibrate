@@ -18,6 +18,7 @@ class Item < ActiveRecord::Base
   has_many :events, :dependent => :destroy
   has_many :dependents, :dependent => :destroy
   has_many :issues, :dependent => :destroy
+  has_many :external_docs, :dependant => :destroy
 
   validates_presence_of :description
   validates_presence_of :pn

@@ -1,0 +1,31 @@
+<h1>Listing external_docs</h1>
+
+<table>
+  <tr>
+    <th>Docs file name</th>
+    <th>Docs content type</th>
+    <th>Docs file size</th>
+    <th>Docs updated at</th>
+    <th>Items</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @external_docs.each do |external_doc| %>
+  <tr>
+    <td><%= external_doc.docs_file_name %></td>
+    <td><%= external_doc.docs_content_type %></td>
+    <td><%= external_doc.docs_file_size %></td>
+    <td><%= external_doc.docs_updated_at %></td>
+    <td><%= external_doc.items_id %></td>
+    <td><%= link_to 'Show', external_doc %></td>
+    <td><%= link_to 'Edit', edit_external_doc_path(external_doc) %></td>
+    <td><%= link_to 'Destroy', external_doc, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New External doc', new_external_doc_path %>
