@@ -474,6 +474,9 @@ Unit Tests:
     C:/Users/Julie/Documents/rails/calibration/app/helpers/events_helper.rb: 
     - 1
     - 
+    C:/Users/Julie/Documents/rails/calibration/app/helpers/external_docs_helper.rb: 
+    - 1
+    - 
     C:/Users/Julie/Documents/rails/calibration/app/helpers/issues_helper.rb: 
     - 1
     - 
@@ -804,6 +807,98 @@ Unit Tests:
     - 
     - 
     - 
+    C:/Users/Julie/Documents/rails/calibration/app/controllers/external_docs_controller.rb: 
+    - 1
+    - 
+    - 
+    - 1
+    - 
+    - 1
+    - 0
+    - 
+    - 
+    - 1
+    - 0
+    - 
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 0
+    - 
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 
+    - 0
+    - 
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 0
+    - 
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 0
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 0
+    - 0
+    - 
+    - 0
+    - 0
+    - 0
+    - 0
+    - 
+    - 0
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 0
+    - 0
+    - 
+    - 0
+    - 0
+    - 0
+    - 
+    - 
+    - 
     C:/Users/Julie/Documents/rails/calibration/app/controllers/issues_controller.rb: 
     - 1
     - 1
@@ -906,6 +1001,7 @@ Unit Tests:
     - 
     - 
     - 1
+    - 0
     - 0
     - 0
     - 0
@@ -1114,6 +1210,21 @@ Unit Tests:
     - 
     - 1
     - 
+    C:/Users/Julie/Documents/rails/calibration/app/models/external_doc.rb: 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 
+    - 
+    - 1
+    - 
+    - 
     C:/Users/Julie/Documents/rails/calibration/app/models/issue.rb: 
     - 1
     - 1
@@ -1139,6 +1250,7 @@ Unit Tests:
     - 1
     - 1
     - 1
+    - 1
     - 
     - 1
     - 1
@@ -1164,7 +1276,7 @@ Unit Tests:
     - 
     - 
     - 
-  :created_at: 2010-09-18 18:44:14.592000 -04:00
+  :created_at: 2010-10-09 15:11:38.579000 -04:00
 Functional Tests: 
   :original_result: 
     C:/Users/Julie/Documents/rails/calibration/vendor/plugins/prototype_legacy_helper/lib/prototype_helper.rb: 
@@ -1611,15 +1723,15 @@ Functional Tests:
     - 
     - 1
     - 
-    - 34
+    - 40
     - 
     - 
     - 1
-    - 34
+    - 40
     - 
     - 
     - 1
-    - 34
+    - 40
     - 
     - 
     - 1
@@ -1638,6 +1750,9 @@ Functional Tests:
     - 1
     - 
     C:/Users/Julie/Documents/rails/calibration/app/helpers/events_helper.rb: 
+    - 1
+    - 
+    C:/Users/Julie/Documents/rails/calibration/app/helpers/external_docs_helper.rb: 
     - 1
     - 
     C:/Users/Julie/Documents/rails/calibration/app/helpers/issues_helper.rb: 
@@ -1970,6 +2085,100 @@ Functional Tests:
     - 
     - 
     - 
+    C:/Users/Julie/Documents/rails/calibration/app/controllers/external_docs_controller.rb: 
+    - 1
+    - 
+    - 
+    - 1
+    - 
+    - 1
+    - 5
+    - 
+    - 
+    - 1
+    - 1
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 
+    - 1
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 3
+    - 3
+    - 
+    - 3
+    - 3
+    - 1
+    - 2
+    - 1
+    - 
+    - 4
+    - 2
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 1
+    - 1
+    - 2
+    - 1
+    - 
+    - 0
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 1
+    - 1
+    - 
+    - 1
+    - 2
+    - 1
+    - 
+    - 
+    - 
     C:/Users/Julie/Documents/rails/calibration/app/controllers/issues_controller.rb: 
     - 1
     - 1
@@ -2071,6 +2280,7 @@ Functional Tests:
     - 
     - 
     - 
+    - 1
     - 1
     - 1
     - 1
@@ -2280,6 +2490,21 @@ Functional Tests:
     - 
     - 1
     - 
+    C:/Users/Julie/Documents/rails/calibration/app/models/external_doc.rb: 
+    - 1
+    - 1
+    - 1
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 1
+    - 
+    - 
+    - 1
+    - 
+    - 
     C:/Users/Julie/Documents/rails/calibration/app/models/issue.rb: 
     - 1
     - 1
@@ -2302,6 +2527,7 @@ Functional Tests:
     - 1
     - 
     - 
+    - 1
     - 1
     - 1
     - 1
@@ -2330,4 +2556,4 @@ Functional Tests:
     - 
     - 
     - 
-  :created_at: 2010-09-18 18:44:45.541000 -04:00
+  :created_at: 2010-10-09 17:34:03.794000 -04:00

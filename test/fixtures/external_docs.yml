@@ -1,15 +1,19 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  docs_file_name: MyString
-  docs_content_type: MyString
-  docs_file_size: 1
-  docs_updated_at: 2010-10-09 00:25:32
-  items_id: 1
+  id: 1
+  description: test1
+  doc_file_name: MyString
+  doc_content_type: MyString
+  doc_file_size: 1
+  doc_updated_at: 2010-10-09 00:25:32
+  item_id: 1
 
 two:
-  docs_file_name: MyString
-  docs_content_type: MyString
-  docs_file_size: 1
-  docs_updated_at: 2010-10-09 00:25:32
-  items_id: 1
+  id: 2
+  description: test2
+  doc_file_name: MyString
+  doc_content_type: MyString
+  doc_file_size: 1
+  doc_updated_at: 2010-10-09 00:25:32
+  item_id: 1

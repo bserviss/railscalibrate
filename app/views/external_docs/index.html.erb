@@ -27,7 +27,7 @@
     <% end %>
     <td><%= link_to 'Show', item_external_doc_path( @item.id, external_doc ) %></td>
     <td><%= link_to 'Edit', edit_item_external_doc_path(@item.id, external_doc) %></td>
-    <td><%= link_to 'Destroy', external_doc, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', item_external_doc_path(@item.id, external_doc.id), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

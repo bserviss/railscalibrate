@@ -1,7 +1,7 @@
 class ExternalDocsController < ApplicationController
   # GET /external_docs
   # GET /external_docs.xml
-   before_filter :get_item, :except => [ :update, :create ]
+   before_filter :get_item, :except => [ :update, :create, :delete ]
 
   def get_item
     @item = Item.find(params[:item_id])
@@ -47,11 +47,13 @@ class ExternalDocsController < ApplicationController
   # POST /external_docs
   # POST /external_docs.xml
   def create
+    @item = Item.find( params[:external_doc][:item_id] )
     @external_doc = @item.external_docs.new(params[:external_doc])
 
     respond_to do |format|
       if @external_doc.save
-        format.html { redirect_to(@external_doc, :notice => 'External doc was successfully created.') }
+        flash[:notice] = 'Document was successfully created'
+        format.html { redirect_to(item_external_docs_path(@item.id)) }
         format.xml  { render :xml => @external_doc, :status => :created, :location => @external_doc }
       else
         format.html { render :action => "new" }
@@ -84,7 +86,7 @@ class ExternalDocsController < ApplicationController
     @external_doc.destroy
 
     respond_to do |format|
-      format.html { redirect_to(external_docs_url) }
+      format.html { redirect_to(item_external_docs_url) }
       format.xml  { head :ok }
     end
   end
