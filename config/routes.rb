@@ -10,7 +10,7 @@ Calibration::Application.routes.draw do
   resources :issues
 
   resources :items do
-    resources :events, :issues, :dependents
+    resources :events, :issues, :dependents, :external_docs
   end
 
   match "item/:action", :controller => 'items', :action => /[a-z_]+/i

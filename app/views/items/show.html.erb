@@ -8,6 +8,7 @@
 <%= link_to 'Calibration Events', item_events_path( @item ) %> |
 <%= link_to 'Issues', item_issues_path( @item ) %> |
 <%= link_to 'Dependents', item_dependents_path( @item.id ) %> |
+<%= link_to 'External Docs', item_external_docs_path( @item.id )%> |
 <%= link_to 'Back to Item list', items_path %> |
 <%= link_to 'Destroy', @item, :confirm => 'Are you sure?', :method => :delete %>
 
@@ -93,7 +94,7 @@
   </tr>
      <% end %>
   <tr>
-    <td><b><%= link_to 'Dependents', item_dependents_path( @item.id ) %></b>
+    <td><b><%= link_to 'Dependents', item_dependents_path( @item.id ) %></b></td>
   </tr>
   <tr>
     <td>Part Number</td>
@@ -101,11 +102,28 @@
     <td>Note</td>
   </tr>
   <% @dependents.each do |dependent| %>
+    <tr>
+      <td><%= h dependent.pn %></td>
+      <td><%= h dependent.model  %></td>
+      <td><%= h dependent.note %> </td>
+    </tr>
+  <% end %>
   <tr>
-    <td><%= h dependent.pn %></td>
-    <td><%= h dependent.model  %></td>
-    <td><%= h dependent.note %> </td>
+    <td><b><%= link_to 'Documents', item_external_docs_path( @item.id )%></b></td>
   </tr>
+  <tr>
+    <td>Description</td>
+    <td>Document</td>
+  </tr>
+  <% @documents.each do |doc| %>
+    <tr>
+      <td><%= h doc.description %></td>
+      <% if doc.doc.url =~ /missing.png/ %>
+        <td><%= link_to 'Missing Cert', edit_item_external_doc_path(@item.id, doc.id) %></td>
+      <% else %>
+        <td><%= link_to image_tag( doc.doc.url(:thumb), :border => 0), doc.doc.url, :target => '_blank' %></td>
+      <% end %>
+    </tr>
   <% end %>
   </table>
 

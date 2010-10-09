@@ -1,4 +1,4 @@
-<h1>Editing external_doc</h1>
+<h1>Editing <%= "#{@external_doc.description}"%> for <%=link_to "#{h(@item.description)}", item_path(@item.id)%></h1>
 
 <%= render 'form' %>
 

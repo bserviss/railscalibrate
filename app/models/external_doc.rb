@@ -8,5 +8,7 @@ class ExternalDoc < ActiveRecord::Base
  
   validates_attachment_content_type :doc, :content_type => ['image/jpeg', 'image/pjpeg', 'image/jpg', 'image/png', 'application/pdf'],
     :allow_nil => true
+
+  validates_presence_of :description
   
 end

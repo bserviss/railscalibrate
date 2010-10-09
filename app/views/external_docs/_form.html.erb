@@ -1,4 +1,4 @@
-<%= form_for(@external_doc) do |f| %>
+<%= form_for([@item, @external_doc], :html => { :multipart => true }) do |f| %>
   <% if @external_doc.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@external_doc.errors.count, "error") %> prohibited this external_doc from being saved:</h2>
@@ -11,27 +11,45 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :item_id %>
+
   <div class="field">
-    <%= f.label :docs_file_name %><br />
-    <%= f.text_field :docs_file_name %>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :docs_content_type %><br />
-    <%= f.text_field :docs_content_type %>
+    <%= f.label :doc_file_name %><br />
+    <%= f.text_field :doc_file_name %>
   </div>
   <div class="field">
-    <%= f.label :docs_file_size %><br />
-    <%= f.text_field :docs_file_size %>
+    <%= f.label :doc_content_type %><br />
+    <%= f.text_field :doc_content_type %>
   </div>
   <div class="field">
-    <%= f.label :docs_updated_at %><br />
-    <%= f.datetime_select :docs_updated_at %>
+    <%= f.label :doc_file_size %><br />
+    <%= f.text_field :doc_file_size %>
   </div>
   <div class="field">
-    <%= f.label :items_id %><br />
-    <%= f.text_field :items_id %>
+    <%= f.label :doc_updated_at %><br />
+    <%= f.date_select :doc_updated_at, :order => [:day, :month, :year] %>
+  </div>
+  <div class="field">
+    <%= f.label 'Select document file' %><br />
+    <%= f.file_field :doc %>
   </div>
   <div class="actions">
+    <br />
     <%= f.submit %>
   </div>
+  <div>
+    <br />
+    Current Document
+    <br />
+    <% if @external_doc.doc.url =~ /missing.png/ %>
+      <b>Missing Picture</b><br/>
+    <% else %>
+      <b><%= link_to image_tag( @external_doc.doc.url(:medium), :border => 0), @external_doc.doc.url, :target => '_blank' %></b><br/>
+    <% end %>
+  </div>
+
 <% end %>

@@ -1,30 +1,37 @@
+<h1>Showing <%= @external_doc.description %> for <%="#{h(@item.description)}"%></h1>
 <p id="notice"><%= notice %></p>
 
 <p>
   <b>Docs file name:</b>
-  <%= @external_doc.docs_file_name %>
+  <%= @external_doc.doc_file_name %>
 </p>
 
 <p>
   <b>Docs content type:</b>
-  <%= @external_doc.docs_content_type %>
+  <%= @external_doc.doc_content_type %>
 </p>
 
 <p>
   <b>Docs file size:</b>
-  <%= @external_doc.docs_file_size %>
+  <%= @external_doc.doc_file_size %>
 </p>
 
 <p>
   <b>Docs updated at:</b>
-  <%= @external_doc.docs_updated_at %>
+  <%= @external_doc.doc_updated_at %>
 </p>
 
 <p>
   <b>Items:</b>
-  <%= @external_doc.items_id %>
+  <%= @external_doc.item_id %>
+</p>
+<p>
+  <% if @external_doc.doc.url =~ /missing.png/ %>
+    <b>Missing Picture</b><br/>
+  <% else %>
+    <b><%= link_to image_tag( @external_doc.doc.url(:medium), :border => 0), @external_doc.doc.url, :target => '_blank' %></b><br/>
+  <% end %>
 </p>
 
-
-<%= link_to 'Edit', edit_external_doc_path(@external_doc) %> |
-<%= link_to 'Back', external_docs_path %>
+<%= link_to 'Edit', edit_item_external_doc_path(@item.id, @external_doc) %> |
+<%= link_to 'Back', item_external_docs_path( @item.id ) %>
