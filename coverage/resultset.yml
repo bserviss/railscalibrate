@@ -858,7 +858,9 @@ Unit Tests:
     - 
     - 1
     - 0
+    - 0
     - 
+    - 0
     - 0
     - 0
     - 0
@@ -1276,7 +1278,7 @@ Unit Tests:
     - 
     - 
     - 
-  :created_at: 2010-10-09 15:11:38.579000 -04:00
+  :created_at: 2010-10-10 15:54:29.794000 -04:00
 Functional Tests: 
   :original_result: 
     C:/Users/Julie/Documents/rails/calibration/vendor/plugins/prototype_legacy_helper/lib/prototype_helper.rb: 
@@ -2170,12 +2172,12 @@ Functional Tests:
     - 
     - 
     - 1
-    - 1
-    - 1
+    - 0
+    - 0
     - 
-    - 1
-    - 2
-    - 1
+    - 0
+    - 0
+    - 0
     - 
     - 
     - 
@@ -2556,4 +2558,4 @@ Functional Tests:
     - 
     - 
     - 
-  :created_at: 2010-10-09 17:34:03.794000 -04:00
+  :created_at: 2010-10-10 15:51:14.601000 -04:00

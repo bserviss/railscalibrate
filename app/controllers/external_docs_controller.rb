@@ -1,7 +1,7 @@
 class ExternalDocsController < ApplicationController
   # GET /external_docs
   # GET /external_docs.xml
-   before_filter :get_item, :except => [ :update, :create, :delete ]
+   before_filter :get_item, :except => [ :update, :create ]
 
   def get_item
     @item = Item.find(params[:item_id])
@@ -82,7 +82,7 @@ class ExternalDocsController < ApplicationController
   # DELETE /external_docs/1
   # DELETE /external_docs/1.xml
   def destroy
-    @external_doc = ExternalDoc.find(params[:id])
+    @external_doc = @item.external_docs.find(params[:id])
     @external_doc.destroy
 
     respond_to do |format|

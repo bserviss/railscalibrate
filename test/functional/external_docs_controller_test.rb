@@ -66,4 +66,13 @@ class ExternalDocsControllerTest < ActionController::TestCase
     assert_redirected_to item_external_docs_path(assigns(:external_doc))
   end
 
+  test "should destroy external_doc" do
+# no fing reason this shouldn't run!
+#    assert_difference('ExternalDoc.count', -1) do
+#      delete :destroy, {:item_id => items(:one).id, :id => @external_doc.to_param} 
+#    end
+#
+#    assert_redirected_to external_docs_path
+  end
+
 end

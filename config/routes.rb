@@ -1,5 +1,4 @@
 Calibration::Application.routes.draw do
-  resources :external_docs
 
   resources :dependents
 
@@ -9,12 +8,14 @@ Calibration::Application.routes.draw do
 
   resources :issues
 
+  resources :external_docs
+
   resources :items do
     resources :events, :issues, :dependents, :external_docs
   end
 
-  match "item/:action", :controller => 'items', :action => /[a-z_]+/i
-  match "event/:action/:item_id", :controller => 'events', :action => /[a-z_]+/i
+  #match "item/:action", :controller => 'items', :action => /[a-z_]+/i
+  #match "event/:action/:item_id", :controller => 'events', :action => /[a-z_]+/i
   
   root :to => "items#index"
   
