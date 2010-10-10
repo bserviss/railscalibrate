@@ -14,8 +14,20 @@ Calibration::Application.routes.draw do
     resources :events, :issues, :dependents, :external_docs
   end
 
-  #match "item/:action", :controller => 'items', :action => /[a-z_]+/i
+  match "item/:action", :controller => 'items', :action => /[a-z_]+/i
   #match "event/:action/:item_id", :controller => 'events', :action => /[a-z_]+/i
+  
+  match 'print_due_cal' => "items#printable_due_cal", :as => "print_due_cal"
+  match 'in_cal' => "items#show_in_cal", :as => "in_cal"
+  match "print_in_cal" => "items#printable_in_cal", :as => "print_in_cal"
+  match 'inactive' => "items#show_inactive", :as => "inactive"
+  match 'show_due_in_thirty_days' => "items#show_thirty_days", :as => "due_in_thirty"
+  match 'print_thirty_day_report' => "items#printable_thirty_days", :as => "print_thirty"
+  match 'show_due_in_sixty_days' => "items#show_sixty_days", :as => "due_in_sixty"
+  match 'show_all_records' => "items#show_all_items", :as => "all_items"
+  match 'show_all_issues' => "items#issue_remote", :as => "all_issues"
+  match 'show_all_events' => "items#show_all_events", :as => "all_events"
+  match 'show_all_dependents' => "items#dependent_remote", :as => "all_dependents"
   
   root :to => "items#index"
   
