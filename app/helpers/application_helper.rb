@@ -4,6 +4,10 @@ module ApplicationHelper
     Calibrator.find( calibrator_id).a_name
   end
 
+  def get_item_count
+    Item.all.count
+  end
+
   def get_rough_due_cal_count
     #return a list of items due cal based on a 365 day assumption
     Item.find( :all, :conditions => ["last_calibrated_on < ? and inCal = ?", 1.year.ago, false]).count

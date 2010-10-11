@@ -14,6 +14,10 @@ class ItemsController < ApplicationController
     end
   end
 
+
+
+
+
   # GET /items/1
   # GET /items/1.xml
   def show
@@ -22,6 +26,7 @@ class ItemsController < ApplicationController
     @dependents = @item.dependents.all( :order => 'created_at DESC')
     @event = @item.events.first( :order => 'created_at DESC' )
     @documents = @item.external_docs.all( :order => 'created_at DESC')
+    @cost = @item.events.sum( :cost ).to_f
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @item }

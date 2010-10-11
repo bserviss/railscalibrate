@@ -28,6 +28,7 @@ Calibration::Application.routes.draw do
   match 'show_all_issues' => "items#issue_remote", :as => "all_issues"
   match 'show_all_events' => "items#show_all_events", :as => "all_events"
   match 'show_all_dependents' => "items#dependent_remote", :as => "all_dependents"
+  match 'search' => "items#search_remote", :as => "search"
   
   root :to => "items#index"
   

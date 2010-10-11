@@ -13,4 +13,8 @@ class Event < ActiveRecord::Base
   validates_presence_of :calibrator_id
 
   scope :previous_10_events, :order => 'created_at DESC', :limit => 10
+  
+  def self.cost_over_year
+    Event.sum(:cost, :conditions => ["created_at > ?", 1.year.ago])
+  end
 end

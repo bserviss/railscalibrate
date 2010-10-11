@@ -20,7 +20,7 @@
           <li><%= link_to "Due in thirty days", due_in_thirty_path %></li>
           <li><%= link_to "Thirty days report", print_thirty_path %></li>
           <li><%= link_to "Due in 60 days", due_in_sixty_path %></li>
-          <li><%= link_to "All Records", all_items_path %></li>
+          <li><%= link_to "All Records(#{get_item_count})", all_items_path %></li>
           <li><%= link_to "Issues", all_issues_path %></li>
           <li><%= link_to "Dependents", all_dependents_path %></li>
           <li><%= link_to "All Events", all_events_path %> </li>
