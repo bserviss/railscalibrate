@@ -8,6 +8,7 @@ gem 'rails', '3.0.0'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'paperclip', :require => 'paperclip'
 gem 'will_paginate', '3.0.pre2', :require => 'will_paginate'
+gem 'jquery-rails'
 
 group :test do
 	gem 'simplecov', '>= 0.3.5', :require => false

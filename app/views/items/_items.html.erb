@@ -10,7 +10,7 @@
 </div>
 <div style="float:left; width:200px">
   <ul>
-  <li><%=link_to h(items.description), item_path( items.id ) %></li>
+  <li><%=link_to_box h(items.description), item_path( items.id ) %></li>
   <li>The Serial Number is <%=h items.org_sn %>
   and it was due cal on <%="#{ h (items.last_calibrated_on + items.cal_cycle_days.days).strftime('%m/%d/%Y')}" %></li>
   <% if items.inCal %>
