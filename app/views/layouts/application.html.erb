@@ -15,7 +15,7 @@
           <li><%=link_to 'Summary Page', items_path%></li>
           <li><%= link_to "Due Cal(#{get_rough_due_cal_count})", items_path( :anchor => "DueCal")%></li>
           <li><%= link_to "Due Cal Report", print_due_cal_path %></li>
-          <li><%= link_to_box "In Cal(#{get_in_cal_count})", in_cal_path %></li>
+          <li><%= link_to "In Cal(#{get_in_cal_count})", in_cal_path %></li>
           <li><%= link_to "In Cal Report", print_in_cal_path %></li>
           <li><%= link_to_box "Inactive(#{get_inactive_count})", inactive_path %></li>
           <li><%= link_to "Due in thirty days", due_in_thirty_path %></li>

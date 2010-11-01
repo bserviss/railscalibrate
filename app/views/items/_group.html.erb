@@ -12,8 +12,20 @@
     <td><%=link_to h(item.description), item_events_path( item.id ) %></td>
     <td><%=h item.org_sn %></td>
     <td><%=h item.location %></td>
-    <td><%= "#{ h item.last_calibrated_on.strftime('%m/%d/%Y')}" %></td>
-    <td><%= "#{ h item.last_calibrated_on + item.cal_cycle_days.days}" %></td>
+    <td>
+      <% if item.last_calibrated_on.nil? %>
+    No data
+      <% else %>
+    <%= "#{ h item.last_calibrated_on.strftime('%m/%d/%Y')}" %>
+      <% end %>
+    </td>
+    <td>
+      <% if item.last_calibrated_on.nil? %>
+    No last cal on date
+      <% else %>
+    <%= "#{ h (item.last_calibrated_on + item.cal_cycle_days.days).strftime('%m/%d/%Y')}" %>
+      <% end %>
+    </td>
     <% if item.picture.url =~ /missing.png/ %>
       <td><%= link_to 'No Image', edit_item_path(item) %></td>
     <% else %>

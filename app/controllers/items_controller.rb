@@ -3,6 +3,15 @@ class ItemsController < ApplicationController
 
   def get_item
     @item = Item.first
+    if @item.nil?
+      @item = Item.new
+      @item.description = 'first'
+      @item.pn = 'test'
+      @item.org_sn = '1234'
+      @item.cal_cycle_days = 365
+      @item.save
+    end
+
   end
   # GET /items
   # GET /items.xml
