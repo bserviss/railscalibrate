@@ -206,4 +206,13 @@ class ItemsController < ApplicationController
       format.xml {render :xml => @events }
     end
   end
+  
+  def show_all_documents
+    @documents = ExternalDoc.all( :order => 'item_id, updated_at')
+    
+    respond_to do |format|
+      format.html #show_all_documents.hrml.erb
+      format.xml {render :xml => @documents }
+    end
+  end
 end

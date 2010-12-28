@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Description</th>
+    <th>Document</th>
+  </tr>
+
+<% @documents.each do |doc| %>
+  <tr>
+    <td><%=link_to h(get_item_description_from_id( doc.item_id ) ) , item_path( doc.item_id ) %></td>
+    <td><%=h doc.description %></td>
+    <% if doc.doc.url =~ /missing.png/ %>
+      <td><%= link_to 'Missing Picture', edit_item_event_path(@item.id, event.id) %></td>
+    <% else %>
+      <td><%= link_to image_tag( doc.doc.url(:thumb), :border => 0), doc.doc.url, :target => '_blank' %></td>
+    <% end %>
+    <td><%= link_to 'Show', item_event_path(@item.id, doc.id) %></td>
+    <td><%= link_to 'Edit', edit_item_event_path(@item.id, doc.id) %></td>
+    <td><%= link_to 'Destroy', item_event_path(@item.id, doc.id), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
