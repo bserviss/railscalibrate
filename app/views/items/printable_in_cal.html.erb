@@ -2,5 +2,5 @@
 <%= "Printed on #{Date.today}" %>
 <br/>
 &nbsp
-<%= render :partial => "group", :locals => { :aGroup => @in_cal, :show_hide => 0, :aToken => 'print' }, :layout => false %>
+<%= render :partial => "group", :locals => { :aGroup => @in_cal, :to_print => 'yes' }, :layout => false %>
 

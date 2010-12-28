@@ -31,7 +31,7 @@
     <% else %>
       <td><%= link_to image_tag( item.picture.url(:thumb), :border=> 0), item.picture.url, :target => '_blank' %></td>
     <% end %>
-    <% if aToken != 'print' %>
+    <% unless to_print == 'yes' %>
       <td>
           <%= link_to 'Show', item %>
           <%= link_to 'Edit', edit_item_path(item) %>
@@ -46,24 +46,5 @@
   </tr>
 <% end %>
 </table>
-
-
-<% if show_hide == 1 then %>
-  <i>
-    <% if aToken == 'search_remote' %>
-      <%= link_to_remote 'hide',
-        :update => aToken,
-        :url => {:action => "search_remote", :token => aToken },
-        :complete => visual_effect( :blind_up, aToken, :duration => 0.2 )
-      %>
-    <% else %>
-      <%= link_to_remote 'hide',
-        :update => aToken,
-        :url => {:action => "remote", :token => aToken },
-        :complete => visual_effect( :blind_up, aToken, :duration => 0.2 )
-      %>
-    <% end %>
-  </i>
-<% end %>
 
 <br />
