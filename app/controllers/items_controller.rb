@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
     @dependents = @item.dependents.all( :order => 'created_at DESC')
     @event = @item.events.first( :order => 'created_at DESC' )
     @documents = @item.external_docs.all( :order => 'created_at DESC')
-    @cost = @item.events.sum( :cost ).to_f
+    @cost = @item.events.sum( :cost, :conditions => ["created_at > ?", 1.year.ago] ).to_f
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @item }

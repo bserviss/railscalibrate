@@ -41,6 +41,7 @@ class ItemsControllerTest < ActionController::TestCase
     assert_not_nil assigns( :item )
     assert_not_nil assigns( :issues )
     assert_not_nil assigns( :dependents )
+    assert_not_nil assigns( :cost )
   end
 
   test "should get edit" do

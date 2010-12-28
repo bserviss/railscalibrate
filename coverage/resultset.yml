@@ -1454,7 +1454,7 @@ Unit Tests:
     - 
     - 
     - 
-  :created_at: 2010-11-18 20:54:31.702000 -05:00
+  :created_at: 2010-12-27 20:23:02.161821 -05:00
 Functional Tests: 
   :original_result: 
     C:/Users/Julie/Documents/rails/calibration/vendor/plugins/fancy_box_rails_plugin/lib/fancy_box.rb: 
@@ -1793,7 +1793,7 @@ Functional Tests:
     - 
     - 
     - 1
-    - 1
+    - 0
     - 
     - 
     - 
@@ -2910,4 +2910,4 @@ Functional Tests:
     - 
     - 
     - 
-  :created_at: 2010-11-18 20:55:23.537000 -05:00
+  :created_at: 2010-12-27 20:23:53.464821 -05:00

@@ -21,21 +21,21 @@
       <img src="./assets/0.3.8/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2010-11-18T20:55:24-05:00">2010-11-18T20:55:24-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2010-12-27T20:23:54-05:00">2010-12-27T20:23:54-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     All Files
-    (<span class="red">78.84%</span>)
+    (<span class="red">78.66%</span>)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>23</b> files in total.
     <b>567</b> relevant lines. 
-    <span class="green"><b>447</b> lines covered</span> and
-    <span class="red"><b>120</b> lines missed </span>
+    <span class="green"><b>446</b> lines covered</span> and
+    <span class="red"><b>121</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -250,11 +250,11 @@
       
       <tr>
         <td><a href="#48be76d9d36f384f468f0d1cd96babb1d91778cc" class="src_link" title="./vendor/plugins/prototype_legacy_helper/lib/prototype_helper.rb">./vendor/plugins/prototype_legacy_helper/lib/prototype_helper.rb</a></td>
-        <td class="red">24.14 %</td>
+        <td class="red">22.41 %</td>
         <td>430</td>
         <td>58</td>
-        <td>14</td>
-        <td>44</td>
+        <td>13</td>
+        <td>45</td>
       </tr>
       
     </tbody>
@@ -532,14 +532,14 @@
           <div class="file_list_container" id="Libraries">
   <h2>
     Libraries
-    (<span class="red">78.84%</span>)
+    (<span class="red">78.66%</span>)
   </h2>
   <a name="Libraries"></a>
   <div>
     <b>23</b> files in total.
     <b>567</b> relevant lines. 
-    <span class="green"><b>447</b> lines covered</span> and
-    <span class="red"><b>120</b> lines missed </span>
+    <span class="green"><b>446</b> lines covered</span> and
+    <span class="red"><b>121</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -754,11 +754,11 @@
       
       <tr>
         <td><a href="#48be76d9d36f384f468f0d1cd96babb1d91778cc" class="src_link" title="./vendor/plugins/prototype_legacy_helper/lib/prototype_helper.rb">./vendor/plugins/prototype_legacy_helper/lib/prototype_helper.rb</a></td>
-        <td class="red">24.14 %</td>
+        <td class="red">22.41 %</td>
         <td>430</td>
         <td>58</td>
-        <td>14</td>
-        <td>44</td>
+        <td>13</td>
+        <td>45</td>
       </tr>
       
     </tbody>
@@ -768,14 +768,14 @@
           <div class="file_list_container" id="Plugins">
   <h2>
     Plugins
-    (<span class="red">35.34%</span>)
+    (<span class="red">34.48%</span>)
   </h2>
   <a name="Plugins"></a>
   <div>
     <b>3</b> files in total.
     <b>116</b> relevant lines. 
-    <span class="green"><b>41</b> lines covered</span> and
-    <span class="red"><b>75</b> lines missed </span>
+    <span class="green"><b>40</b> lines covered</span> and
+    <span class="red"><b>76</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -810,11 +810,11 @@
       
       <tr>
         <td><a href="#48be76d9d36f384f468f0d1cd96babb1d91778cc" class="src_link" title="./vendor/plugins/prototype_legacy_helper/lib/prototype_helper.rb">./vendor/plugins/prototype_legacy_helper/lib/prototype_helper.rb</a></td>
-        <td class="red">24.14 %</td>
+        <td class="red">22.41 %</td>
         <td>430</td>
         <td>58</td>
-        <td>14</td>
-        <td>44</td>
+        <td>13</td>
+        <td>45</td>
       </tr>
       
     </tbody>
@@ -7883,7 +7883,7 @@
         <pre>34</pre>
       </td>
       <td>
-        <pre>    @cost = @item.events.sum( :cost ).to_f</pre>
+        <pre>    @cost = @item.events.sum( :cost, :conditions =&gt; [&quot;created_at &gt; ?&quot;, 1.year.ago] ).to_f</pre>
       </td>
       <td class="hits">
         1
@@ -14299,7 +14299,7 @@
     <tr>
       <td colspan="3">
         <h3>./vendor/plugins/prototype_legacy_helper/lib/prototype_helper.rb</h3>
-        <h4><span class="red">24.14 %</span> covered</h4>
+        <h4><span class="red">22.41 %</span> covered</h4>
       </td>
     </tr>
     <tr>
@@ -16612,7 +16612,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="1">
+    <tr class="miss" data-hits="0">
       <td class="line_number">
         <pre>178</pre>
       </td>
@@ -16620,7 +16620,7 @@
         <pre>    link_to_function(name, remote_function(options), html_options || options.delete(:html))</pre>
       </td>
       <td class="hits">
-        1
+        0
       </td>
     </tr>
   
