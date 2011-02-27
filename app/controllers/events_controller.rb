@@ -38,6 +38,11 @@ class EventsController < ApplicationController
     @event = @item.events.new
     @previous_events = @item.events.previous_10_events
     @calibrators = Calibrator.all_by_name
+    if @item.inactive
+    	@item.inactive = 0
+    	flash[:notice] = "Item status changed from inactive to active"
+    	@item.save
+    end
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @event }

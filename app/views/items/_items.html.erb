@@ -14,7 +14,7 @@
   <li>The Serial Number is <%=h items.org_sn %>
   and it was due cal on <%="#{ h (items.last_calibrated_on + items.cal_cycle_days.days).strftime('%m/%d/%Y')}" %></li>
   <% if items.inCal %>
-    <li><%= link_to 'Return from Cal?', :controller => "event", :action => "return_from_cal", :id => items.id %> </li>
+    <li><%= link_to 'Return from Cal', return_from_cal_path( :item_id => items.id ) %> </li>
   <% else %>
     <li><%= link_to 'Calibrate this item?', new_item_event_path( items ) %></li>
   <% end %>
