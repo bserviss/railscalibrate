@@ -39,7 +39,7 @@
 ## Why is it needed?
 > I work as a technician in a small FAA approved repair station which has quite a few items that need to be calibrated on a yearly basis, but not nearly so many that we have invested in an "Off the Shelf" solution.
 
-> Currently, a spreadsheet is used to track items. This works well if you have less than 100 items to track. It doesn't work as well above this number and causes us to spend an increasing amount of time physically verifying the dates on test equipment each month.
+> Currently, a spreadsheet is used to track items. This works well if you have less than 100 items to track. It doesn't work as well above this number and causes us to spend an increasing amount of time physically verifying the dates on test equipment each month. We also spend time looking for a piece of test equipment without knowing exactly what it looks like. For example, we constantly add or replace hand held meters and having a picture - even a thumbnail - would greatly speed up the whole process.
 
 > Enter Ruby on Rails
 
