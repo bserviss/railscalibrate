@@ -86,13 +86,19 @@
   </tr>
   <tr>
     <td><b><%= link_to 'Issues', item_issues_path( @item ) %></b></td>
-  </tr>
-     <% @issues.each do |issue| %>
-  <tr>
-      <td><%= h issue.description %></td>
-      <td><%= h issue.created_at.strftime('%m/%d/%Y')%></td>
-  </tr>
-     <% end %>
+  <% if @issues.count > 0 then %>
+	  </tr>
+    	 <% @issues.each do |issue| %>
+  	  <tr>
+      	<td><%= h issue.description %></td>
+      	<td><%= h issue.created_at.strftime('%m/%d/%Y')%></td>
+  	  </tr>
+        <% end %>
+  <% else %>
+  	<tr>
+  		<td><%= "No itmes"%></td>
+  	</tr>
+  <% end %>
   <tr>
     <td><b><%= link_to 'Dependents', item_dependents_path( @item.id ) %></b></td>
   </tr>
@@ -101,12 +107,18 @@
     <td>Model</td>
     <td>Note</td>
   </tr>
-  <% @dependents.each do |dependent| %>
-    <tr>
-      <td><%= h dependent.pn %></td>
-      <td><%= h dependent.model  %></td>
-      <td><%= h dependent.note %> </td>
-    </tr>
+  <% if @dependents.count > 0 then %>
+  	<% @dependents.each do |dependent| %>
+    	<tr>
+      		<td><%= h dependent.pn %></td>
+      		<td><%= h dependent.model  %></td>
+      		<td><%= h dependent.note %> </td>
+    	</tr>
+  	<% end %>
+  <% else %>
+  	<tr>
+  		<td><%= "No Dependents" %> </td>
+  	</tr>
   <% end %>
   <tr>
     <td><b><%= link_to 'Documents', item_external_docs_path( @item.id )%></b></td>
@@ -115,14 +127,20 @@
     <td>Description</td>
     <td>Document</td>
   </tr>
-  <% @documents.each do |doc| %>
+  <% if @documents.count > 0 then %>
+  	<% @documents.each do |doc| %>
+    	<tr>
+      		<td><%= h doc.description %></td>
+      		<% if doc.doc.url =~ /missing.png/ %>
+        		<td><%= link_to 'Missing Cert', edit_item_external_doc_path(@item.id, doc.id) %></td>
+      		<% else %>
+        		<td><%= link_to image_tag( doc.doc.url(:thumb), :border => 0), doc.doc.url, :target => '_blank' %></td>
+      		<% end %>
+    	</tr>
+  	<% end %>
+  <% else %>
     <tr>
-      <td><%= h doc.description %></td>
-      <% if doc.doc.url =~ /missing.png/ %>
-        <td><%= link_to 'Missing Cert', edit_item_external_doc_path(@item.id, doc.id) %></td>
-      <% else %>
-        <td><%= link_to image_tag( doc.doc.url(:thumb), :border => 0), doc.doc.url, :target => '_blank' %></td>
-      <% end %>
+    	<td><%= "No Documents" %></td>
     </tr>
   <% end %>
   <tr>
