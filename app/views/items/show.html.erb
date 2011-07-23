@@ -46,15 +46,15 @@
     <td><%=h @item.mfgr_sn %></td>
   </tr>
   <tr>
-    <td><b>Cal cycle days:</b></td>
-    <td><%=h @item.cal_cycle_days %></td>
-    <td><b>Last Cal on:</b></td>
-    <td><%=h @item.last_calibrated_on %></td>
-    <td><b>Due Cal On:</b></td>
-    <td><%=h @item.last_calibrated_on + @item.cal_cycle_days.days%></td>
+  	<td colspan="0">
+  	  The Cal cycle is <b><%= "#{@item.cal_cycle_days}"%></b> days,
+  	  it was last calibrated on <b><%="#{@item.last_calibrated_on}"%></b> 
+  	  and is due cal on <b><%= "#{@item.last_calibrated_on + @item.cal_cycle_days.days}"%></b>
+  	</td>
   </tr>
   <tr>
-    <td>
+    <td colspan="0">
+      <%= "#{@item.description}"%> is 
       <% if @item.inactive == 0 %>
         <b>Active </b>
       <% else %>
@@ -81,7 +81,8 @@
         <td><%= link_to image_tag( @event.certs.url(:thumb), :border => 0), @event.certs.url, :target => '_blank' %></td>
       <% end %>
     <% else %>
-      <td>No Events</td>
+    	<td></td>
+      	<td>No Event</td>
     <% end %>
   </tr>
   <tr>
@@ -90,19 +91,22 @@
 	  </tr>
     	 <% @issues.each do |issue| %>
   	  <tr>
+  	  	<td></td>
       	<td><%= h issue.description %></td>
       	<td><%= h issue.created_at.strftime('%m/%d/%Y')%></td>
   	  </tr>
         <% end %>
   <% else %>
   	<tr>
-  		<td><%= "No itmes"%></td>
+  		<td></td>
+  		<td><%= "No items"%></td>
   	</tr>
   <% end %>
   <tr>
     <td><b><%= link_to 'Dependents', item_dependents_path( @item.id ) %></b></td>
   </tr>
   <tr>
+  	<td></td>
     <td>Part Number</td>
     <td>Model</td>
     <td>Note</td>
@@ -110,6 +114,7 @@
   <% if @dependents.count > 0 then %>
   	<% @dependents.each do |dependent| %>
     	<tr>
+    		<td></td>
       		<td><%= h dependent.pn %></td>
       		<td><%= h dependent.model  %></td>
       		<td><%= h dependent.note %> </td>
@@ -117,6 +122,7 @@
   	<% end %>
   <% else %>
   	<tr>
+  		<td></td>
   		<td><%= "No Dependents" %> </td>
   	</tr>
   <% end %>
@@ -124,12 +130,14 @@
     <td><b><%= link_to 'Documents', item_external_docs_path( @item.id )%></b></td>
   </tr>
   <tr>
+  	<td></td>
     <td>Description</td>
     <td>Document</td>
   </tr>
   <% if @documents.count > 0 then %>
   	<% @documents.each do |doc| %>
     	<tr>
+    		<td></td>
       		<td><%= h doc.description %></td>
       		<% if doc.doc.url =~ /missing.png/ %>
         		<td><%= link_to 'Missing Cert', edit_item_external_doc_path(@item.id, doc.id) %></td>
@@ -140,6 +148,7 @@
   	<% end %>
   <% else %>
     <tr>
+    	<td></td>
     	<td><%= "No Documents" %></td>
     </tr>
   <% end %>
