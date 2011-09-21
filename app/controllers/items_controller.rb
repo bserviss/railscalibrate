@@ -9,6 +9,7 @@ class ItemsController < ApplicationController
       @item.pn = 'test'
       @item.org_sn = '1234'
       @item.cal_cycle_days = 365
+      @item.last_calibrated_on = Time.now
       @item.save
     end
 
