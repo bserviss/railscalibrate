@@ -45,7 +45,7 @@ three:
   cal_cycle_days: 365
   inactive: 0
   inCal: false
-  last_calibrated_on: <%= 320.days.ago.to_s(:db) %>
+  last_calibrated_on: <%= 350.days.ago.to_s(:db) %>
   picture_file_name: MyString
   picture_content_type: MyString
   picture_file_size: 1
