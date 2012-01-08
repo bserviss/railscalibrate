@@ -5,3 +5,10 @@
 <%= render :partial => 'items', :collection => @items %>
 
 <%= will_paginate @items %>
+
+<div class="digg_pagination">
+    <div clas="page_info">
+      <%= page_entries_info @items %>
+    </div>
+    <%= will_paginate @items, :container => false %>
+</div>
