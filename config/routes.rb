@@ -31,7 +31,7 @@ Calibration::Application.routes.draw do
   match 'show_all_documents' => "items#show_all_documents", :as => "all_documents"
   match 'search' => "items#search_remote", :as => "search"
   match 'return_from_cal/:item_id' => "events#return_from_cal", :as => "return_from_cal", :via => "get"
-  
+  match 'all_items_by_location' => 'items#show_all_items_by_location', :as => "all_items_by_location"
   root :to => "items#index"
   
   # The priority is based upon order of creation: first created -> highest priority.

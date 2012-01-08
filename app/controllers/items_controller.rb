@@ -216,4 +216,8 @@ class ItemsController < ApplicationController
       format.xml {render :xml => @documents }
     end
   end
+  
+  def show_all_items_by_location
+    @display_group = Item.all( :order => :location )
+  end
 end
