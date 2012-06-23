@@ -40,7 +40,7 @@ class EventsController < ApplicationController
     @calibrators = Calibrator.all_by_name
     if @item.inactive
     	@item.inactive = 0
-    	flash[:notice] = "Item status changed from inactive to active"
+    	#flash[:notice] = "Item status changed from inactive to active"
     	@item.save
     end
     respond_to do |format|

@@ -203,7 +203,7 @@ class ItemsController < ApplicationController
     @events = Event.all( :order => 'item_id, cal_date')
 
     respond_to do |format|
-      format.html #show_all_events.html.erb
+      format.html { render 'show_all_events', :layout => false }
       format.xml {render :xml => @events }
     end
   end
