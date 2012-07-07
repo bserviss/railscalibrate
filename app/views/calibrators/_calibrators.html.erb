@@ -1,0 +1,19 @@
+<div style="float:left; width:400px">
+  <ul>
+	<li><b> Name:</b> <%=link_to h(calibrators.a_name), calibrators %></li>
+  	<li>Website: <%=h calibrators.website %></li>
+  	<li>Contact: <%=h calibrators.contact_name %> at email: <%=h calibrators.contact_email %></li>
+  	<li><b>Mailing Address:</b>/li>
+  	<ul>
+  		<li><%=h calibrators.address_line_1 %></li>
+  		<li><%=h calibrators.address_line_2 %></li>
+  		<li><%=h calibrators.city %>, <%=h calibrators.state %> <%=h calibrators.zip %></li>
+  	</ul>
+  	<li><b>Note:</b></li>
+  	<ul>
+  		<li><%=h calibrators.note %></li>
+  	</ul>
+  </ul>
+</div>
+<div style="clear: both;"> </div>
+<hr />
