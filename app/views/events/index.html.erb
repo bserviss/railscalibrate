@@ -11,3 +11,4 @@
 <% end %>
 <p><%= link_to "Back to #{h(@item.description)}", item_path( @item ) %></p>
 <p><%= link_to 'Back to Due Cal Items', items_path %></p>
+<p><%= link_to "back to In Cal Items(#{get_in_cal_count})", in_cal_path%></p>
