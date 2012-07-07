@@ -1,38 +1,21 @@
-<h1>Listing calibrators</h1>
+<h1>Vendors</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Website</th>
-    <th>Contact Name</th>
-    <th>Contact Email</th>
-    <th>Address line 1</th>
-    <th>Address line 2</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Zip</th>
-    <th>Note</th>
-  </tr>
+<div class="digg_pagination">
+    <div clas="page_info">
+      <%= page_entries_info @calibrators %>
+    </div>
+    <%= will_paginate @calibrators, :container => false %>
+</div>
 
-<% @calibrators.each do |calibrator| %>
-  <tr>
-    <td><%=link_to h(calibrator.a_name), calibrator %></td>
-    <td><%=h calibrator.website %></td>
-    <td><%=h calibrator.contact_name %></td>
-    <td><%=h calibrator.contact_email %></td>
-    <td><%=h calibrator.address_line_1 %></td>
-    <td><%=h calibrator.address_line_2 %></td>
-    <td><%=h calibrator.city %></td>
-    <td><%=h calibrator.state %></td>
-    <td><%=h calibrator.zip %></td>
-    <td><%=h calibrator.note %></td>
-    <td><%= link_to 'Show', calibrator %></td>
-    <td><%= link_to 'Edit', edit_calibrator_path(calibrator) %></td>
-    <td><%= link_to 'Destroy', calibrator, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<%= render :partial => 'calibrators', :collection => @calibrators %>
+
+<div class="digg_pagination">
+    <div clas="page_info">
+      <%= page_entries_info @calibrators %>
+    </div>
+    <%= will_paginate @calibrators, :container => false %>
+</div>
 
 <br />
 
-<%= link_to 'New calibrator', new_calibrator_path %>
+<%= link_to 'New vendor', new_calibrator_path %>

@@ -9,7 +9,7 @@ class CalibratorsController < ApplicationController
   # GET /calibrators
   # GET /calibrators.xml
   def index
-    @calibrators = Calibrator.all_by_name
+    @calibrators = Calibrator.all_by_name.paginate :page => params[:page], :per_page => 10
 
     respond_to do |format|
       format.html # index.html.erb
