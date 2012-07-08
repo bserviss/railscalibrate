@@ -4,7 +4,6 @@
   <title>Calibration</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
-  <%= include_fancy_box %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -15,7 +14,7 @@
           <li><%=link_to 'Summary Page', items_path%></li>
           <li><%= link_to "Due Cal(#{get_rough_due_cal_count})", items_path( :anchor => "DueCal")%></li>
           <li><%= link_to "In Cal(#{get_in_cal_count})", in_cal_path %></li>
-          <li><%= link_to_box "Inactive(#{get_inactive_count})", inactive_path %></li>
+          <li><%= link_to "Inactive(#{get_inactive_count})", inactive_path %></li>
           <li><%= link_to "Due in thirty days", due_in_thirty_path %></li>
           <li><%= link_to "Due in 60 days", due_in_sixty_path %></li>
           <li><%= link_to "All Records(#{get_item_count})", all_items_path %></li>
