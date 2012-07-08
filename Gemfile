@@ -1,15 +1,27 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0'
+gem 'rails', '3.2.6'
 
+group :assets do
+  gem 'sass-rails',   '3.2.3'
+  gem 'coffee-rails', '3.2.2'
+  gem 'uglifier', '1.2.3'
+end
+
+#gem 'sass-rails', '~> 3.2.3'
+#gem 'coffee-rails', '~> 3.2.1'
+#gem 'uglifier', '>= 1.0.3'
+
+#rails = 3.2.0
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
-gem 'paperclip', :require => 'paperclip'
-gem 'will_paginate', '3.0.pre2', :require => 'will_paginate'
+gem 'paperclip', '3.0.4', :require => 'paperclip'
+gem 'will_paginate', '~> 3.0.0'
 gem 'jquery-rails'
 gem 'fancybox-rails'
+gem 'prototype-rails'
 
 group :test do
 	gem 'simplecov', '>= 0.3.5', :require => false

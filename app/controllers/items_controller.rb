@@ -1,3 +1,4 @@
+require 'will_paginate/array'
 class ItemsController < ApplicationController
   before_filter :get_item
 
