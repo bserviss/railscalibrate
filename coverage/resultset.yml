@@ -894,7 +894,7 @@ Unit Tests:
     - 0
     - 0
     - 0
-    - 0
+    - 
     - 0
     - 
     - 0
@@ -1370,6 +1370,10 @@ Unit Tests:
     - 
     - 
     - 
+    - 1
+    - 0
+    - 
+    - 
     C:/Users/Julie/Documents/rails/calibration/app/models/calibrator.rb: 
     - 1
     - 
@@ -1469,7 +1473,7 @@ Unit Tests:
     - 
     - 
     - 
-  :created_at: 2011-09-20 22:33:11.435200 -04:00
+  :created_at: 2012-07-08 13:23:32.705800 -04:00
 Functional Tests: 
   :original_result: 
     C:/Users/Julie/Documents/rails/calibration/vendor/plugins/fancy_box_rails_plugin/lib/fancy_box.rb: 
@@ -1502,14 +1506,14 @@ Functional Tests:
     - 
     - 
     - 1
-    - 163
-    - 163
-    - 163
-    - 163
-    - 163
-    - 163
-    - 163
-    - 163
+    - 43
+    - 43
+    - 43
+    - 43
+    - 43
+    - 43
+    - 43
+    - 43
     - 
     - 
     - 
@@ -1613,14 +1617,14 @@ Functional Tests:
     - 
     - 1
     - 1
-    - 163
+    - 43
     - 
     - 
     - 
     - 1
-    - 163
-    - 163
-    - 163
+    - 43
+    - 43
+    - 43
     - 
     - 
     - 
@@ -2082,7 +2086,7 @@ Functional Tests:
     - 
     - 
     - 1
-    - 40
+    - 41
     - 
     - 
     - 1
@@ -2365,7 +2369,7 @@ Functional Tests:
     - 1
     - 1
     - 1
-    - 1
+    - 
     - 1
     - 
     - 1
@@ -2827,8 +2831,8 @@ Functional Tests:
     - 1
     - 
     - 1
+    - 2
     - 1
-    - 1
     - 
     - 
     - 
@@ -2839,6 +2843,10 @@ Functional Tests:
     - 0
     - 0
     - 
+    - 
+    - 
+    - 1
+    - 0
     - 
     - 
     C:/Users/Julie/Documents/rails/calibration/app/models/calibrator.rb: 
@@ -2940,4 +2948,4 @@ Functional Tests:
     - 
     - 
     - 
-  :created_at: 2011-09-20 22:56:14.473200 -04:00
+  :created_at: 2012-07-08 13:24:35.663800 -04:00

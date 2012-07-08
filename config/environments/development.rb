@@ -23,6 +23,15 @@ Calibration::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
   
+  # Raise exception on mass assignment protection for Active Record models
+  # prep for 3.2 upgrade
+  #config.active_record.mass_assignment_sanitizer = :strict
+ 
+  # Log the query plan for queries taking more than this (works
+  # with SQLite, MySQL, and PostgreSQL)
+  #prep for 3.2 upgrade
+  #config.active_record.auto_explain_threshold_in_seconds = 0.5
+  
   #Paperclip.options[:command_path] = "C://bin//ImageMagick-6.6.3-Q16/"
 end
 
