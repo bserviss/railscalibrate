@@ -1,10 +1,10 @@
 <div>
 <div style="float:left; width:400px">
   <p>
-  <% if items.picture.url(:medium) =~ /missing.png/ %>
-    <%= link_to image_tag( items.picture.url,:size => '300x300', :border=> 0), items.picture.url, :target => '_blank' %>
+  <% if items.picture.url(:small) =~ /missing.png/ %>
+    <%= link_to image_tag( items.picture.url(:small)), items.picture.url, :target => '_blank' %>
   <% else %>
-    <%= link_to image_tag( items.picture.url(:medium), :border=> 0), items.picture.url, :target => '_blank' %>
+    <%= link_to image_tag( items.picture.url(:medium), :border=> 0), items.picture.url %>
   <% end %>
   </p>
 </div>

@@ -32,6 +32,6 @@ Calibration::Application.configure do
   #prep for 3.2 upgrade
   #config.active_record.auto_explain_threshold_in_seconds = 0.5
   
-  #Paperclip.options[:command_path] = "C://bin//ImageMagick-6.6.3-Q16/"
+  Paperclip.options[:command_path] = "C://bin//ImageMagick-6.6.3-Q16/"
 end
 
