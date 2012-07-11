@@ -25,7 +25,6 @@ class Item < ActiveRecord::Base
   validates_presence_of :org_sn
   validates_presence_of :cal_cycle_days
 
-  #change to an arbritary range of days
   scope :inactive, :conditions => ["inactive = ?", 1], :order => :last_calibrated_on
   scope :in_cal, :conditions => ["inCal = ? and inactive = ?", true, 0],
         :order => :last_calibrated_on
@@ -38,9 +37,17 @@ class Item < ActiveRecord::Base
   end
 
   def self.due_in( number_of_days )
-    not_in_cal.all( :conditions => ["(julianday('now') - julianday(last_calibrated_on)) - ( cal_cycle_days - #{number_of_days + 1} )  < 0 and " +
-            "(julianday('now') - julianday(last_calibrated_on)) - ( cal_cycle_days - #{number_of_days } ) >= 0"],
-          :order => :last_calibrated_on )
+    target_date = Date.now 
+    not_in_cal.all( 
+      :conditions => ["last_calibrated_on between ? and ?", 
+      Date.today - cal_cycle_days.days,
+      Date.today - ( cal_cycle_days - number_of_days ).days 
+      ])
+      
+    #not_in_cal.all( :conditions => ["(julianday('now') - julianday(last_calibrated_on)) - ( cal_cycle_days - #{number_of_days + 1} )  < 0 and " +
+    #        "(julianday('now') - julianday(last_calibrated_on)) - ( cal_cycle_days - #{number_of_days } ) >= 0"],
+    #      :order => :last_calibrated_on )
   end
   
+  #Item.find( :all, :conditions => ["last_calibrated_on between ? and ?", Date.today - 3.months, Date.today])
 end
