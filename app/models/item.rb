@@ -37,13 +37,12 @@ class Item < ActiveRecord::Base
   end
 
   def self.due_in( number_of_days )
-    target_date = Date.now 
     not_in_cal.all( 
       :conditions => ["last_calibrated_on between ? and ?", 
       Date.today - cal_cycle_days.days,
       Date.today - ( cal_cycle_days - number_of_days ).days 
       ])
-      
+    #might need to do sql datediffs?  
     #not_in_cal.all( :conditions => ["(julianday('now') - julianday(last_calibrated_on)) - ( cal_cycle_days - #{number_of_days + 1} )  < 0 and " +
     #        "(julianday('now') - julianday(last_calibrated_on)) - ( cal_cycle_days - #{number_of_days } ) >= 0"],
     #      :order => :last_calibrated_on )

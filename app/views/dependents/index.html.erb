@@ -14,7 +14,7 @@
     <td><%=h dependent.note %></td>
     <td><%= link_to 'Show', item_dependent_path( @item.id, dependent.id ) %></td>
     <td><%= link_to 'Edit', edit_item_dependent_path(@item.id, dependent.id ) %></td>
-    <td><%= link_to 'Destroy', item_dependent_path(@item.id, dependent.id ), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', item_dependent_path(@item.id, dependent.id ), :data=> { :confirm => 'Are you sure?'}, :method => :delete %></td>
   </tr>
 <% end %>
 </table>

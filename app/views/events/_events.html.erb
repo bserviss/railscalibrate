@@ -28,7 +28,7 @@
     <% end %>
     <td><%= link_to 'Show', item_event_path(@item.id, event.id) %></td>
     <td><%= link_to 'Edit', edit_item_event_path(@item.id, event.id) %></td>
-    <td><%= link_to 'Destroy', item_event_path(@item.id, event.id), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', item_event_path(@item.id, event.id), :data=> { :confirm => 'Are you sure?'}, :method => :delete %></td>
   </tr>
 <% end %>
 </table>

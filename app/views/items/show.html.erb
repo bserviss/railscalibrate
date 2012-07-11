@@ -10,7 +10,7 @@
 <%= link_to 'Dependents', item_dependents_path( @item.id ) %> |
 <%= link_to 'External Docs', item_external_docs_path( @item.id )%> |
 <%= link_to 'Back to Item list', items_path %> |
-<%= link_to 'Destroy', @item, :confirm => 'Are you sure?', :method => :delete %>
+<%= link_to 'Destroy', @item, :data => {:confirm => 'Are you sure?'}, :method => :delete %>
 
 <p>
   <b>Item Picture</b><br />
@@ -171,5 +171,5 @@
 <%= link_to 'Issues', item_issues_path( @item ) %> |
 <%= link_to 'Dependents', item_dependents_path( @item.id ) %> |
 <%= link_to 'Back to Item list', items_path %> |
-<%= link_to 'Destroy', @item, :confirm => 'Are you sure?', :method => :delete %>
+<%= link_to 'Destroy', @item, :data => {:confirm => 'Are you sure?'}, :method => :delete %>
 
