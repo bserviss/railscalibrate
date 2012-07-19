@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Calibration</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
-  <div id="navbar">
+<% content_for :main_navigation do %>
     <ul>
       <li>Calibration
         <ul>
@@ -54,11 +45,4 @@
 		</ul>
       </li>
 	</ul>
-
-  </div>
-<div id="content">
-  <p style="color: green"><%= flash[:notice] %></p>
-  <p style="color: red"><%= flash[:error] %></p>
-  <%= yield %>
-</div>
-</body></html>
+<% end %>
