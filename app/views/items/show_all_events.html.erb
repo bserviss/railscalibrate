@@ -6,6 +6,7 @@
 	<% @events.each do |event | %>
 	<% i += 1%> 
 		<td>
+			
 				<p>Desc:<%=link_to h(get_item_description_from_id( event.item_id ) ) , item_path( event.item_id ) %></p>
 				<p>Date:<%=h event.cal_date.strftime('%m/%d/%Y') %></p>
 				<p>Calibrator: 
