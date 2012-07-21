@@ -201,7 +201,7 @@ class ItemsController < ApplicationController
   end
 
   def show_all_events
-    @events = Event.all( :order => 'item_id, cal_date')
+    @events = Event.all( :order => 'cal_date DESC').paginate :page => params[:page], :per_page => params[:per_page], :per_page => 20
 
     respond_to do |format|
       format.html { render 'show_all_events' }

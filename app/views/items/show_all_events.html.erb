@@ -1,5 +1,27 @@
-<h3>Showing all Events</h3>
+<h3>Showing all Events (Latest events first)</h3>
 
-<%= render :partial => "events/events", :locals => { :events => @events } %>
+<table border="1">
+	<tr>
+	<% i = 0%>
+	<% @events.each do |event | %>
+	<% i += 1%> 
+		<td>
+				<p>Desc:<%=link_to h(get_item_description_from_id( event.item_id ) ) , item_path( event.item_id ) %></p>
+				<p>Date:<%=h event.cal_date.strftime('%m/%d/%Y') %></p>
+				<p>Calibrator: 
+					<% if !event.calibrator_id.nil? %>
+                      <%= link_to h(get_calibrator_name( event.calibrator_id )), calibrator_path( event.calibrator_id )%> 
+                    <% else %>
+                      No Calibrator
+    				<% end %>
+    			</p>
+		</td>
+		<% if i > 4 %>
+			</tr>
+			<tr>
+			<% i = 0 %>
+		<% end %>
+	<% end %>
+</table>
 
 
