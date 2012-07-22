@@ -14,9 +14,9 @@
 	<% @events.each do |event | %>
 	<% i += 1%> 
 		<td>
-				<p>Desc:<%=link_to h(get_item_description_from_id( event.item_id ) ) , item_path( event.item_id ) %></p>
-				<p>Date:<%=h event.cal_date.strftime('%m/%d/%Y') %></p>
-				<p>Calibrator: 
+				<p><em>Desc:</em><%=link_to h(get_item_description_from_id( event.item_id ) ) , item_path( event.item_id ) %></p>
+				<p><em>Date:</em><%=h event.cal_date.strftime('%m/%d/%Y') %></p>
+				<p><emCalibrator: 
 					<% if !event.calibrator_id.nil? %>
                       <%= link_to h(get_calibrator_name( event.calibrator_id )), calibrator_path( event.calibrator_id )%> 
                     <% else %>

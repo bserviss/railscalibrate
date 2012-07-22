@@ -49,13 +49,15 @@
 
 ### Items
 
-The Items table is the centerof the app. It containes the basic information about an item, it's model number, serial number, etc.
+The Items table is the center of the app. It contains the basic information about an item, it's model number, serial number, etc.
 
 It also is related to events, vendors, depenents, issues, and documents.
 
+Items, currently, does too much. There are several features that need to be refactored.
+
 ### Events
 
-An event occurs when the item is calibrated. It stores the vendor as well as a copy of the certification.
+An event is a calibration event, either going to or returning from. It stores the vendor as well as a copy of the certification.
 
 ### Dependents 
 
