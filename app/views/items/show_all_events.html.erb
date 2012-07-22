@@ -1,12 +1,19 @@
 <h3>Showing all Events (Latest events first)</h3>
 
+<div class="digg_pagination">
+    <div clas="page_info">
+      <%= page_entries_info @events %>
+    </div>
+    <%= will_paginate @events, :container => false %>
+</div>
+
+
 <table border="1">
 	<tr>
 	<% i = 0%>
 	<% @events.each do |event | %>
 	<% i += 1%> 
 		<td>
-			
 				<p>Desc:<%=link_to h(get_item_description_from_id( event.item_id ) ) , item_path( event.item_id ) %></p>
 				<p>Date:<%=h event.cal_date.strftime('%m/%d/%Y') %></p>
 				<p>Calibrator: 
@@ -25,4 +32,10 @@
 	<% end %>
 </table>
 
+<div class="digg_pagination">
+    <div clas="page_info">
+      <%= page_entries_info @events %>
+    </div>
+    <%= will_paginate @events, :container => false %>
+</div>
 
