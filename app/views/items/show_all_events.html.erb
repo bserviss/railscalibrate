@@ -8,11 +8,9 @@
 </div>
 
 
-<table border="1">
+<table border="1" bordercolor="gray">
 	<tr>
-	<% i = 0%>
-	<% @events.each do |event | %>
-	<% i += 1%> 
+	<% @events.each_with_index do |event, index | %>
 		<td>
 				<p><strong>Desc: </strong><%=link_to h(get_item_description_from_id( event.item_id ) ) , item_path( event.item_id ) %></p>
 				<p><strong>Date: </strong><%=h event.cal_date.strftime('%m/%d/%Y') %></p>
@@ -23,11 +21,13 @@
                       No Calibrator
     				<% end %>
     			</p>
+    			<p>
+    				<strong><%= link_to "Go to Event", h(item_event_path(event.item_id, event.id)) %></strong>
+    			</p>
 		</td>
-		<% if i > 4 %>
+		<% if (index + 1) % 4 == 0 %>
 			</tr>
 			<tr>
-			<% i = 0 %>
 		<% end %>
 	<% end %>
 </table>
