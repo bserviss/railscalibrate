@@ -12,51 +12,31 @@
 <%= link_to 'Back to Item list', items_path %> |
 <%= link_to 'Destroy', @item, :data => {:confirm => 'Are you sure?'}, :method => :delete %>
 
-<p>
-  	<% if !items.picture.nil? %>
-  		<% if items.picture.url(:small) =~ /missing.png/ %>
-	    	<%= link_to image_tag( items.picture.url(:small)), items.picture.url, :target => '_blank' %>
+<ul>
+	<li>
+  	<% if !@item.picture.nil? %>
+  		<% if @item.picture.url(:small) =~ /missing.png/ %>
+	    	<%= link_to image_tag( @item.picture.url(:small)), @item.picture.url, :target => '_blank' %>
   		<% else %>
-    		<%= link_to image_tag( items.picture.url(:medium), :border=> 0), items.picture.url %>
+    		<%= link_to image_tag( @item.picture.url(:medium), :border=> 0), @item.picture.url %>
   		<% end %>
   	<% else %>
   		No Picture (add edit link)
   	<% end %>
-</p>
+	</li>
+	<li>Picture updated at:</li>
+	<ul>
+		<li><%=h @item.picture_updated_at %></li>
+	</ul>
 
-<p>
-  <b>Picture updated at:</b>
-  <%=h @item.picture_updated_at %>
-</p>
-
-<table border="1" bordercolor="gray">
-  <tr>
-    <td><b>Description</b></td>
-    <td><%=h @item.description %></td>
-    <td><b>Location:</b></td>
-    <td><%=h @item.location %></td>
-  </tr>
-  <tr>
-    <td><b>Mfgr:</b></td>
-    <td><%=h @item.mfgr %></td>
-    <td><b>Pn:</b></td>
-    <td><%=h @item.pn %></td>
-  </tr>
-  <tr>
-    <td><b>Org sn:</b></td>
-    <td><%=h @item.org_sn %></td>
-    <td><b>Mfgr sn:</b></td>
-    <td><%=h @item.mfgr_sn %></td>
-  </tr>
-  <tr>
-  	<td colspan="0">
-  	  The Cal cycle is <b><%= "#{@item.cal_cycle_days}"%></b> days,
+	<li><strong>Description:</strong> <%=h @item.description %></li>
+	<li><strong>Location:</strong>> <%=h @item.description %></li>
+	<li><strong>Mfgr:</strong> <%=h @item.mfgr %></li>
+	<li><strong>PN: </strong> <%=h @item.pn %></li>
+	<li><strong>Org SN:</strong> <%=h @item.org_sn %> <strong>Mfgr SN:</strong> <%=h @item.mfgr_sn %></li>
+	<li>The Cal cycle is <b><%= "#{@item.cal_cycle_days}"%></b> days,
   	  it was last calibrated on <b><%="#{@item.last_calibrated_on}"%></b> 
-  	  and is due cal on <b><%= "#{@item.last_calibrated_on + @item.cal_cycle_days.days}"%></b>
-  	</td>
-  </tr>
-  <tr>
-    <td colspan="0">
+  	  and is due cal on <b><%= "#{@item.last_calibrated_on + @item.cal_cycle_days.days}"%>.</b>
       <%= "#{@item.description}"%> is 
       <% if @item.inactive == 0 %>
         <b>Active </b>
@@ -69,100 +49,73 @@
       <% else  %>
         <b> Not in cal</b>
       <% end %>
-    </td>
-  </tr>
-  <tr>
-    <td><b>Latest Event </b></td>
-  </tr>
-  <tr>
-    <% if not @event.nil? %>
-      <td><%=h @event.cal_date.strftime('%m/%d/%Y') %></td>
-      <td><%= link_to h(get_calibrator_name( @event.calibrator_id )), calibrator_path( @event.calibrator_id )%></td>
-      <% if @event.certs.url =~ /missing.png/ %>
-        <td><%= link_to 'Missing Cert', edit_item_event_path(@item.id, @event.id) %></td>
-      <% else %>
-        <td><%= link_to image_tag( @event.certs.url(:thumb), :border => 0), @event.certs.url, :target => '_blank' %></td>
-      <% end %>
-    <% else %>
-    	<td></td>
-      	<td>No Event</td>
-    <% end %>
-  </tr>
-  <tr>
-    <td><b><%= link_to 'Issues', item_issues_path( @item ) %></b></td>
-  <% if @issues.count > 0 then %>
-	  </tr>
-    	 <% @issues.each do |issue| %>
-  	  <tr>
-  	  	<td></td>
-      	<td><%= h issue.description %></td>
-      	<td><%= h issue.created_at.strftime('%m/%d/%Y')%></td>
-  	  </tr>
-        <% end %>
-  <% else %>
-  	<tr>
-  		<td></td>
-  		<td><%= "No items"%></td>
-  	</tr>
-  <% end %>
-  <tr>
-    <td><b><%= link_to 'Dependents', item_dependents_path( @item.id ) %></b></td>
-  </tr>
-  <tr>
-  	<td></td>
-    <td>Part Number</td>
-    <td>Model</td>
-    <td>Note</td>
-  </tr>
-  <% if @dependents.count > 0 then %>
-  	<% @dependents.each do |dependent| %>
-    	<tr>
-    		<td></td>
-      		<td><%= h dependent.pn %></td>
-      		<td><%= h dependent.model  %></td>
-      		<td><%= h dependent.note %> </td>
-    	</tr>
-  	<% end %>
-  <% else %>
-  	<tr>
-  		<td></td>
-  		<td><%= "No Dependents" %> </td>
-  	</tr>
-  <% end %>
-  <tr>
-    <td><b><%= link_to 'Documents', item_external_docs_path( @item.id )%></b></td>
-  </tr>
-  <tr>
-  	<td></td>
-    <td>Description</td>
-    <td>Document</td>
-  </tr>
-  <% if @documents.count > 0 then %>
-  	<% @documents.each do |doc| %>
-    	<tr>
-    		<td></td>
-      		<td><%= h doc.description %></td>
-      		<% if doc.doc.url =~ /missing.png/ %>
-        		<td><%= link_to 'Missing Cert', edit_item_external_doc_path(@item.id, doc.id) %></td>
-      		<% else %>
-        		<td><%= link_to image_tag( doc.doc.url(:thumb), :border => 0), doc.doc.url, :target => '_blank' %></td>
-      		<% end %>
-    	</tr>
-  	<% end %>
-  <% else %>
-    <tr>
-    	<td></td>
-    	<td><%= "No Documents" %></td>
-    </tr>
-  <% end %>
-  <tr>
-    <td><b>Cost</b></td>
-  </tr>
-  <tr>
-    <td>Total Cost is </td>
-    <td><%= "$#{@cost}" %></td>
-  </tr>
-  </table>
+  	</li>
+  	<li><strong><%= link_to 'Latest calibration event:', item_events_path( @item ) %></strong>
+  		<ul>
+  			<li>
+  				<% if not @event.nil? %>
+	      		<%=h @event.cal_date.strftime('%m/%d/%Y') %>
+	        </li>
+	        <li>
+	        	<strong>Vendor:</strong> <%= link_to h(get_calibrator_name( @event.calibrator_id )), calibrator_path( @event.calibrator_id )%>
+	        </li>
+	        <li>
+	        	<strong>Certs:</strong>
+          		<% if @event.certs.url =~ /missing.png/ %>
+            		<%= link_to 'Missing Cert', edit_item_event_path(@item.id, @event.id) %>
+		        <% else %>
+            		<%= link_to image_tag( @event.certs.url(:thumb), :border => 0), @event.certs.url, :target => '_blank' %>
+          		<% end %>
+        	<% else %>
+    	      No Event
+    		<% end %>
+    		</li>
+		</ul>
+  	</li>
+  	<li><strong><%= link_to 'Issues', item_issues_path( @item ) %></strong></li>
+  		<ul>
+			<% if @issues.count > 0 then %>
+				<% @issues.each do |issue| %>
+					<li><strong>Description: </strong> <%= h issue.description %> <strong>Date:</strong><%= h issue.created_at.strftime('%m/%d/%Y')%></li>
+		        <% end %>
+			<% else %>
+				<li><%= "No issues"%></li>
+			<% end %>
+  		</ul>
+  	<li><strong><%= link_to 'Dependents', item_dependents_path( @item.id ) %></strong></li>
+  		<ul>
+			<% if @dependents.count > 0 then %>
+  				<% @dependents.each do |dependent| %>
+					<ul>
+			      		<li><strong>PN: </strong><%= h dependent.pn %></li>
+      					<li><strong>Model: </strong><%= h dependent.model  %></li>
+      					<li><strong>Note: </strong><%= h dependent.note %></li>
+      				</ul>
+			  	<% end %>
+			<% else %>
+				<li><%= "No Dependents" %> </li>
+  			<% end %>
+  		</ul>
+	<li><strong><%= link_to 'Documents', item_external_docs_path( @item.id )%></strong></li>
+		<ul>
+			<% if @documents.count > 0 then %>
+				<% @documents.each do |doc| %>
+					<li><strong>Description:</strong><%= h doc.description %></li>
+      				<li>
+	      				<% if doc.doc.url =~ /missing.png/ %>
+    	    				<%= link_to 'Missing Cert', edit_item_external_doc_path(@item.id, doc.id) %>
+						<% else %>
+							<li><%= link_to image_tag( doc.doc.url(:thumb), :border => 0), doc.doc.url, :target => '_blank' %></li>
+						<% end %>
+					</li>
+				<% end %>
+			<% else %>
+				<li><%= "No Documents" %></li>
+			<% end %>
+		</ul>
+	<li><strong>Total Cost is: </strong><%= "$#{@cost}" %></li>
+	
+</ul>
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <% if @item.inCal %>
