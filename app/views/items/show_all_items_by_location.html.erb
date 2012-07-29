@@ -1,3 +1,18 @@
 <h2>Showing all Items in location order</h2>
 
-<%= render :partial => "group", :locals => { :aGroup => @display_group, :to_print => '' } %>
+<div class="digg_pagination">
+    <div clas="page_info">
+      <%= page_entries_info @items %>
+    </div>
+    <%= will_paginate @items, :container => false %>
+</div>
+
+
+<%= render :partial => 'items', :collection => @items %>
+
+<div class="digg_pagination">
+    <div clas="page_info">
+      <%= page_entries_info @items %>
+    </div>
+    <%= will_paginate @items, :container => false %>
+</div>

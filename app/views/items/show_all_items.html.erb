@@ -7,7 +7,7 @@
     <%= will_paginate @display_group, :container => false %>
 </div>
 
-<%= render :partial => "group", :locals => { :aGroup => @display_group, :to_print => '' } %>
+<%= render :partial => 'items', :collection => @items %>
 
 <div class="digg_pagination">
     <div clas="page_info">

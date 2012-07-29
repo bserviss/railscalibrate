@@ -1,11 +1,15 @@
 <div>
-<div style="float:left; width:400px">
+<div style="float:left; width:300px">
   <p>
-  <% if items.picture.url(:small) =~ /missing.png/ %>
-    <%= link_to image_tag( items.picture.url(:small)), items.picture.url, :target => '_blank' %>
-  <% else %>
-    <%= link_to image_tag( items.picture.url(:medium), :border=> 0), items.picture.url %>
-  <% end %>
+  	<% if !items.picture.nil? %>
+  		<% if items.picture.url(:small) =~ /missing.png/ %>
+	    	<%= link_to image_tag( items.picture.url(:small)), items.picture.url, :target => '_blank' %>
+  		<% else %>
+    		<%= link_to image_tag( items.picture.url(:medium), :border=> 0), items.picture.url %>
+  		<% end %>
+  	<% else %>
+  		No Picture (add edit link)
+  	<% end %>
   </p>
 </div>
 <div style="float:left; width:200px">
@@ -13,6 +17,15 @@
   <li><%=link_to h(items.description), item_path( items.id ) %></li>
   <li>The Serial Number is <%=h items.org_sn %>
   and it was due cal on <%="#{ h (items.last_calibrated_on + items.cal_cycle_days.days).strftime('%m/%d/%Y')}" %></li>
+  <% if !items.location.nil? and items.location.length > 1%>
+  	<% if items.location.length > 1 %>
+  		<li>It is located in <%= h items.location %></li>
+  	<% else %>
+    	<li>No location assigned</li>
+    <% end %>
+  <% else %>
+    <li><%= link_to "Assign a location", edit_item_path( items.id ) %></li>
+  <% end %>
   <% if items.inCal %>
     <li><%= link_to 'Return from Cal', return_from_cal_path( :item_id => items.id ) %> </li>
   <% else %>

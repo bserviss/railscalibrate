@@ -18,7 +18,7 @@
 					<% if !event.calibrator_id.nil? %>
                       <%= link_to h(get_calibrator_name( event.calibrator_id )), calibrator_path( event.calibrator_id )%> 
                     <% else %>
-                      No Calibrator
+                      <%= link_to 'None, Create one?', edit_item_event_path(event.item.id, event.id) %>
     				<% end %>
     			</p>
     			<p>

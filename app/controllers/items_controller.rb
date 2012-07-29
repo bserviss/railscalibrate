@@ -161,7 +161,7 @@ class ItemsController < ApplicationController
   end
 
   def show_all_items
-    @display_group = Item.all( :order => :description ).paginate :page => params[:page], :per_page => params[:per_page], :per_page => 15
+    @items = Item.all( :order => :description ).paginate :page => params[:page], :per_page => params[:per_page], :per_page => 15
   end
 
   def show_sixty_days
@@ -219,6 +219,6 @@ class ItemsController < ApplicationController
   end
   
   def show_all_items_by_location
-    @display_group = Item.all( :order => :location )
+    @items = Item.all( :order => :location ).paginate :page => params[:page], :per_page => params[:per_page], :per_page => 15
   end
 end
