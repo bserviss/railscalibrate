@@ -15,14 +15,9 @@
 <div style="float:left; width:200px">
   <ul>
   <li><%=link_to h(items.description), item_path( items.id ) %></li>
-  <li>The Serial Number is <%=h items.org_sn %>
-  and it was due cal on <%="#{ h (items.last_calibrated_on + items.cal_cycle_days.days).strftime('%m/%d/%Y')}" %></li>
+  <li><%= show_sn_and_last_cal( items )%></li>
   <% if !items.location.nil? and items.location.length > 1%>
-  	<% if items.location.length > 1 %>
-  		<li>It is located in <%= h items.location %></li>
-  	<% else %>
-    	<li>No location assigned</li>
-    <% end %>
+    <li>It is located in <%= h items.location %></li>
   <% else %>
     <li><%= link_to "Assign a location", edit_item_path( items.id ) %></li>
   <% end %>
