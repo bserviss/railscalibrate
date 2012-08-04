@@ -28,5 +28,10 @@ module ApplicationHelper
   def get_item_org_sn_from_id( an_id )
     Item.find(an_id).org_sn
   end
+  
+  def get_image_tag_from_item_id( an_id )
+    my_item = Item.find( an_id )
+    raw( "#{image_tag( my_item.picture.url(:small), :border=> 0)}" )
+  end
 
 end
