@@ -1,0 +1,35 @@
+<h3>Showing all Dependents (in item order)</h3>
+
+<div class="digg_pagination">
+    <div clas="page_info">
+      <%= page_entries_info @dependents %>
+    </div>
+    <%= will_paginate @dependents, :container => false %>
+</div>
+
+<p/>
+
+<table border="1" bordercolor="gray">
+	<tr>
+	<% @dependents.each_with_index do |dependent, index | %>
+		<td>
+			<p><%=get_image_tag_from_item_id(dependent.item_id) %></p>
+			
+			<p><strong>Dep. PN: </strong><%= h dependent.pn %></p>
+			<p><strong>Model: </strong><%= h dependent.model %></p>
+			<p><strong>Note: </strong><%= h dependent.note %> </p>
+		<% if ( index + 1) % 4 == 0  %>
+			</tr>
+			<tr>
+		<% end %>
+	<% end %>
+</table>
+
+<p/>
+
+<div class="digg_pagination">
+    <div clas="page_info">
+      <%= page_entries_info @dependents %>
+    </div>
+    <%= will_paginate @dependents, :container => false %>
+</div>

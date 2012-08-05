@@ -160,6 +160,10 @@ class ItemsController < ApplicationController
     @test_thirty_days = @display_group.size
   end
 
+  def show_all_dependents
+    @dependents = Dependent.all( :order => 'item_id').paginate :page => params[:page], :per_page => params[:per_page], :per_page => 15
+  end
+
   def show_all_items
     @items = Item.all( :order => :description ).paginate :page => params[:page], :per_page => params[:per_page], :per_page => 15
   end

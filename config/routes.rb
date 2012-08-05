@@ -27,7 +27,7 @@ Calibration::Application.routes.draw do
   match 'show_all_records' => "items#show_all_items", :as => "all_items"
   match 'show_all_issues' => "items#show_all_issues", :as => "all_issues"
   match 'show_all_events' => "items#show_all_events", :as => "all_events"
-  match 'show_all_dependents' => "items#dependent_remote", :as => "all_dependents"
+  match 'show_all_dependents' => "items#show_all_dependents", :as => "all_dependents"
   match 'show_all_documents' => "items#show_all_documents", :as => "all_documents"
   match 'search' => "items#search_remote", :as => "search"
   match 'return_from_cal/:item_id' => "events#return_from_cal", :as => "return_from_cal", :via => "get"
