@@ -10,19 +10,30 @@
 <p/>
 
 <table border="1" bordercolor="gray">
+
 	<tr>
+
 	<% @dependents.each_with_index do |dependent, index | %>
+
 		<td>
+
 			<p><%=get_image_tag_from_item_id(dependent.item_id) %></p>
-			
-			<p><strong>Dep. PN: </strong><%= h dependent.pn %></p>
+
+			<p><strong><%= link_to 'Dep. PN:', item_dependents_path( dependent.item_id )%> </strong></p>
+
 			<p><strong>Model: </strong><%= h dependent.model %></p>
+
 			<p><strong>Note: </strong><%= h dependent.note %> </p>
+
 		<% if ( index + 1) % 4 == 0  %>
+
 			</tr>
 			<tr>
+
 		<% end %>
+
 	<% end %>
+
 </table>
 
 <p/>
