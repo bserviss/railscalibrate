@@ -163,6 +163,10 @@ class ItemsController < ApplicationController
   def show_all_items
     @items = Item.all( :order => :description ).paginate :page => params[:page], :per_page => params[:per_page], :per_page => 15
   end
+  
+  def show_all_issues
+    @issues = Issue.all( :order => 'created_at DESC').paginate :page => params[:page], :per_page => params[:per_page], :per_page => 15
+  end
 
   def show_sixty_days
     @display_group = Item.due_in( 60 )

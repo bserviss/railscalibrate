@@ -25,7 +25,7 @@ Calibration::Application.routes.draw do
   match 'print_thirty_day_report' => "items#printable_thirty_days", :as => "print_thirty"
   match 'show_due_in_sixty_days' => "items#show_sixty_days", :as => "due_in_sixty"
   match 'show_all_records' => "items#show_all_items", :as => "all_items"
-  match 'show_all_issues' => "items#issue_remote", :as => "all_issues"
+  match 'show_all_issues' => "items#show_all_issues", :as => "all_issues"
   match 'show_all_events' => "items#show_all_events", :as => "all_events"
   match 'show_all_dependents' => "items#dependent_remote", :as => "all_dependents"
   match 'show_all_documents' => "items#show_all_documents", :as => "all_documents"

@@ -1,0 +1,42 @@
+<h3>Showing all Issues (Latest issues first)</h3>
+
+<div class="digg_pagination">
+    <div clas="page_info">
+      <%= page_entries_info @issues %>
+    </div>
+    <%= will_paginate @issues, :container => false %>
+</div>
+
+<p/>
+
+<table border="1" bordercolor="gray">
+
+	<tr>
+	
+<% @issues.each_with_index do | issue, index |%>
+
+	<td>
+		<p><%=get_image_tag_from_item_id(issue.item_id) %></p>
+	
+		<p><strong>Item: </strong><%=link_to h(get_item_description_from_id( issue.item_id ) ) , item_path( issue.item_id ) %></p>
+	
+		<p><strong>Issue: </strong><%= link_to (h issue.description), edit_item_issue_path( issue.item.id, issue.id )%></p>
+	
+		<p><strong>Created at: </strong><%= h issue.created_at.strftime('%m/%d/%Y') %></p>
+	
+	</td>
+		<% if (index + 1) % 4 == 0 %>
+			</tr>
+			<tr>
+		<% end %>
+<% end %>
+</table>
+
+<p/>
+
+<div class="digg_pagination">
+    <div clas="page_info">
+      <%= page_entries_info @issues %>
+    </div>
+    <%= will_paginate @issues, :container => false %>
+</div>
