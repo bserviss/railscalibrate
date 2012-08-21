@@ -10,50 +10,14 @@
 <body>
   <div id="navbar">
     <ul>
-      <li>Calibration
-        <ul>
-          <li><%=link_to 'Summary Page', items_path%></li>
-          <li><%= link_to "Due Cal(#{get_rough_due_cal_count})", items_path( :anchor => "DueCal")%></li>
-          <li><%= link_to "In Cal(#{get_in_cal_count})", in_cal_path %></li>
-          <li><%= link_to "Inactive(#{get_inactive_count})", inactive_path %></li>
-          <li><%= link_to "Due in thirty days", due_in_thirty_path %></li>
-          <li><%= link_to "Due in 60 days", due_in_sixty_path %></li>
-          <li><%= link_to "All Records(#{get_item_count})", all_items_path %></li>
-          <li><%= link_to "All by location", all_items_by_location_path%></li>
-          <li><%= link_to "Issues", all_issues_path %></li>
-          <li><%= link_to "Dependents", all_dependents_path %></li>
-          <li><%= link_to "All Events", all_events_path %> </li>
-          <li><%= link_to "All Documents", all_documents_path %></li>
-          <li><%= link_to "Add an item", new_item_path %></li>
-        </ul>
-      </li>
-      <li>Reports
-      	<ul>
-          <li><%= link_to "Due Cal Report", print_due_cal_path %></li>
-          <li><%= link_to "In Cal Report", print_in_cal_path %></li>
-          <li><%= link_to "Thirty days report", print_thirty_path %></li>
-       	</ul>
-      </li>
+      <%= render "layouts/calibration"%>
+      <%= render "layouts/reports"%>
     </ul>
     <ul>
-      <li>Vendors
-        <ul>
-          <li><%= link_to "List Vendors", calibrators_path %></li>
-          <li><%= link_to "New Vendor", new_calibrator_path %></li>
-        </ul>
-      </li>
+      <%= render "layouts/vendors"%>
     </ul>
 	<ul>
-	  <li>Search
-	    <ul><%= form_for @item, :url => { :controller => "items", :action => "search_remote", :token => 'search_remote', :remote => true } do %>
-		  <li>Description:</li>
-		  <li><%= text_field_tag "description",'', :size => 5 %></li>
-		  <li>Serial Number:</li>
-		  <li><%= text_field_tag "sn", '',:size => 5 %></li>
-		  <li><%= submit_tag 'find' %></li>
-		  <% end %>
-		</ul>
-      </li>
+	  <%= render "layouts/search"%>
 	</ul>
 
   </div>
