@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: items
+#
+#  id                   :integer          not null, primary key
+#  description          :string(255)
+#  mfgr                 :string(255)
+#  pn                   :string(255)
+#  org_sn               :string(255)
+#  mfgr_sn              :string(255)
+#  location             :string(255)
+#  cal_cycle_days       :integer          default(365)
+#  last_calibrated_on   :date
+#  inCal                :boolean          default(FALSE)
+#  inactive             :integer          default(0)
+#  picture_file_name    :string(255)
+#  picture_content_type :string(255)
+#  picture_file_size    :integer
+#  picture_updated_at   :datetime
+#  created_at           :datetime
+#  updated_at           :datetime
+#
+
 class Item < ActiveRecord::Base
  attr_accessible :picture, :description, :mfgr, :pn
  attr_accessible :org_sn, :mfgr_sn, :location, :cal_cycle_days, :last_calibrated_on

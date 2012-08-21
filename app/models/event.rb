@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id                 :integer          not null, primary key
+#  item_id            :integer
+#  cal_date           :datetime
+#  calibrator_id      :integer
+#  cost               :decimal(, )
+#  po                 :string(255)
+#  certs_file_name    :string(255)
+#  certs_content_type :string(255)
+#  certs_file_size    :integer
+#  certs_updated_at   :datetime
+#  created_at         :datetime
+#  updated_at         :datetime
+#
+
 class Event < ActiveRecord::Base
   belongs_to :item 
   belongs_to :calibrators  # calibrators has many events

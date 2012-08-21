@@ -22,6 +22,10 @@ group :test do
 	gem 'simplecov', '>= 0.3.5', :require => false
 end
 
+group :development do
+  gem "annotate", "~> 2.5.0"
+end
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
