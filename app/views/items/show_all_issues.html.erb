@@ -20,7 +20,7 @@
 	
 		<p><strong>Item: </strong><%=link_to h(get_item_description_from_id( issue.item_id ) ) , item_path( issue.item_id ) %></p>
 	
-		<p><strong>Issue: </strong><%= link_to (h issue.description), edit_item_issue_path( issue.item.id, issue.id )%></p>
+		<p><strong>Issue: </strong><%= link_to (h issue.description), item_issue_path( issue.item.id, issue.id )%></p>
 	
 		<p><strong>Created at: </strong><%= h issue.created_at.strftime('%m/%d/%Y') %></p>
 	

@@ -1,0 +1,18 @@
+<h2>Showing all Items in Calibration Date order</h2>
+
+<div class="digg_pagination">
+    <div clas="page_info">
+      <%= page_entries_info @items %>
+    </div>
+    <%= will_paginate @items, :container => false %>
+</div>
+
+
+<%= render :partial => 'items', :collection => @items %>
+
+<div class="digg_pagination">
+    <div clas="page_info">
+      <%= page_entries_info @items %>
+    </div>
+    <%= will_paginate @items, :container => false %>
+</div>

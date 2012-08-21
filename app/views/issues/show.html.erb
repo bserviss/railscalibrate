@@ -1,21 +1,24 @@
 <h2>Showing Issue for <%= "#{@item.description} SN:#{@item.org_sn}"%></h2>
 
-<table>
-  <tr>
-    <td><b>Description:</b></td>
-  </tr>
-  <tr>
-    <td><%= h @issue.description %></td>
-  </tr>
-  <tr>
-    <td><b>Created At:</b></td>
-    <td><%= h @issue.created_at.strftime('%m/%d/%Y') %></td>
-  </tr>
-</table>
+<p><%=get_image_tag_from_item_id(@issue.item_id) %></p>
 
-<p><%= link_to 'Edit', edit_item_issue_path( @item.id )%></p>
-<p><%= link_to 'Destroy', item_issue_path( @item.id ), :data=> { :confirm => 'Are you sure?'}, :method => :delete %></p>
-<p><%= link_to 'New Issue', new_item_issue_path( @item.id ) %></p>
-<p><%= link_to "Back to #{h(@item.description)}", item_path( @item ) %></p>
-<p><%= link_to 'Back to Summary Page', items_path %></p>
+<ul>
+	<li>
+		<em>Description:</em> <%= h @issue.description %>
+	</li>
+	<li>
+		<em>It was created on</em> <%= h @issue.created_at.strftime('%m/%d/%Y') %>
+	</li>
+</ul>
+
+<p>
+	<%= link_to 'Edit', edit_item_issue_path( @item.id )%> | 
+	<%= link_to 'Destroy', item_issue_path( @item.id ), :data=> { :confirm => 'Are you sure?'}, :method => :delete %> |
+	<%= link_to 'New Issue', new_item_issue_path( @item.id ) %>
+</p>
+<p>
+	<%= link_to "Back to #{h(@item.description)}", item_path( @item ) %> |
+	<%= link_to 'Back to Summary Page', items_path %> |
+	<%= link_to 'Back to all issues', all_issues_path%>
+</p>
 

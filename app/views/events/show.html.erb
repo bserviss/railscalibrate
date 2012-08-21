@@ -1,53 +1,38 @@
+<h2>Showing Event for <%= "#{@item.description} SN:#{@item.org_sn}"%></h2>
 
-<table>
-  <tr>
-    <th>Cal Date</th>
-    <th>Calibrator</th>
-    <th>PO</th>
-    <th>Cost</th>
-    <th>Picture</th>
-    <th>Certs Updated At</th>
-  </tr>
-  <tr>
-    <td><%=h @event.cal_date.strftime('%m/%d/%Y') %></td>
-    <td>
-      <% if !@event.calibrator_id.nil? %>
-        <%= link_to h(get_calibrator_name( @event.calibrator_id )), calibrator_path( @event.calibrator_id )%>
-      <% else %>
-        <%= link_to 'None, Create one?', edit_item_event_path(@item.id, @event.id) %>
-      <% end %>
-    </td>
-    <td><%=h @event.po %></td>
-    <td><%=h @event.cost %></td>
-    <td>
-      <% if @event.certs.url =~ /missing.png/ %>
-        <b>Missing Picture</b><br/>
-      <% else %>
-        <b><%= link_to image_tag( @event.certs.url(:thumb), :border => 0), @event.certs.url, :target => '_blank' %></b><br/>
-      <% end %>
-    </td>
-    <td>
-      <% if not @event.certs_updated_at.nil? %>
-        <%=h @event.certs_updated_at.strftime('%m/%d/%Y') %>
-      <% else %>
-        <b>no update date</b>
-      <% end %>
-    </td>
-  </tr>
-</table>
+<p><%=get_image_tag_from_item_id(@event.item_id) %></p>
 
-<p>
-  <b>Certs updated at:</b>
-  <% if not @event.certs_updated_at.nil? %>
-    <%=h @event.certs_updated_at.strftime('%m/%d/%Y') %>
-  <% else %>
-    <b>no update date</b>
-  <% end %>
-</p>
-
+<ul>
+	<li>
+		It was calibrated on <%=h @event.cal_date.strftime('%m/%d/%Y') %> by
+		 <%= link_to h(get_calibrator_name( @event.calibrator_id )), calibrator_path( @event.calibrator_id )%>
+		 under PO# <%=h @event.po %> and has a yearly cost of <%=h @event.cost %>.
+	</li>
+	<li>
+		Certs:
+		<ul>
+			<li>
+				<% if @event.certs.url =~ /missing.png/ %>
+        			<b>Missing Picture</b><br/>
+    			<% else %>
+        			<b><%= link_to image_tag( @event.certs.url(:thumb), :border => 0), @event.certs.url, :target => '_blank' %></b><br/>
+    			<% end %>
+			</li>
+			<li>
+    			<% if not @event.certs_updated_at.nil? %>
+    				(Certs updated on <%=h @event.certs_updated_at.strftime('%m/%d/%Y') %>)
+    			<% else %>
+    	    		<b>no update date</b>
+	    		<% end %>
+			</li>
+		</ul>
+	</li>
+</ul>
 <% if @item.inCal %>
   <%= link_to 'Return from Cal', :controller => "event", :action => "return_from_cal", :id => @item.id %>
 <% end %>
+
 <%= link_to 'Edit', edit_item_event_path(@item.id, @event.id) %> |
 <%= link_to 'Back', item_events_path(@item.id) %> |
 <%= link_to "Back to #{h(@item.description)}", item_path( @item ) %> |
+<%= link_to "Back to all events list", all_events_path %>

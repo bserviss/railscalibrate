@@ -168,6 +168,10 @@ class ItemsController < ApplicationController
     @items = Item.all( :order => :description ).paginate :page => params[:page], :per_page => params[:per_page], :per_page => 15
   end
   
+  def show_all_items_by_cal_date
+    @items = Item.all( :order => 'last_calibrated_on DESC' ).paginate :page => params[:page], :per_page => params[:per_page], :per_page => 15
+  end
+  
   def show_all_issues
     @issues = Issue.all( :order => 'created_at DESC').paginate :page => params[:page], :per_page => params[:per_page], :per_page => 15
   end
