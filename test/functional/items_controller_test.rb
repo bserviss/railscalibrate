@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ItemsControllerTest < ActionController::TestCase
+    
   test "should get index" do
     get :index
     assert_response :success
@@ -111,7 +112,19 @@ class ItemsControllerTest < ActionController::TestCase
   test "should display all items" do
     get :show_all_items
     assert_response :success
-    assert_not_nil assigns( :display_group )
+    assert_not_nil assigns( :items )
+  end
+  
+  test "should display all items by cal date" do
+    get :show_all_items_by_cal_date
+    assert_response :success
+    assert_not_nil assigns( :items )
+  end
+  
+  test "should show all issues" do
+    get :show_all_issues
+    assert_response :success
+    assert_not_nil assigns( :issues )
   end
 
   test "should display printable due_cal" do
