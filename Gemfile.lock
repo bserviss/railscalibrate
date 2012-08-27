@@ -43,6 +43,8 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    faker (1.0.1)
+      i18n (~> 0.4)
     fancybox-rails (0.1.4)
       railties (>= 3.1.0)
     hike (1.2.1)
@@ -126,6 +128,7 @@ PLATFORMS
 DEPENDENCIES
   annotate (~> 2.5.0)
   coffee-rails (= 3.2.2)
+  faker (= 1.0.1)
   fancybox-rails
   jquery-rails
   paperclip (= 3.0.4)

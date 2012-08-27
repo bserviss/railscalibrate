@@ -103,28 +103,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  #testing method to load 500 items into the database
-  #no pictures are loaded - might be a good addition
-  #to be removed or moved to a seed section
-  def test_loader( number_of_records )
-    number_of_records = 1000 if number_of_records > 1000
-  	for i in ( 1..number_of_records )
-	  	item = Item.new
-		  item.description = 'test-' + i.to_s
-		  item.mfgr = 'test'
-      item.pn = '1234'
-      item.org_sn = '123'
-      item.cal_cycle_days = '365'
-		  some_days = rand(500)
-		  a_date = Date.today
-		  a_date -= some_days
-		  item.last_calibrated_on = a_date
-		  item.save
-	  end
-    redirect_to( items_url )
-  
-  end
-
   def search_remote
     @item = Item.first
     if params[:description] or params[:sn]
