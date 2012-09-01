@@ -19,6 +19,8 @@ class ItemsController < ApplicationController
   # GET /items.xml
   def index
     @items = Item.due_cal.paginate :page => params[:page], :per_page => 10
+    @issues = Issue.order( 'created_at DESC' ).limit( 10 ).all
+    @events = Event.order( 'created_at DESC' ).limit( 20 ).all
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @items }

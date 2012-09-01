@@ -254,3 +254,22 @@ padding-left: 15px;
     margin-right: 1em; }
   .flickr_pagination .next_page {
     margin-left: 1em; }
+
+.due_cal {
+	padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-right: 5px; }
+
+.summary_info {
+	padding: 0.2em 0.5em;
+    display: block;
+    float: right;
+    margin-left: 10px;
+}
+.summary_events {
+	padding: 0.2em 0.5em;
+    display: block;
+    float: left;
+    margin-left: 10px;
+}

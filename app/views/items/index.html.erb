@@ -2,23 +2,59 @@
 
 <h2><a name="DueCal">Due Cal</a></h2>
 
-<div class="digg_pagination">
-    <div clas="page_info">
-      <%= page_entries_info @items %>
-    </div>
-    <%= will_paginate @items, :container => false %>
+<div class="due_cal">
+	
+	<div class="digg_pagination">
+    	<div clas="page_info">
+      		<%= page_entries_info @items %>
+    	</div>
+    	<%= will_paginate @items, :container => false %>
+	</div>
+
+	<%= render :partial => 'items', :collection => @items %>
+
+	<div class="digg_pagination">
+    	<div clas="page_info">
+      	<%= page_entries_info @items %>
+    	</div>
+    	<%= will_paginate @items, :container => false %>
+	</div>
 </div>
 
-<%= render :partial => 'items', :collection => @items %>
-
-<div class="digg_pagination">
-    <div clas="page_info">
-      <%= page_entries_info @items %>
-    </div>
-    <%= will_paginate @items, :container => false %>
+<div class="summary_info">
+	<h3>Last 10 Issues</h3>
+	<% if @issues.any? %>
+		<% @issues.each do |issue| %>
+			<ul>
+				<li><%=link_to h(get_item_description_from_id( issue.item_id ) ) , item_path( issue.item_id ) %></li>
+				<li>Desc:<%= h issue.description %></li>
+				<li>Date:<%= h issue.created_at.strftime('%m/%d/%Y') %></li>
+			</ul>
+		<% end %>
+	<% else %>
+		No Issues to Show
+	<% end %>
 </div>
 
-<%= link_to 'New item', new_item_path %>
-
-<%= link_to "loader", :controller => "item", :action => "test_loader" %>
-
+<div class="summary_events">
+	<h3><%= link_to "Events", all_events_path%> </h3>
+	<% if @events.any? %>
+		<% @events.each do |event| %>
+			<ul>
+				<li>Item: <%= link_to h(get_item_description_from_id( event.item_id ) ) , item_path( event.item_id ) %></li>
+				<li>Date: <%=h event.cal_date.strftime('%m/%d/%Y') %></li>
+				<li>
+					Calibrator:
+					<% if !event.calibrator_id.nil? %>
+                      <%= link_to h(get_calibrator_name( event.calibrator_id )), calibrator_path( event.calibrator_id )%> 
+                    <% else %>
+                      <%= link_to 'None, Create one?', edit_item_event_path(event.item.id, event.id) %>
+    				<% end %>
+				</li>
+				<li><%= link_to "Go to Event", h(item_event_path(event.item_id, event.id)) %></li>
+			</ul>
+		<% end %>
+	<% else %>
+		No Events to display
+	<% end %>
+</div>
