@@ -22,13 +22,12 @@
 </div>
 
 <div class="summary_info">
-	<h3>Last 10 Issues</h3>
+	<h3><%= link_to "Last 10 Issues", all_issues_path%></h3>
 	<% if @issues.any? %>
 		<% @issues.each do |issue| %>
 			<ul>
-				<li><%=link_to h(get_item_description_from_id( issue.item_id ) ) , item_path( issue.item_id ) %></li>
-				<li>Desc:<%= h issue.description %></li>
-				<li>Date:<%= h issue.created_at.strftime('%m/%d/%Y') %></li>
+				<%= render partial: "issues", locals: {issue: issue}%>
+				<hr/>
 			</ul>
 		<% end %>
 	<% else %>
@@ -37,21 +36,11 @@
 </div>
 
 <div class="summary_events">
-	<h3><%= link_to "Events", all_events_path%> </h3>
+	<h3><%= link_to "Last 10 Events", all_events_path%> </h3>
 	<% if @events.any? %>
 		<% @events.each do |event| %>
 			<ul>
-				<li>Item: <%= link_to h(get_item_description_from_id( event.item_id ) ) , item_path( event.item_id ) %></li>
-				<li>Date: <%=h event.cal_date.strftime('%m/%d/%Y') %></li>
-				<li>
-					Calibrator:
-					<% if !event.calibrator_id.nil? %>
-                      <%= link_to h(get_calibrator_name( event.calibrator_id )), calibrator_path( event.calibrator_id )%> 
-                    <% else %>
-                      <%= link_to 'None, Create one?', edit_item_event_path(event.item.id, event.id) %>
-    				<% end %>
-				</li>
-				<li><%= link_to "Go to Event", h(item_event_path(event.item_id, event.id)) %></li>
+				<%= render partial: "events", locals: {event: event}%>
 			</ul>
 		<% end %>
 	<% else %>

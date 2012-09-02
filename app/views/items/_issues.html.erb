@@ -1,15 +1,15 @@
-<h2>Issues Sorted by Date</h2>
-<table>
-  <tr>
-    <th>Item</th>
-    <th>Issue</th>
-    <th>Created At</th>
-  </tr>
-<% issues.each do |issue| %>
-  <tr>
-    <td><%=link_to h(get_item_description_from_id( issue.item_id ) ) , item_path( issue.item_id ) %></td>
-    <td><%= h issue.description %></td>
-    <td><%= h issue.created_at.strftime('%m/%d/%Y') %></td>
-  </tr>
-<% end %>
-</table>
+<p>
+	<%= get_image_tag_from_item_id(issue.item_id) %>
+</p>
+
+<p>
+	Item: <%= link_to h(get_item_description_from_id( issue.item_id ) ) , item_path( issue.item_id ) %>
+</p>
+
+<p>
+	Issue: <%= link_to (h issue.description), item_issue_path( issue.item.id, issue.id )%>
+</p>
+
+<p>
+	Created at: <%= h issue.created_at.strftime('%m/%d/%Y') %>
+</p>

@@ -1,0 +1,17 @@
+<p>
+	<%= link_to get_image_tag_from_item_id(event.item_id), h(item_event_path(event.item_id, event.id)) %>
+</p>
+<p>
+	<strong>Desc: </strong><%= link_to h(get_item_description_from_id( event.item_id ) ) , item_path( event.item_id ) %>
+</p>
+<p>
+	<strong>Date: </strong><%= h event.cal_date.strftime('%m/%d/%Y') %>
+</p>
+<p>
+	<strong>Calibrator: </strong>
+	<% if !event.calibrator_id.nil? %>
+	<%= link_to h(get_calibrator_name( event.calibrator_id )), calibrator_path( event.calibrator_id )%>
+	<% else %>
+	<%= link_to 'None, Create one?', edit_item_event_path(event.item.id, event.id) %>
+	<% end %>
+</p>

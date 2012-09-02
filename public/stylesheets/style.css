@@ -259,17 +259,17 @@ padding-left: 15px;
 	padding: 0.2em 0.5em;
     display: block;
     float: left;
-    margin-right: 5px; }
+    margin-right: 1px; }
 
 .summary_info {
 	padding: 0.2em 0.5em;
     display: block;
     float: right;
-    margin-left: 10px;
+    margin-left: 3px;
 }
 .summary_events {
 	padding: 0.2em 0.5em;
     display: block;
     float: left;
-    margin-left: 10px;
+    margin-left: 3px;
 }
