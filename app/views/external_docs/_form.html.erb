@@ -18,22 +18,6 @@
     <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :doc_file_name %><br />
-    <%= f.text_field :doc_file_name %>
-  </div>
-  <div class="field">
-    <%= f.label :doc_content_type %><br />
-    <%= f.text_field :doc_content_type %>
-  </div>
-  <div class="field">
-    <%= f.label :doc_file_size %><br />
-    <%= f.text_field :doc_file_size %>
-  </div>
-  <div class="field">
-    <%= f.label :doc_updated_at %><br />
-    <%= f.date_select :doc_updated_at, :order => [:day, :month, :year] %>
-  </div>
-  <div class="field">
     <%= f.label 'Select document file' %><br />
     <%= f.file_field :doc %>
   </div>
