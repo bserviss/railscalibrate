@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -21,8 +22,8 @@ ActiveRecord::Schema.define(:version => 20101009152135) do
     t.string   "zip"
     t.string   "note"
     t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.string   "contact_email"
     t.string   "contact_name"
     t.string   "website"
@@ -33,8 +34,8 @@ ActiveRecord::Schema.define(:version => 20101009152135) do
     t.string   "pn"
     t.string   "model"
     t.string   "note"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "events", :force => true do |t|
@@ -47,8 +48,8 @@ ActiveRecord::Schema.define(:version => 20101009152135) do
     t.string   "certs_content_type"
     t.integer  "certs_file_size"
     t.datetime "certs_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "external_docs", :force => true do |t|
@@ -57,16 +58,16 @@ ActiveRecord::Schema.define(:version => 20101009152135) do
     t.integer  "doc_file_size"
     t.datetime "doc_updated_at"
     t.integer  "item_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.string   "description"
   end
 
   create_table "issues", :force => true do |t|
     t.integer  "item_id"
     t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "items", :force => true do |t|
@@ -84,8 +85,8 @@ ActiveRecord::Schema.define(:version => 20101009152135) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
   end
 
 end

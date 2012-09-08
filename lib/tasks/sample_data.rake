@@ -22,5 +22,14 @@ namespace :db do
                  last_calibrated_on: a_date
                  )
     end
+    Calibrator.create!(
+      a_name: "test Vendor",
+      contact_name: "test"
+      )
+    5.times do |n|
+      the_name = "Vendor-#{n + 1}"
+      the_contact_name = "test"
+      Calibrator.create!( a_name: the_name, contact_name: the_contact_name)
+    end
   end
 end
