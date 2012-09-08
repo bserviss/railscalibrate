@@ -1,35 +1,33 @@
 <h3>Showing all Issues (Latest issues first)</h3>
 
 <div class="digg_pagination">
-    <div clas="page_info">
-      <%= page_entries_info @issues %>
-    </div>
     <%= will_paginate @issues, :container => false %>
 </div>
 
 <p/>
 
-<table border="1" bordercolor="gray">
+<% if @issues.any? %>
+	<table border="1" bordercolor="gray">
 
-	<tr>
+		<tr>
 	
-<% @issues.each_with_index do | issue, index |%>
+		<% @issues.each_with_index do | issue, index |%>
 
-	<td>
-		<%= render partial: 'issues', :locals => { issue: issue } %>	
-	</td>
-		<% if (index + 1) % 4 == 0 %>
-			</tr>
-			<tr>
+		<td>
+			<%= render partial: 'issues', :locals => { issue: issue } %>	
+		</td>
+			<% if (index + 1) % 4 == 0 %>
+				</tr>
+				<tr>
+			<% end %>
 		<% end %>
+	</table>
+<% else %>
+	<p>no Issues to Show</p>
 <% end %>
-</table>
 
 <p/>
 
 <div class="digg_pagination">
-    <div clas="page_info">
-      <%= page_entries_info @issues %>
-    </div>
     <%= will_paginate @issues, :container => false %>
 </div>

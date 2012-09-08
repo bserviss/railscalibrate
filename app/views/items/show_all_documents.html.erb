@@ -1,22 +1,45 @@
-<table>
-  <tr>
-    <th>Item</th>
-    <th>Description</th>
-    <th>Document</th>
-  </tr>
+<h3>Showing all Documents (in item order)</h3>
 
-<% @documents.each do |doc| %>
-  <tr>
-    <td><%=link_to h(get_item_description_from_id( doc.item_id ) ) , item_path( doc.item_id ) %></td>
-    <td><%=h doc.description %></td>
-    <% if doc.doc.url =~ /missing.png/ %>
-      <td><%= link_to 'Missing Picture', edit_item_event_path(@item.id, event.id) %></td>
-    <% else %>
-      <td><%= link_to image_tag( doc.doc.url(:thumb), :border => 0), doc.doc.url, :target => '_blank' %></td>
-    <% end %>
-    <td><%= link_to 'Show', item_event_path(@item.id, doc.id) %></td>
-    <td><%= link_to 'Edit', edit_item_event_path(@item.id, doc.id) %></td>
-    <td><%= link_to 'Destroy', item_event_path(@item.id, doc.id), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<div class="digg_pagination">
+    <%= will_paginate @documents, :container => false %>
+</div>
+
+<p/>
+
+<% if @documents.any? %>
+
+	<table border="1" bordercolor="gray">
+
+		<tr>
+
+		<% @documents.each_with_index do |document, index | %>
+
+			<td>
+				<p><%=link_to h(get_item_description_from_id( document.item_id ) ) , item_path( document.item_id ) %></p>
+				<p><%=link_to document.description, item_external_doc_path(document.item_id, document.id)%></p>
+				<p>
+					<% if document.doc.url =~ /missing.png/ %>
+      					<%= link_to 'Missing Picture', edit_item_external_docs_path(@item.id, document.id) %>
+    				<% else %>
+      					<%= link_to image_tag( document.doc.url(:thumb), :border => 0), document.doc.url, :target => '_blank' %>
+    				<% end %>
+				</p>
+			<% if ( index + 1) % 4 == 0  %>
+
+				</tr>
+				<tr>
+
+			<% end %>
+
+		<% end %>
+
+	</table>
+	
+<% else %>
+	<p>No Documents to Show</p>
 <% end %>
-</table>
+
+
+<div class="digg_pagination">
+    <%= will_paginate @documents, :container => false %>
+</div>

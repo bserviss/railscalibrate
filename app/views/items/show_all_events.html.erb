@@ -1,9 +1,6 @@
 <h3>Showing all Events (Latest events first)</h3>
 
 <div class="digg_pagination">
-    <div clas="page_info">
-      <%= page_entries_info @events %>
-    </div>
     <%= will_paginate @events, :container => false %>
 </div>
 
@@ -25,9 +22,6 @@
 <p/>
 
 <div class="digg_pagination">
-    <div clas="page_info">
-      <%= page_entries_info @events %>
-    </div>
     <%= will_paginate @events, :container => false %>
 </div>
 

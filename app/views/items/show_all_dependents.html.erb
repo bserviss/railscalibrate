@@ -1,46 +1,46 @@
 <h3>Showing all Dependents (in item order)</h3>
 
 <div class="digg_pagination">
-    <div clas="page_info">
-      <%= page_entries_info @dependents %>
-    </div>
     <%= will_paginate @dependents, :container => false %>
 </div>
 
 <p/>
 
-<table border="1" bordercolor="gray">
+<% if @dependents.any? %>
 
-	<tr>
+	<table border="1" bordercolor="gray">
 
-	<% @dependents.each_with_index do |dependent, index | %>
+		<tr>
 
-		<td>
+		<% @dependents.each_with_index do |dependent, index | %>
 
-			<p><%= get_image_tag_from_item_id(dependent.item_id) %></p>
+			<td>
 
-			<p><strong><%= link_to get_item_description_from_id( dependent.item_id ), item_dependents_path( dependent.item_id )%> </strong></p>
+				<p><%= get_image_tag_from_item_id(dependent.item_id) %></p>
 
-			<p><strong>Model: </strong><%= h dependent.model %></p>
+				<p><strong><%= link_to get_item_description_from_id( dependent.item_id ), item_dependents_path( dependent.item_id )%> </strong></p>
 
-			<p><strong>Note: </strong><%= h dependent.note %> </p>
+				<p><strong>Model: </strong><%= h dependent.model %></p>
 
-		<% if ( index + 1) % 4 == 0  %>
+				<p><strong>Note: </strong><%= h dependent.note %> </p>
 
-			</tr>
-			<tr>
+			<% if ( index + 1) % 4 == 0  %>
+
+				</tr>
+				<tr>
+
+			<% end %>
 
 		<% end %>
 
-	<% end %>
-
-</table>
+	</table>
+	
+<% else %>
+	<p>No Dependents to Show</p>
+<% end %>
 
 <p/>
 
 <div class="digg_pagination">
-    <div clas="page_info">
-      <%= page_entries_info @dependents %>
-    </div>
     <%= will_paginate @dependents, :container => false %>
 </div>

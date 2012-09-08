@@ -202,7 +202,7 @@ class ItemsController < ApplicationController
   end
   
   def show_all_documents
-    @documents = ExternalDoc.all( :order => 'item_id, updated_at')
+    @documents = ExternalDoc.all( :order => 'item_id, updated_at').paginate :page => params[:page], :per_page => params[:per_page], :per_page => 20
     
     respond_to do |format|
       format.html #show_all_documents.hrml.erb
