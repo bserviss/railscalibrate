@@ -41,6 +41,7 @@
 		<% @events.each do |event| %>
 			<ul>
 				<%= render partial: "events", locals: {event: event}%>
+				<hr/>
 			</ul>
 		<% end %>
 	<% else %>
