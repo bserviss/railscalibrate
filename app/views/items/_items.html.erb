@@ -22,7 +22,13 @@
     <li><%= link_to "Assign a location", edit_item_path( items.id ) %></li>
   <% end %>
   <% if items.inCal %>
-    <li><%= link_to 'Return from Cal', return_from_cal_path( :item_id => items.id ) %> </li>
+    <li>
+    	Vendor:<strong> <%= link_to "#{get_calibrator_name_from_item( items.id )}", 
+    	  calibrator_path( get_calibrator_id_from_item( items.id )) %></strong>
+    </li>
+    <li>
+    	<%= link_to 'Return from Cal', return_from_cal_path( :item_id => items.id ) %> 
+    </li>
   <% else %>
     <li><%= link_to 'Calibrate this item?', new_item_event_path( items ) %></li>
   <% end %>

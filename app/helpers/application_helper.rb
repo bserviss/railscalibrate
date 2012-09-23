@@ -1,7 +1,18 @@
 module ApplicationHelper
   #added helpers back after rails 3 upgrade
   def get_calibrator_name( calibrator_id )
-    Calibrator.find( calibrator_id).a_name
+    Calibrator.find( calibrator_id ).a_name
+  end
+  
+  def get_calibrator_name_from_item( item_id )
+    Calibrator.find( 
+      Event.where("item_id=#{item_id}").order("created_at DESC").limit(1).first.calibrator_id
+    ).a_name
+  end
+  
+  def get_calibrator_id_from_item( item_id )
+    item = Item.find( item_id )
+    item.events.first( order: 'created_at DESC').calibrator_id
   end
 
   def get_item_count
