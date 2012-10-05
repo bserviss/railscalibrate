@@ -1,25 +1,12 @@
 <h1>Listing dependent parts for <%= "#{h(@item.description)} SN: #{h(@item.org_sn)}"%></h1>
 
-<table>
-  <tr>
-    <th>Pn</th>
-    <th>Model</th>
-    <th>Note</th>
-  </tr>
-
-<% @dependents.each do |dependent| %>
-  <tr>
-    <td><%=h dependent.pn %></td>
-    <td><%=h dependent.model %></td>
-    <td><%=h dependent.note %></td>
-    <td><%= link_to 'Show', item_dependent_path( @item.id, dependent.id ) %></td>
-    <td><%= link_to 'Edit', edit_item_dependent_path(@item.id, dependent.id ) %></td>
-    <td><%= link_to 'Destroy', item_dependent_path(@item.id, dependent.id ), :data=> { :confirm => 'Are you sure?'}, :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<%= link_to 'New dependent', new_item_dependent_path(@item.id) %> |
+<%= link_to "#{h(@item.description)} page", item_path( @item.id ) %> |
+<%= link_to "back to Summary Page", items_path %>
 
 <br />
+
+<%= render 'dependents' %>
 
 <%= link_to 'New dependent', new_item_dependent_path(@item.id) %> |
 <%= link_to "#{h(@item.description)} page", item_path( @item.id ) %> |

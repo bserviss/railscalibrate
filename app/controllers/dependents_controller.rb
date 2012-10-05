@@ -12,7 +12,7 @@ class DependentsController < ApplicationController
   # GET /dependents
   # GET /dependents.xml
   def index
-    @dependents = @item.dependents.all( :order => "created_at DESC" )
+    @dependents = @item.dependents.all( :order => "created_at DESC" ).paginate :page => params[:page], :per_page => 10
 
     respond_to do |format|
       format.html # index.html.erb

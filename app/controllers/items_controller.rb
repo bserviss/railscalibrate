@@ -137,7 +137,7 @@ class ItemsController < ApplicationController
 
   def show_thirty_days
     @items = Item.due_in( 30 ).paginate :page => params[:page], :per_page => 10
-    @test_thirty_days = @display_group.size
+    @test_thirty_days = @items.size
   end
 
   def show_all_dependents
