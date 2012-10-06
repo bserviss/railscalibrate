@@ -23,7 +23,7 @@ class DependentsController < ApplicationController
   # GET /dependents/1
   # GET /dependents/1.xml
   def show
-    @dependent = @item.dependents.find(params[:id])
+    @dependents = @item.dependents.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

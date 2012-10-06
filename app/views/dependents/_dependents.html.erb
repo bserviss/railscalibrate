@@ -18,7 +18,7 @@
 				
 				<p><strong><%= link_to get_item_description_from_id( dependent.item_id ), item_path( dependent.item_id )%> </strong></p>
 
-				<p><strong>Model: </strong><%= h dependent.model %></p>
+				<p><strong>Model: </strong><%= link_to h(dependent.model), item_dependent_path( dependent.item_id,dependent.id ) %></p>
 
 				<p><strong>Note: </strong><%= h dependent.note %> </p>
 
