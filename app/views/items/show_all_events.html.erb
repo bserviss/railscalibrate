@@ -6,18 +6,11 @@
 
 <p/>
 
-<table border="1" bordercolor="gray">
-	<tr>
 	<% @events.each_with_index do |event, index | %>
-		<td>
+
 			<%= render partial: "events", locals: {event: event }%>
-		</td>
-		<% if (index + 1) % 4 == 0 %>
-			</tr>
-			<tr>
-		<% end %>
+
 	<% end %>
-</table>
 
 <p/>
 
