@@ -8,32 +8,25 @@
 
 <% if @documents.any? %>
 
-	<table border="1" bordercolor="gray">
-
-		<tr>
-
 		<% @documents.each_with_index do |document, index | %>
-
-			<td>
-				<p><%=link_to h(get_item_description_from_id( document.item_id ) ) , item_path( document.item_id ) %></p>
-				<p><%=link_to document.description, item_external_doc_path(document.item_id, document.id)%></p>
-				<p>
+			<div>
+				<div style="float:left; width:300px">
 					<% if document.doc.url =~ /missing.png/ %>
-      					<%= link_to 'Missing Picture', edit_item_external_docs_path(@item.id, document.id) %>
-    				<% else %>
-      					<%= link_to image_tag( document.doc.url(:thumb), :border => 0), document.doc.url, :target => '_blank' %>
-    				<% end %>
-				</p>
-			<% if ( index + 1) % 4 == 0  %>
-
-				</tr>
-				<tr>
-
-			<% end %>
-
+   						<%= link_to 'Missing Picture', edit_item_external_docs_path(@item.id, document.id) %>
+   					<% else %>
+   						<%= link_to image_tag( document.doc.url(:thumb), :border => 0), document.doc.url, :target => '_blank' %>
+   					<% end %>
+   				</div>
+   				<div style="float:left; width:200px">
+					<p><%=link_to h(get_item_description_from_id( document.item_id ) ) , item_path( document.item_id ) %></p>
+					<p><%=link_to document.description, item_external_doc_path(document.item_id, document.id)%></p>
+					<p>
+					</p>
+				</div>
+			</div>
 		<% end %>
-
-	</table>
+		<div style="clear: both;"> </div>
+		<hr />
 	
 <% else %>
 	<p>No Documents to Show</p>
