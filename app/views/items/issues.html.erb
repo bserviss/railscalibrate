@@ -13,3 +13,8 @@
   </tr>
 <% end %>
 </table>
+
+<% issues.each do |issue| %>
+<ul>
+	<li><%=link_to h(get_item_description_from_id( issue.item_id ) ) , item_path( issue.item_id ) %></li>
+</ul>

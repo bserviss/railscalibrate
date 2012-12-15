@@ -7,21 +7,12 @@
 <p/>
 
 <% if @issues.any? %>
-	<table border="1" bordercolor="gray">
-
-		<tr>
 	
 		<% @issues.each_with_index do | issue, index |%>
 
-		<td>
-			<%= render partial: 'issues', :locals => { issue: issue } %>	
-		</td>
-			<% if (index + 1) % 4 == 0 %>
-				</tr>
-				<tr>
-			<% end %>
+  			<%= render partial: 'issues', :locals => { issue: issue } %>	
+			<hr />
 		<% end %>
-	</table>
 <% else %>
 	<p>no Issues to Show</p>
 <% end %>
