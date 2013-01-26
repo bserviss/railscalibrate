@@ -87,15 +87,15 @@ class ItemsControllerTest < ActionController::TestCase
   test "should display 30 day items" do
     get :show_thirty_days
     assert_response :success
-    assert_not_nil assigns( :display_group )
-    display_group = @controller.instance_variable_get('@display_group')
+    assert_not_nil assigns( :items )
+    display_group = @controller.instance_variable_get('@items')
     assert_equal  1, display_group.size , "Should be one item due in thirty days"
   end
 
   test "should display 60 day items" do
     get :show_sixty_days
     assert_response :success
-    assert_not_nil assigns( :display_group )
+    assert_not_nil assigns( :items )
     #assert_equal  1, @controller.instance_variable_get('@display_group').size , "Should be one item due in 60 days"
   end
 

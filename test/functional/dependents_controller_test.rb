@@ -21,8 +21,8 @@ class DependentsControllerTest < ActionController::TestCase
   end
 
   test "should show dependent" do
-    get :show,    :item_id => items( :one ).id, :id => dependents(:one).to_param
-    assert_not_nil assigns(:dependent)
+    get :show, :id => dependents(:one).to_param, :item_id => dependents( :one ).item_id 
+    assert_not_nil assigns(:dependents)
     assert_response :success
   end
 

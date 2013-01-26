@@ -1,14 +1,14 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  item_id: 1
+  id: 1
   item_id: 1
   pn: MyString
   model: MyString
   note: MyString
 
 two:
-  item_id: 1
+  id: 2
   item_id: 1
   pn: MyString
   model: MyString
