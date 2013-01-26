@@ -155,12 +155,6 @@ class ItemsControllerTest < ActionController::TestCase
     assert_not_nil assigns( :search_results )
   end
 
-  test "should show issue_remote" do
-    get :issue_remote
-    assert_response :success
-    assert_not_nil assigns( :issues )
-  end
-
   test "should show dependent_remote" do
     get :dependent_remote
     assert_response :success
