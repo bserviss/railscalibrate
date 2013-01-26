@@ -85,12 +85,9 @@
   	<li><strong><%= link_to 'Dependents', item_dependents_path( @item.id ) %></strong></li>
   		<ul>
 			<% if @dependents.count > 0 then %>
+				<ul>
   				<% @dependents.each do |dependent| %>
-					<ul>
-			      		<li><strong>PN: </strong><%= h dependent.pn %></li>
-      					<li><strong>Model: </strong><%= h dependent.model  %></li>
-      					<li><strong>Note: </strong><%= h dependent.note %></li>
-      				</ul>
+					<li><strong>PN: </strong><%= h dependent.pn %> <strong>Model: </strong><%= h dependent.model  %> <strong>Note: </strong><%= h dependent.note %></li>
 			  	<% end %>
 			<% else %>
 				<li><%= "No Dependents" %> </li>
