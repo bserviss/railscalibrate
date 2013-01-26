@@ -33,9 +33,7 @@
 	<% else %>
 		No Issues to Show
 	<% end %>
-</div>
 
-<div class="summary_events">
 	<h3><%= link_to "Last 10 Events", all_events_path%> </h3>
 	<% if @events.any? %>
 		<% @events.each do |event| %>
