@@ -1,5 +1,5 @@
 class DependentsController < ApplicationController
-   before_filter :get_item_id, :except => [ :update, :create]
+   before_filter :get_item_id, :except => [:update, :create]
    before_filter :get_item_id_params, :only => [:update, :create ]
 
   def get_item_id
