@@ -1,5 +1,7 @@
 <h1>Showing all Issues for <%= "#{h(@item.description)}"%> </h1>
 
+<p><%=get_image_tag_from_item_id(@item.id) %></p>
+
 <table>
   <tr>
     <th>Description</th>
