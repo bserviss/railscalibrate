@@ -14,7 +14,7 @@ end
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'paperclip', '3.0.4', :require => 'paperclip'
-gem 'will_paginate', '~> 3.0.0'
+gem 'will_paginate', '~> 3.0.5'
 gem 'jquery-rails'
 gem 'fancybox-rails'
 gem 'prototype-rails'

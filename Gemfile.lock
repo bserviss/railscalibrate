@@ -120,9 +120,10 @@ GEM
     uglifier (1.2.3)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
-    will_paginate (3.0.3)
+    will_paginate (3.0.5)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES
@@ -138,4 +139,4 @@ DEPENDENCIES
   simplecov (>= 0.3.5)
   sqlite3-ruby
   uglifier (= 1.2.3)
-  will_paginate (~> 3.0.0)
+  will_paginate (~> 3.0.5)
