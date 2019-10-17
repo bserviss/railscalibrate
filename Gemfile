@@ -13,7 +13,7 @@ end
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
-gem 'paperclip', '3.0.4', :require => 'paperclip'
+gem 'paperclip', '4.3.7', :require => 'paperclip'
 gem 'will_paginate', '~> 3.0.0'
 gem 'jquery-rails'
 gem 'fancybox-rails'
